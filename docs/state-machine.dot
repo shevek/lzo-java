@@ -31,7 +31,7 @@ digraph G {
 	match_m3 [label="M3 match\n001lllll RLE(32) ppppppxx qqqqqqqq\nm_pos = op - 1 - qqqqqqqqpppppp\nt(len) = RLE(32)"];
 	match_m3 -> pre_copy_match;
 
-	match_m4 [label="M4 match\n0001plll RLE(7) qqqqqqxx rrrrrrrr\nm_pos = op - prrrrrrrrqqqqqq\nt(len) = RLE(7)"];
+	match_m4 [label="M4 match\n0001plll RLE(7) qqqqqqxx rrrrrrrr\nm_pos = op - 1prrrrrrrrqqqqqq\nt(len) = RLE(7)"];
 	match_m4 -> pre_copy_match;
 
 	match_m1 [label="M1 match\n0000ppxx qqqqqqqq\nm_pos = op - 1 - qqqqqqqqpp\nt(len) = 2"];

@@ -1,1 +1,3 @@
 docs/*.png
+build
+dist
