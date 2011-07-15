@@ -1,0 +1,9 @@
+There is no version of LZO in pure Java. The obvious solution is to
+take the C source code, and feed it to the Java compiler, modifying
+the Java compiler as necessary to make it compile.
+
+This package is an implementation of that obvious solution, for which
+I can only apologise to the world.
+
+Shevek
+

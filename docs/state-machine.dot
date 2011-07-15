@@ -1,0 +1,55 @@
+digraph G {
+	node [shape=box];
+	init -> a_literal_run [label="0-15"];
+	init -> match [label="16,17"];
+	init -> match_next [label="18,19,20"];
+	init -> init_copy [label="21-255"];
+
+	init_copy [label="Initial copy\n*ip - 17 bytes follow"];
+	init_copy -> first_literal_run;
+
+	a_literal_run [label="A literal run\nlength=3 + RLE(15)"];
+
+	a_literal_run -> first_literal_run;
+
+	first_literal_run -> match [label="16-255"];
+
+	first_literal_run -> first_literal_run_do [label="0-15 (4 bits)"];
+
+	first_literal_run_do [label="First literal run\n0000ppxx qqqqqqqq\nop - M2_MAX_OFFSET - 1 - qqqqqqqqpp\n3 bytes\n"];
+
+	first_literal_run_do -> match_done;
+
+	match -> match_m2 [label=">= 64 / x1......"];
+	match -> match_m3 [label=">= 32 / 001....."];
+	match -> match_m4 [label=">= 16 / 0001...."];
+	match -> match_m1 [label="0000...."];
+
+	match_m2 [label="M2 match\nlllpppxx qqqqqqqq\nm_pos = op - 1 - qqqqqqqqppp\nt(len) = lll - 1"];
+	match_m2 -> copy_match;
+
+	match_m3 [label="M3 match\n001lllll RLE(32) ppppppxx qqqqqqqq\nm_pos = op - 1 - qqqqqqqqpppppp\nt(len) = RLE(32)"];
+	match_m3 -> pre_copy_match;
+
+	match_m4 [label="M4 match\n0001plll RLE(7) qqqqqqxx rrrrrrrr\nm_pos = op - prrrrrrrrqqqqqq\nt(len) = RLE(7)"];
+	match_m4 -> pre_copy_match;
+
+	match_m1 [label="M1 match\n0000ppxx qqqqqqqq\nm_pos = op - 1 - qqqqqqqqpp\nt(len) = 2"];
+	match_m1 -> match_done;
+
+	pre_copy_match -> copy_match;
+
+	copy_match [label="\N\ncopy t + 2 bytes from m_pos"];
+	copy_match -> match_done;
+
+	match_done [label="\N\nt(len) = ip[-2] & 3"];
+	match_done -> eof;
+	match_done -> match_next;
+	match_done -> init [label="xx = 0",constraint=false];
+
+	match_next [label="\N\nt = ______xx @ ip[-2]\ncopy xx from ip"];
+	match_next -> match [constraint=false];
+
+	eof;
+
+}
