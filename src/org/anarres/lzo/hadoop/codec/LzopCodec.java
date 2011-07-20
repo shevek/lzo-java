@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.zip.Adler32;
 import java.util.zip.Checksum;
 import java.util.zip.CRC32;
-import org.anarres.lzo.LzoLibrary;
+import org.anarres.lzo.LzoVersion;
 import org.anarres.lzo.hadoop.BlockCompressorStream;
 import org.anarres.lzo.hadoop.BlockDecompressorStream;
 
@@ -144,7 +144,7 @@ public class LzopCodec extends LzoCodec {
 			DataOutputBuffer dob = new DataOutputBuffer();
 			try {
 				dob.writeShort(LZOP_VERSION);
-				dob.writeShort(LzoLibrary.LZO_LIBRARY_VERSION);
+				dob.writeShort(LzoVersion.LZO_LIBRARY_VERSION);
 				dob.writeShort(LZOP_COMPAT_VERSION);
 				switch (strategy) {
 					case LZO1X_1:
@@ -265,10 +265,10 @@ public class LzopCodec extends LzoCodec {
 						+ Integer.toHexString(LZOP_VERSION) + ")");
 			}
 			hitem = readHeaderItem(in, buf, 2, adler, crc32); // lzo library version
-			if (hitem > LzoLibrary.LZO_LIBRARY_VERSION) {
+			if (hitem > LzoVersion.LZO_LIBRARY_VERSION) {
 				throw new IOException("Compressed with incompatible lzo version: 0x"
 						+ Integer.toHexString(hitem) + " (expected 0x"
-						+ Integer.toHexString(LzoLibrary.LZO_LIBRARY_VERSION) + ")");
+						+ Integer.toHexString(LzoVersion.LZO_LIBRARY_VERSION) + ")");
 			}
 			hitem = readHeaderItem(in, buf, 2, adler, crc32); // lzop extract version
 			if (hitem > LZOP_VERSION) {
