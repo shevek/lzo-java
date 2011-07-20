@@ -2,7 +2,7 @@ package org.anarres.lzo;
 
 import java.util.Arrays;
 
-public class LzoDecompressor1x_safe implements LzoDecompressor {
+public class LzoDecompressor1x_safe extends AbstractLzoDecompressor {
 
 #include "lzojava.h"
 #include "config1x.h"

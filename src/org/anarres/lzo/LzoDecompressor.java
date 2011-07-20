@@ -8,7 +8,7 @@ package org.anarres.lzo;
  *
  * @author shevek
  */
-public interface LzoDecompressor extends LzoConstants {
+public interface LzoDecompressor extends LzoTransformer {
 
     public int decompress(byte[] in, int in_base, int in_len,
             byte[] out, int out_base, lzo_uintp out_len);

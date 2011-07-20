@@ -17,14 +17,12 @@
  */
 package org.anarres.lzo.hadoop.codec;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import org.anarres.lzo.LzoCompressor1x_1;
-import org.anarres.lzo.LzoConstants;
-import org.anarres.lzo.LzoErrors;
+import org.anarres.lzo.LzoAlgorithm;
+import org.anarres.lzo.LzoConstraint;
+import org.anarres.lzo.LzoLibrary;
+import org.anarres.lzo.LzoTransformer;
 import org.anarres.lzo.lzo_uintp;
-import org.apache.commons.io.FileUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -48,84 +46,86 @@ public class LzoCompressor implements Compressor {
         /**
          * lzo1 algorithms.
          */
-        LZO1(0),
-        LZO1_99(1),
+        LZO1(LzoAlgorithm.LZO1),
+        LZO1_99(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),
         /**
          * lzo1a algorithms.
          */
-        LZO1A(2),
-        LZO1A_99(3),
+        LZO1A(LzoAlgorithm.LZO1),
+        LZO1A_99(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),
         /**
          * lzo1b algorithms.
          */
-        LZO1B(4),
-        LZO1B_BEST_COMPRESSION(5),
-        LZO1B_BEST_SPEED(6),
-        LZO1B_1(7),
-        LZO1B_2(8),
-        LZO1B_3(9),
-        LZO1B_4(10),
-        LZO1B_5(11),
-        LZO1B_6(12),
-        LZO1B_7(13),
-        LZO1B_8(14),
-        LZO1B_9(15),
-        LZO1B_99(16),
-        LZO1B_999(17),
+        LZO1B(LzoAlgorithm.LZO1),
+        LZO1B_BEST_COMPRESSION(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),
+        LZO1B_BEST_SPEED(LzoAlgorithm.LZO1, LzoConstraint.SPEED),
+        LZO1B_1(LzoAlgorithm.LZO1B),
+        LZO1B_2(LzoAlgorithm.LZO1B),
+        LZO1B_3(LzoAlgorithm.LZO1B),
+        LZO1B_4(LzoAlgorithm.LZO1B),
+        LZO1B_5(LzoAlgorithm.LZO1B),
+        LZO1B_6(LzoAlgorithm.LZO1B),
+        LZO1B_7(LzoAlgorithm.LZO1B),
+        LZO1B_8(LzoAlgorithm.LZO1B),
+        LZO1B_9(LzoAlgorithm.LZO1B),
+        LZO1B_99(LzoAlgorithm.LZO1B, LzoConstraint.COMPRESSION),
+        LZO1B_999(LzoAlgorithm.LZO1B, LzoConstraint.COMPRESSION),
         /**
          * lzo1c algorithms.
          */
-        LZO1C(18),
-        LZO1C_BEST_COMPRESSION(19),
-        LZO1C_BEST_SPEED(20),
-        LZO1C_1(21),
-        LZO1C_2(22),
-        LZO1C_3(23),
-        LZO1C_4(24),
-        LZO1C_5(25),
-        LZO1C_6(26),
-        LZO1C_7(27),
-        LZO1C_8(28),
-        LZO1C_9(29),
-        LZO1C_99(30),
-        LZO1C_999(31),
+        LZO1C(LzoAlgorithm.LZO1C),
+        LZO1C_BEST_COMPRESSION(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),
+        LZO1C_BEST_SPEED(LzoAlgorithm.LZO1C, LzoConstraint.SPEED),
+        LZO1C_1(LzoAlgorithm.LZO1C),
+        LZO1C_2(LzoAlgorithm.LZO1C),
+        LZO1C_3(LzoAlgorithm.LZO1C),
+        LZO1C_4(LzoAlgorithm.LZO1C),
+        LZO1C_5(LzoAlgorithm.LZO1C),
+        LZO1C_6(LzoAlgorithm.LZO1C),
+        LZO1C_7(LzoAlgorithm.LZO1C),
+        LZO1C_8(LzoAlgorithm.LZO1C),
+        LZO1C_9(LzoAlgorithm.LZO1C),
+        LZO1C_99(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),
+        LZO1C_999(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),
         /**
          * lzo1f algorithms.
          */
-        LZO1F_1(32),
-        LZO1F_999(33),
+        LZO1F_1(LzoAlgorithm.LZO1F),
+        LZO1F_999(LzoAlgorithm.LZO1F, LzoConstraint.COMPRESSION),
         /**
          * lzo1x algorithms.
          */
-        LZO1X_1(34),
-        LZO1X_11(35),
-        LZO1X_12(36),
-        LZO1X_15(37),
-        LZO1X_999(38),
+        LZO1X_1(LzoAlgorithm.LZO1X),
+        LZO1X_11(LzoAlgorithm.LZO1X, LzoConstraint.MEMORY),
+        LZO1X_12(LzoAlgorithm.LZO1X),
+        LZO1X_15(LzoAlgorithm.LZO1X),
+        LZO1X_999(LzoAlgorithm.LZO1X, LzoConstraint.COMPRESSION),
         /**
          * lzo1y algorithms.
          */
-        LZO1Y_1(39),
-        LZO1Y_999(40),
+        LZO1Y_1(LzoAlgorithm.LZO1Y),
+        LZO1Y_999(LzoAlgorithm.LZO1Y, LzoConstraint.COMPRESSION),
         /**
          * lzo1z algorithms.
          */
-        LZO1Z_999(41),
+        LZO1Z_999(LzoAlgorithm.LZO1Z, LzoConstraint.COMPRESSION),
         /**
          * lzo2a algorithms.
          */
-        LZO2A_999(42);
-        private final int compressor;
+        LZO2A_999(LzoAlgorithm.LZO2A, LzoConstraint.COMPRESSION);
+        private final LzoAlgorithm algorithm;
+        private final LzoConstraint constraint;
 
-        private CompressionStrategy(int compressor) {
-            this.compressor = compressor;
+        private CompressionStrategy(LzoAlgorithm algorithm, LzoConstraint constraint) {
+            this.algorithm = algorithm;
+            this.constraint = constraint;
         }
 
-        int getCompressor() {
-            return compressor;
+        private CompressionStrategy(LzoAlgorithm algorithm) {
+            this(algorithm, null);
         }
     }; // CompressionStrategy
-    private final CompressionStrategy strategy; // The lzo compression algorithm.
+    private final org.anarres.lzo.LzoCompressor compressor; // The lzo compression algorithm.
     private final byte[] inputBuffer;
     private int inputBufferLen;
     private byte[] inputHoldoverBuffer;
@@ -136,7 +136,6 @@ public class LzoCompressor implements Compressor {
     private final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
     private int inputByteCount;
     private int outputByteCount;
-    private int workingMemoryBufLen = 0;  // The length of 'working memory' buf.
     private boolean finished;	// Interaction with a brain-damaged contract from BlockCompressorStream.
 
     /**
@@ -146,7 +145,7 @@ public class LzoCompressor implements Compressor {
      * @param outputBufferSize size of the output buffer to be used.
      */
     public LzoCompressor(CompressionStrategy strategy, int outputBufferSize) {
-        this.strategy = strategy;
+        this.compressor = LzoLibrary.getInstance().newCompressor(strategy.algorithm, strategy.constraint);
         this.inputBuffer = new byte[outputBufferSize];
         this.outputBuffer = new byte[outputBufferSize + (outputBufferSize >> 3) + 256];
         reset();
@@ -301,15 +300,15 @@ public class LzoCompressor implements Compressor {
             outputBufferPos = 0;
             outputBufferLen.value = outputBuffer.length;
             try {
-                int code = LzoCompressor1x_1.compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, outputBufferPos, outputBufferLen, new int[1 << 14]);
-                if (code != LzoConstants.LZO_E_OK) {
+                int code = compressor.compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, outputBufferPos, outputBufferLen);
+                if (code != LzoTransformer.LZO_E_OK) {
                     logState("LZO error: " + code);
-                    FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
-                    throw new IllegalArgumentException(LzoErrors.toString(code));
+                    // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
+                    throw new IllegalArgumentException(compressor.toErrorString(code));
                 }
             } catch (IndexOutOfBoundsException e) {
                 logState("IndexOutOfBoundsException: " + e);
-                FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
+                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
                 throw new IOException(e);
             }
             LOG.info(compressBufferLen + "(" + Integer.toHexString(compressBufferLen) + ") -> " + outputBufferLen + "(" + Integer.toHexString(outputBufferLen.value) + ")");
@@ -326,8 +325,8 @@ public class LzoCompressor implements Compressor {
         return len;
     }
 
-    @Override
-    public void reset() {
+    // This method is called from the constructor, and must not be overridden.
+    private void _reset() {
         inputByteCount = 0;
         outputByteCount = 0;
         inputBufferLen = 0;
@@ -340,8 +339,13 @@ public class LzoCompressor implements Compressor {
     }
 
     @Override
+    public void reset() {
+        _reset();
+    }
+
+    @Override
     public synchronized void reinit(Configuration conf) {
-        reset();
+        _reset();
     }
 
     /**

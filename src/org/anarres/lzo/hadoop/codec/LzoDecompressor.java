@@ -17,16 +17,12 @@
  */
 package org.anarres.lzo.hadoop.codec;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.anarres.lzo.LzoConstants;
-import org.anarres.lzo.LzoDecompressor1x;
-import org.anarres.lzo.LzoErrors;
+import org.anarres.lzo.LzoAlgorithm;
+import org.anarres.lzo.LzoConstraint;
+import org.anarres.lzo.LzoLibrary;
+import org.anarres.lzo.LzoTransformer;
 import org.anarres.lzo.lzo_uintp;
-import org.apache.commons.io.FileUtils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -46,69 +42,71 @@ public class LzoDecompressor implements Decompressor {
         /**
          * lzo1 algorithms.
          */
-        LZO1(0),
+        LZO1(LzoAlgorithm.LZO1),
         /**
          * lzo1a algorithms.
          */
-        LZO1A(1),
+        LZO1A(LzoAlgorithm.LZO1A),
         /**
          * lzo1b algorithms.
          */
-        LZO1B(2),
-        LZO1B_SAFE(3),
+        LZO1B(LzoAlgorithm.LZO1B),
+        LZO1B_SAFE(LzoAlgorithm.LZO1B, LzoConstraint.SAFETY),
         /**
          * lzo1c algorithms.
          */
-        LZO1C(4),
-        LZO1C_SAFE(5),
-        LZO1C_ASM(6),
-        LZO1C_ASM_SAFE(7),
+        LZO1C(LzoAlgorithm.LZO1C),
+        LZO1C_SAFE(LzoAlgorithm.LZO1C, LzoConstraint.SAFETY),
+        LZO1C_ASM(LzoAlgorithm.LZO1C),
+        LZO1C_ASM_SAFE(LzoAlgorithm.LZO1C, LzoConstraint.SAFETY),
         /**
          * lzo1f algorithms.
          */
-        LZO1F(8),
-        LZO1F_SAFE(9),
-        LZO1F_ASM_FAST(10),
-        LZO1F_ASM_FAST_SAFE(11),
+        LZO1F(LzoAlgorithm.LZO1F),
+        LZO1F_SAFE(LzoAlgorithm.LZO1F, LzoConstraint.SAFETY),
+        LZO1F_ASM_FAST(LzoAlgorithm.LZO1F),
+        LZO1F_ASM_FAST_SAFE(LzoAlgorithm.LZO1F, LzoConstraint.SAFETY),
         /**
          * lzo1x algorithms.
          */
-        LZO1X(12),
-        LZO1X_SAFE(13),
-        LZO1X_ASM(14),
-        LZO1X_ASM_SAFE(15),
-        LZO1X_ASM_FAST(16),
-        LZO1X_ASM_FAST_SAFE(17),
+        LZO1X(LzoAlgorithm.LZO1X),
+        LZO1X_SAFE(LzoAlgorithm.LZO1X, LzoConstraint.SAFETY),
+        LZO1X_ASM(LzoAlgorithm.LZO1X),
+        LZO1X_ASM_SAFE(LzoAlgorithm.LZO1X, LzoConstraint.SAFETY),
+        LZO1X_ASM_FAST(LzoAlgorithm.LZO1X, LzoConstraint.SPEED),
+        LZO1X_ASM_FAST_SAFE(LzoAlgorithm.LZO1X, LzoConstraint.SAFETY),
         /**
          * lzo1y algorithms.
          */
-        LZO1Y(18),
-        LZO1Y_SAFE(19),
-        LZO1Y_ASM(20),
-        LZO1Y_ASM_SAFE(21),
-        LZO1Y_ASM_FAST(22),
-        LZO1Y_ASM_FAST_SAFE(23),
+        LZO1Y(LzoAlgorithm.LZO1Y),
+        LZO1Y_SAFE(LzoAlgorithm.LZO1Y, LzoConstraint.SAFETY),
+        LZO1Y_ASM(LzoAlgorithm.LZO1Y),
+        LZO1Y_ASM_SAFE(LzoAlgorithm.LZO1Y, LzoConstraint.SAFETY),
+        LZO1Y_ASM_FAST(LzoAlgorithm.LZO1Y, LzoConstraint.SPEED),
+        LZO1Y_ASM_FAST_SAFE(LzoAlgorithm.LZO1Y, LzoConstraint.SAFETY),
         /**
          * lzo1z algorithms.
          */
-        LZO1Z(24),
-        LZO1Z_SAFE(25),
+        LZO1Z(LzoAlgorithm.LZO1Z),
+        LZO1Z_SAFE(LzoAlgorithm.LZO1Z, LzoConstraint.SAFETY),
         /**
          * lzo2a algorithms.
          */
-        LZO2A(26),
-        LZO2A_SAFE(27);
-        private final int decompressor;
+        LZO2A(LzoAlgorithm.LZO2A),
+        LZO2A_SAFE(LzoAlgorithm.LZO2A, LzoConstraint.SAFETY);
+        private final LzoAlgorithm algorithm;
+        private final LzoConstraint constraint;
 
-        private CompressionStrategy(int decompressor) {
-            this.decompressor = decompressor;
+        private CompressionStrategy(LzoAlgorithm algorithm, LzoConstraint constraint) {
+            this.algorithm = algorithm;
+            this.constraint = constraint;
         }
 
-        int getDecompressor() {
-            return decompressor;
+        private CompressionStrategy(LzoAlgorithm algorithm) {
+            this(algorithm, null);
         }
     }; // CompressionStrategy
-    private final CompressionStrategy strategy;
+    private final org.anarres.lzo.LzoDecompressor decompressor;
     private byte[] outputBuffer;
     private int outputBufferPos;
     private final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
@@ -121,7 +119,7 @@ public class LzoDecompressor implements Decompressor {
      * @param directBufferSize size of the direct-buffer
      */
     public LzoDecompressor(CompressionStrategy strategy, int outputBufferSize) {
-        this.strategy = strategy;
+        this.decompressor = LzoLibrary.getInstance().newDecompressor(strategy.algorithm, strategy.constraint);
         setOutputBufferSize(outputBufferSize);
     }
 
@@ -154,23 +152,23 @@ public class LzoDecompressor implements Decompressor {
         // logState("Before setInput");
         LOG.info("Decompressing " + len + " bytes at " + off);
         outputBufferLen.value = outputBuffer.length;
+        // try {
         try {
-            try {
-                outputBufferPos = 0;
-                int code = LzoDecompressor1x.decompress(b, off, len, outputBuffer, outputBufferPos, outputBufferLen, null);
-                if (code != LzoConstants.LZO_E_OK) {
-                    logState("LZO error: " + code);
-                    FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(b, off, off + len));
-                    throw new IllegalArgumentException(LzoErrors.toString(code));
-                }
-            } catch (IndexOutOfBoundsException e) {
-                logState("IndexOutOfBoundsException: " + e);
-                FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(b, off, off + len));
-                throw e;
+            outputBufferPos = 0;
+            int code = decompressor.decompress(b, off, len, outputBuffer, outputBufferPos, outputBufferLen);
+            if (code != LzoTransformer.LZO_E_OK) {
+                logState("LZO error: " + code);
+                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(b, off, off + len));
+                throw new IllegalArgumentException(decompressor.toErrorString(code));
             }
-        } catch (IOException _e) {
-            throw new RuntimeException(_e);
+        } catch (IndexOutOfBoundsException e) {
+            logState("IndexOutOfBoundsException: " + e);
+            // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(b, off, off + len));
+            throw e;
         }
+        // } catch (IOException _e) {
+        // throw new RuntimeException(_e);
+        // }
         LOG.info(len + " -> " + outputBufferLen);
         // logState("After setInput");
     }

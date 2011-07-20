@@ -2,7 +2,7 @@ package org.anarres.lzo;
 
 import java.util.Arrays;
 
-public class LzoCompressor1y_1 implements LzoCompressor {
+public class LzoCompressor1y_1 extends AbstractLzo1Compressor {
 
 #include "lzojava.h"
 
