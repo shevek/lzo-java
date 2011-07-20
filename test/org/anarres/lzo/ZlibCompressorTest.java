@@ -16,8 +16,7 @@ import org.apache.hadoop.io.compress.BlockCompressorStream;
 import org.apache.hadoop.io.compress.BlockDecompressorStream;
 import org.apache.hadoop.io.compress.zlib.BuiltInZlibDeflater;
 import org.apache.hadoop.io.compress.zlib.BuiltInZlibInflater;
-import org.apache.hadoop.io.compress.zlib.ZlibCompressor;
-import org.apache.hadoop.io.compress.zlib.ZlibDecompressor;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -29,6 +28,12 @@ public class ZlibCompressorTest {
 	private static final Log LOG = LogFactory.getLog(ZlibCompressorTest.class);
 	private static final String PATH = "/home/shevek/vm/karmasphere-aws-vm/Karmasphere AWS VM-s003.vmdk";
 
+    @Test
+    public void testEmpty() {
+        LOG.info("Every test suite must have a case, or JUnit gets unhappy.");
+    }
+
+    @Ignore
 	@Test
 	public void testBlockCompressorStream() throws Exception {
 		try {

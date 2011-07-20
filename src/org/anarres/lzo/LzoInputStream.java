@@ -113,7 +113,7 @@ public class LzoInputStream extends InputStream {
             FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
             throw new IOException(e);
         }
-        LOG.info(inputBufferLength + " -> " + outputBufferLen);
+        // LOG.info(inputBufferLength + " -> " + outputBufferLen);
         // logState("After setInput");
 
         return true;

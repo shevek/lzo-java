@@ -24,16 +24,16 @@ public class LzoAlgorithmTest {
 
     public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) {
         LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
-        System.out.println("\nCompressing " + orig.length + " bytes using " + algorithm);
+        LOG.info("\nCompressing " + orig.length + " bytes using " + algorithm);
 
-        // System.out.println("Original:   " + Arrays.toString(orig));
+        // LOG.info("Original:   " + Arrays.toString(orig));
 
         byte[] compressed = new byte[orig.length * 2];
         lzo_uintp compressed_length = new lzo_uintp(compressed.length);
         int compressed_code = compressor.compress(orig, 0, orig.length, compressed, 0, compressed_length);
 
-        System.out.println("Compressed: " + compressor.toErrorString(compressed_code));
-        // System.out.println("Compressed: " + Arrays.toString(Arrays.copyOf(compressed, compressed_length.value)));
+        LOG.info("Compressed: " + compressor.toErrorString(compressed_code));
+        // LOG.info("Compressed: " + Arrays.toString(Arrays.copyOf(compressed, compressed_length.value)));
         assertEquals(LzoTransformer.LZO_E_OK, compressed_code);
 
         LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(algorithm, null);
@@ -41,8 +41,8 @@ public class LzoAlgorithmTest {
         lzo_uintp uncompressed_length = new lzo_uintp(uncompressed.length);
         int uncompressed_code = decompressor.decompress(compressed, 0, compressed_length.value, uncompressed, 0, uncompressed_length);
 
-        System.out.println("Output:     " + decompressor.toErrorString(uncompressed_code));
-        // System.out.println("Output:     " + Arrays.toString(uncompressed));
+        LOG.info("Output:     " + decompressor.toErrorString(uncompressed_code));
+        // LOG.info("Output:     " + Arrays.toString(uncompressed));
 
         assertEquals(LzoTransformer.LZO_E_OK, uncompressed_code);
         assertArrayEquals(orig, uncompressed);
@@ -57,7 +57,7 @@ public class LzoAlgorithmTest {
             try {
                 testAlgorithm(algorithm, orig);
             } catch (UnsupportedOperationException e) {
-                LOG.info("Unsupported algorithm " + algorithm);
+                // LOG.info("Unsupported algorithm " + algorithm);
             }
         }
     }
@@ -72,7 +72,7 @@ public class LzoAlgorithmTest {
             try {
                 testAlgorithm(algorithm, orig);
             } catch (UnsupportedOperationException e) {
-                LOG.info("Unsupported algorithm " + algorithm);
+                // LOG.info("Unsupported algorithm " + algorithm);
             }
         }
     }
@@ -88,7 +88,7 @@ public class LzoAlgorithmTest {
                 try {
                     testAlgorithm(algorithm, orig);
                 } catch (UnsupportedOperationException e) {
-                    LOG.info("Unsupported algorithm " + algorithm);
+                    // LOG.info("Unsupported algorithm " + algorithm);
                 }
             }
         }
@@ -97,14 +97,14 @@ public class LzoAlgorithmTest {
     public void testClass(Class<?> type) throws Exception {
         String name = type.getName();
         name = name.replace('.', '/') + ".class";
-        System.out.println("Class is " + name);
+        LOG.info("Class is " + name);
         InputStream in = getClass().getClassLoader().getResourceAsStream(name);
         byte[] orig = IOUtils.toByteArray(in);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
             try {
                 testAlgorithm(algorithm, orig);
             } catch (UnsupportedOperationException e) {
-                LOG.info("Unsupported algorithm " + algorithm);
+                // LOG.info("Unsupported algorithm " + algorithm);
             }
         }
     }

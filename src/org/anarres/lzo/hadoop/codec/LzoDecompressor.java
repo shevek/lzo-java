@@ -150,7 +150,7 @@ public class LzoDecompressor implements Decompressor {
         if (!needsInput())
             throw new IllegalStateException("I don't need input: pos=" + outputBufferPos + "; len=" + outputBufferLen);
         // logState("Before setInput");
-        LOG.info("Decompressing " + len + " bytes at " + off);
+        // LOG.info("Decompressing " + len + " bytes at " + off);
         outputBufferLen.value = outputBuffer.length;
         // try {
         try {
@@ -169,7 +169,7 @@ public class LzoDecompressor implements Decompressor {
         // } catch (IOException _e) {
         // throw new RuntimeException(_e);
         // }
-        LOG.info(len + " -> " + outputBufferLen);
+        // LOG.info(len + " -> " + outputBufferLen);
         // logState("After setInput");
     }
 
@@ -204,7 +204,7 @@ public class LzoDecompressor implements Decompressor {
         if (off < 0 || len < 0 || off > b.length - len)
             throw new ArrayIndexOutOfBoundsException("Illegal range in buffer: Buffer length=" + b.length + ", offset=" + off + ", length=" + len);
 
-        logState("Before decompress");
+        // logState("Before decompress");
 
         len = Math.min(len, outputBufferLen.value);
         System.arraycopy(outputBuffer, outputBufferPos, b, off, len);

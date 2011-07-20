@@ -29,8 +29,6 @@ import java.util.zip.Adler32;
 import java.util.zip.Checksum;
 import java.util.zip.CRC32;
 import org.anarres.lzo.LzoVersion;
-import org.anarres.lzo.hadoop.BlockCompressorStream;
-import org.anarres.lzo.hadoop.BlockDecompressorStream;
 
 import org.apache.hadoop.io.DataOutputBuffer;
 import org.apache.hadoop.io.compress.CompressionInputStream;
@@ -40,6 +38,9 @@ import org.apache.hadoop.io.compress.Decompressor;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.io.compress.BlockCompressorStream;
+import org.apache.hadoop.io.compress.BlockDecompressorStream;
+import org.apache.hadoop.io.compress.CompressionCodec;
 
 /**
  * A {@link CompressionCodec} for a streaming

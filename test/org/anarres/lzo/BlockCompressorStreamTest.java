@@ -9,13 +9,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import org.anarres.lzo.hadoop.BlockCompressorStream;
 import org.anarres.lzo.hadoop.codec.LzoCompressor;
 import org.anarres.lzo.hadoop.codec.LzoDecompressor;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.hadoop.io.compress.BlockCompressorStream;
 import org.apache.hadoop.io.compress.BlockDecompressorStream;
 import org.junit.Test;
 
