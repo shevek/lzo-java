@@ -50,3 +50,10 @@
 #define U(x) ((x) & 0xff)
 #define PRINT(x) // System.out.println(x)
 
+// NOT a macro because liblzo2 assumes that if UA_GET32 is a macro,
+// then it is faster than byte-array accesses, which it is not -
+// or, if it is, hotspot will deal with it.
+private static int UA_GET32(byte[] in, int in_ptr) {
+	return (U(in[in_ptr]) << 24) | (U(in[in_ptr + 1]) << 16) | (U(in[in_ptr + 2]) << 8) | U(in[in_ptr + 3]);
+}
+

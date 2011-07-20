@@ -26,7 +26,7 @@ public class Lzo1xTest {
 
 		byte[] compressed = new byte[orig.length * 2];
 		lzo_uintp compressed_length = new lzo_uintp(compressed.length);
-		int compressed_code = LzoCompressor1x.lzo1x_1_compress(orig, 0, orig.length, compressed, 0, compressed_length, new int[1 << 14]);
+		int compressed_code = LzoCompressor1x_1.compress(orig, 0, orig.length, compressed, 0, compressed_length, new int[1 << 14]);
 
 		System.out.println("Compressed: " + LzoErrors.toString(compressed_code));
 		// System.out.println("Compressed: " + Arrays.toString(Arrays.copyOf(compressed, compressed_length.value)));
@@ -34,7 +34,7 @@ public class Lzo1xTest {
 
 		byte[] uncompressed = new byte[orig.length];
 		lzo_uintp uncompressed_length = new lzo_uintp(uncompressed.length);
-		int uncompressed_code = LzoDecompressor1x.lzo1x_decompress(compressed, 0, compressed_length.value, uncompressed, 0, uncompressed_length, null);
+		int uncompressed_code = LzoDecompressor1x.decompress(compressed, 0, compressed_length.value, uncompressed, 0, uncompressed_length, null);
 
 		System.out.println("Output:     " + LzoErrors.toString(uncompressed_code));
 		// System.out.println("Output:     " + Arrays.toString(uncompressed));

@@ -157,7 +157,7 @@ public class LzoDecompressor implements Decompressor {
         try {
             try {
                 outputBufferPos = 0;
-                int code = LzoDecompressor1x.lzo1x_decompress(b, off, len, outputBuffer, outputBufferPos, outputBufferLen, null);
+                int code = LzoDecompressor1x.decompress(b, off, len, outputBuffer, outputBufferPos, outputBufferLen, null);
                 if (code != LzoConstants.LZO_E_OK) {
                     logState("LZO error: " + code);
                     FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(b, off, off + len));

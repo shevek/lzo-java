@@ -20,7 +20,7 @@ package org.anarres.lzo.hadoop.codec;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import org.anarres.lzo.LzoCompressor1x;
+import org.anarres.lzo.LzoCompressor1x_1;
 import org.anarres.lzo.LzoConstants;
 import org.anarres.lzo.LzoErrors;
 import org.anarres.lzo.lzo_uintp;
@@ -301,7 +301,7 @@ public class LzoCompressor implements Compressor {
             outputBufferPos = 0;
             outputBufferLen.value = outputBuffer.length;
             try {
-                int code = LzoCompressor1x.lzo1x_1_compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, outputBufferPos, outputBufferLen, new int[1 << 14]);
+                int code = LzoCompressor1x_1.compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, outputBufferPos, outputBufferLen, new int[1 << 14]);
                 if (code != LzoConstants.LZO_E_OK) {
                     logState("LZO error: " + code);
                     FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));

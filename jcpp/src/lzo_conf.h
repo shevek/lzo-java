@@ -371,7 +371,8 @@
 
 
 #ifndef LZO_DICT_USE_PTR
-#define LZO_DICT_USE_PTR 1
+//Java #define LZO_DICT_USE_PTR 1
+#define LZO_DICT_USE_PTR 0
 #if 0 && (LZO_ARCH_I086)
 #  undef LZO_DICT_USE_PTR
 #  define LZO_DICT_USE_PTR 0
@@ -379,11 +380,14 @@
 #endif
 
 #if (LZO_DICT_USE_PTR)
+# error "Java does not support pointers. Do not define LZO_DICT_USE_PTR.";
 #  define lzo_dict_t    const lzo_bytep
 #  define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
 #else
-#  define lzo_dict_t    lzo_uint
-#  define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
+//Java #  define lzo_dict_t    lzo_uint
+//Java #  define lzo_dict_p    lzo_dict_t __LZO_MMODEL *
+#define lzo_dict_t int
+#define lzo_dict_p int[]
 #endif
 
 

@@ -54,6 +54,14 @@
 #endif
 #include "lzo_func.ch"
 
+// Java addition: {
+#define lzo_uintptr_t int
+private static final int init = 0;
+private static final int next = 1;
+private static final int try_match = 2;
+private static final int literal = 3;
+private static final int m_len_done = 4;
+// End Java addition: }
 
 /***********************************************************************
 // compress a block of data.

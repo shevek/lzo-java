@@ -41,6 +41,19 @@
  */
 
 
+// Java addition: {
+private static final int init = 0;
+private static final int copy_match = 1;
+private static final int eof_found = 2;
+private static final int first_literal_run = 3;
+private static final int match = 4;
+private static final int match_done = 5;
+private static final int match_next = 6;
+private static final int input_overrun = 7;
+private static final int output_overrun = 8;
+private static final int lookbehind_overrun = 9;
+// End Java addition: }
+
 #include "lzo1_d.ch"
 
 
