@@ -22,9 +22,9 @@ public class LzoAlgorithmTest {
 
     private static final Log LOG = LogFactory.getLog(LzoAlgorithmTest.class);
 
-    public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) {
+    public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig, String desc) {
         LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
-        LOG.info("\nCompressing " + orig.length + " bytes using " + algorithm);
+        LOG.info("\nCompressing " + orig.length + " " + desc + " bytes using " + algorithm);
 
         // LOG.info("Original:   " + Arrays.toString(orig));
 
@@ -32,7 +32,7 @@ public class LzoAlgorithmTest {
         lzo_uintp compressed_length = new lzo_uintp(compressed.length);
         int compressed_code = compressor.compress(orig, 0, orig.length, compressed, 0, compressed_length);
 
-        LOG.info("Compressed: " + compressor.toErrorString(compressed_code));
+        LOG.info("Compressed: " + compressor.toErrorString(compressed_code) + "; length=" + compressed_length);
         // LOG.info("Compressed: " + Arrays.toString(Arrays.copyOf(compressed, compressed_length.value)));
         assertEquals(LzoTransformer.LZO_E_OK, compressed_code);
 
@@ -51,11 +51,11 @@ public class LzoAlgorithmTest {
     // Totally RLE.
     @Test
     public void testBlank() throws Exception {
-        byte[] orig = new byte[512];
+        byte[] orig = new byte[512 * 1024];
         Arrays.fill(orig, (byte) 0);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(algorithm, orig, "blank");
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
@@ -65,12 +65,12 @@ public class LzoAlgorithmTest {
     // Highly cyclic.
     @Test
     public void testSequence() throws Exception {
-        byte[] orig = new byte[512];
+        byte[] orig = new byte[512 * 1024];
         for (int i = 0; i < orig.length; i++)
             orig[i] = (byte) (i & 0xf);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(algorithm, orig, "sequential");
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
@@ -82,11 +82,11 @@ public class LzoAlgorithmTest {
     public void testRandom() throws Exception {
         Random r = new Random();
         for (int i = 0; i < 10; i++) {
-            byte[] orig = new byte[256];
+            byte[] orig = new byte[256 * 1024];
             r.nextBytes(orig);
             for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
                 try {
-                    testAlgorithm(algorithm, orig);
+                    testAlgorithm(algorithm, orig, "random");
                 } catch (UnsupportedOperationException e) {
                     // LOG.info("Unsupported algorithm " + algorithm);
                 }
@@ -102,7 +102,7 @@ public class LzoAlgorithmTest {
         byte[] orig = IOUtils.toByteArray(in);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(algorithm, orig, "class-file");
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }

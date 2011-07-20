@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -42,13 +43,14 @@ public class PerformanceTest {
 				long start = System.currentTimeMillis();
 				compressor.compress(data, 0, data.length , compressed, 0, compressed_length);
 				long end = System.currentTimeMillis();
-				LOG.info("Compression took " + ((end - start) / 1000d) + " ms");
+				LOG.info("Compression took " + ((end - start) / 1000d) + " ms and output " + compressed_length + " bytes.");
 
 				lzo_uintp uncompressed_length = new lzo_uintp(data.length);
 				start = System.currentTimeMillis();
 				decompressor.decompress(compressed, 0, compressed_length.value, data, 0, uncompressed_length);
 				end = System.currentTimeMillis();
-				LOG.info("Uncompression took " + ((end - start) / 1000d) + " ms");
+				LOG.info("Uncompression took " + ((end - start) / 1000d) + " ms and output " + uncompressed_length + " bytes");
+                assertEquals(data.length, uncompressed_length.value);
 			}
 		} finally {
 			System.out.flush();

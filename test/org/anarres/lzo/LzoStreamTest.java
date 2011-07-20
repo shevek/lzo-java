@@ -57,7 +57,7 @@ public class LzoStreamTest {
     // Totally RLE.
     @Test
     public void testBlank() throws Exception {
-        byte[] orig = new byte[512];
+        byte[] orig = new byte[512 * 1024];
         Arrays.fill(orig, (byte) 0);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
             try {
@@ -71,7 +71,7 @@ public class LzoStreamTest {
     // Highly cyclic.
     @Test
     public void testSequence() throws Exception {
-        byte[] orig = new byte[512];
+        byte[] orig = new byte[512 * 1024];
         for (int i = 0; i < orig.length; i++)
             orig[i] = (byte) (i & 0xf);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
@@ -88,7 +88,7 @@ public class LzoStreamTest {
     public void testRandom() throws Exception {
         Random r = new Random();
         for (int i = 0; i < 10; i++) {
-            byte[] orig = new byte[256];
+            byte[] orig = new byte[256 * 1024];
             r.nextBytes(orig);
             for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
                 try {
