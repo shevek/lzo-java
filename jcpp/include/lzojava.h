@@ -44,6 +44,9 @@
 #define LZO_DICT_USE_PTR 0
 #endif
 
+// for lzo1y.h and lzo1z.h
+#define lzo_sizeof_dict_t 4
+
 // Unfortunately clobbered by config1x.h etc
 // #define LZO_DETERMINISTIC (1)
 

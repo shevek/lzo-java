@@ -7,7 +7,8 @@ I can only apologise to the world.
 
 It turns out, however, that the compression performance on a single
 2.4GHz laptop CPU is in excess of 45Mb/sec, and decompression runs
-at 300Mb/sec, which seems to be more than adequate.
+at 300Mb/sec with all checking enabled, which seems to be more than
+adequate.
 
 
 Notes on BlockCompressionStream, as of Hadoop 0.21.x:

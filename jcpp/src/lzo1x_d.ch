@@ -240,8 +240,10 @@ case first_literal_run:
         t = 3; COPY_DICT(t,m_off)
 #else /* !COPY_DICT */
 #if defined(LZO1Z)
-        t = (1 + M2_MAX_OFFSET) + (t << 6) + (*ip++ >> 2);
-        m_pos = op - t;
+        //Java t = (1 + M2_MAX_OFFSET) + (t << 6) + (*ip++ >> 2);
+        t = (1 + M2_MAX_OFFSET) + (t << 6) + (U(in[in_ptr++]) >> 2);
+        //Java m_pos = op - t;
+		m_pos = out_ptr - t;
         last_m_off = t;
 #else
         //Java m_pos = op - (1 + M2_MAX_OFFSET);
@@ -315,7 +317,8 @@ case match:
 #elif defined(LZO1Z)
                 {
                     lzo_uint off = t & 0x1f;
-                    m_pos = op;
+                    //Java m_pos = op;
+					m_pos = out_ptr;
                     if (off >= 0x1c)
                     {
                         assert(last_m_off > 0);
@@ -323,7 +326,8 @@ case match:
                     }
                     else
                     {
-                        off = 1 + (off << 6) + (*ip++ >> 2);
+                        //Java off = 1 + (off << 6) + (*ip++ >> 2);
+                        off = 1 + (off << 6) + (U(in[in_ptr++]) >> 2);
                         m_pos -= off;
                         last_m_off = off;
                     }
@@ -363,8 +367,10 @@ case match:
 #else /* !COPY_DICT */
 #if defined(LZO1Z)
                 {
-                    lzo_uint off = 1 + (ip[0] << 6) + (ip[1] >> 2);
-                    m_pos = op - off;
+                    // lzo_uint off = 1 + (ip[0] << 6) + (ip[1] >> 2);
+                    lzo_uint off = 1 + (U(in[in_ptr]) << 6) + (U(in[in_ptr + 1]) >> 2);
+                    //Java m_pos = op - off;
+                    m_pos = out_ptr - off;
                     last_m_off = off;
                 }
 #elif defined(LZO_UNALIGNED_OK_2) && defined(LZO_ABI_LITTLE_ENDIAN)
@@ -441,7 +447,8 @@ case match:
 					{ state = eof_found; break GOTO_LOOP_OUTER; }
                 m_pos -= 0x4000;
 #if defined(LZO1Z)
-                last_m_off = pd((const lzo_bytep)op, m_pos);
+                //Java last_m_off = pd((const lzo_bytep)op, m_pos);
+                last_m_off = pd(out_ptr, m_pos);
 #endif
 #endif /* COPY_DICT */
             }
@@ -458,7 +465,8 @@ case match:
                 t = 2; COPY_DICT(t,m_off)
 #else /* !COPY_DICT */
 #if defined(LZO1Z)
-                t = 1 + (t << 6) + (*ip++ >> 2);
+                //Java t = 1 + (t << 6) + (*ip++ >> 2);
+                t = 1 + (t << 6) + (U(in[in_ptr++]) >> 2);
                 //Java m_pos = op - t;
                 m_pos = out_ptr - t;
                 last_m_off = t;
