@@ -306,9 +306,11 @@ case match:
                 m_pos -= U(in[in_ptr++]) << 3;
                 t = (t >> 5) - 1;
 #elif defined(LZO1Y)
-                m_pos = op - 1;
+                //Java m_pos = op - 1;
+                m_pos = out_ptr - 1;
                 m_pos -= (t >> 2) & 3;
-                m_pos -= *ip++ << 2;
+                //Java m_pos -= *ip++ << 2;
+                m_pos -= U(in[in_ptr++]) << 2;
                 t = (t >> 4) - 3;
 #elif defined(LZO1Z)
                 {

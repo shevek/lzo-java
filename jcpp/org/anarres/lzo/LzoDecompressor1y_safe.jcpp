@@ -2,12 +2,12 @@ package org.anarres.lzo;
 
 import java.util.Arrays;
 
-public class LzoDecompressor1x implements LzoDecompressor {
+public class LzoDecompressor1y_safe implements LzoDecompressor {
 
 #include "lzojava.h"
-#include "config1x.h"
+#include "config1y.h"
 
-#undef LZO_TEST_OVERRUN
+#define LZO_TEST_OVERRUN
 #define DO_DECOMPRESS       decompress
 
 #include "lzo1x_d.ch"
