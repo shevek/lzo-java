@@ -12,13 +12,6 @@ private static final int m_len_done = 4;
 
 #include "lzojava.h"
 
-#if 1 //Java && defined(UA_GET32)
-#undef  LZO_DICT_USE_PTR
-#define LZO_DICT_USE_PTR 0
-#endif
-
-#define pd(a,b) PTR_DIFF(a,b)
-
 #define LZO_NEED_DICT_H 1
 #ifndef D_BITS
 #define D_BITS          14
@@ -42,10 +35,11 @@ private static final int m_len_done = 4;
 #define DO_COMPRESS     lzo1x_1_compress
 #endif
 
-#define UA_INT(b) ((b) & 0xff)
-
-public static int UA_GET32(byte[] in, int in_ptr) {
-	return (UA_INT(in[in_ptr]) << 24) | (UA_INT(in[in_ptr + 1]) << 16) | (UA_INT(in[in_ptr + 2]) << 8) | UA_INT(in[in_ptr + 3]);
+// NOT a macro because liblzo2 assumes that if UA_GET32 is a macro,
+// then it is faster than byte-array accesses, which it is not -
+// or, if it is, hotspot will deal with it.
+private static int UA_GET32(byte[] in, int in_ptr) {
+	return (U(in[in_ptr]) << 24) | (U(in[in_ptr + 1]) << 16) | (U(in[in_ptr + 2]) << 8) | U(in[in_ptr + 3]);
 }
 
 #define lzo_uintptr_t int

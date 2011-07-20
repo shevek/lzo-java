@@ -31,10 +31,21 @@
 #define LZO_CPP_ECONCAT4(a,b,c,d)       LZO_CPP_CONCAT4(a,b,c,d)
 #define LZO_CPP_ECONCAT5(a,b,c,d,e)     LZO_CPP_CONCAT5(a,b,c,d,e)
 
+// In Java, all of these are array indices.
 #define PTR(x)              (x)
 #define PTR_LT(a,b)         (PTR(a) < PTR(b))
 #define PTR_GE(a,b)         (PTR(a) >= PTR(b))
 #define PTR_DIFF(a, b)      (PTR(a) - PTR(b))
+
+#define pd(a,b) PTR_DIFF(a,b)
+
+#if 1 //Java && defined(UA_GET32)
+#undef  LZO_DICT_USE_PTR
+#define LZO_DICT_USE_PTR 0
+#endif
+
+// Unfortunately clobbered by config1x.h etc
+// #define LZO_DETERMINISTIC (1)
 
 #define U(x) ((x) & 0xff)
 #define PRINT(x) // System.out.println(x)

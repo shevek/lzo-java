@@ -109,8 +109,8 @@
 #  define TEST_LB(m_pos, b)        if (m_pos < out_base || m_pos >= out_ptr) { state = lookbehind_overrun; b; }
 #  define TEST_LBO(m_pos,o, b)     if (m_pos < out_base || m_pos >= out_ptr - (o)) { state = lookbehind_overrun; b; }
 #else
-#  define TEST_LB(m_pos)        //Java ((void) 0)
-#  define TEST_LBO(m_pos,o)     //Java ((void) 0)
+#  define TEST_LB(m_pos, b)        //Java ((void) 0)
+#  define TEST_LBO(m_pos,o, b)     //Java ((void) 0)
 #endif
 
 
@@ -134,12 +134,12 @@
 #if defined(NEED_IP)
 #  define HAVE_NEED_IP 1
 #else
-#  define NEED_IP(x)            //Java ((void) 0)
+#  define NEED_IP(x, b)            //Java ((void) 0)
 #endif
 #if defined(NEED_OP)
 #  define HAVE_NEED_OP 1
 #else
-#  define NEED_OP(x)            //Java ((void) 0)
+#  define NEED_OP(x, b)            //Java ((void) 0)
 #endif
 
 
