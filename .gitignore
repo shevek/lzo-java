@@ -1,3 +1,6 @@
 docs/*.png
 build
 dist
+
+test/org/anarres/lzo/CustomerDataTest.java
+test/data/*.lzo

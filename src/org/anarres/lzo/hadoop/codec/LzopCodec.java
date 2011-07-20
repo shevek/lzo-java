@@ -29,10 +29,10 @@ import java.util.zip.Adler32;
 import java.util.zip.Checksum;
 import java.util.zip.CRC32;
 import org.anarres.lzo.LzoLibrary;
+import org.anarres.lzo.hadoop.BlockCompressorStream;
+import org.anarres.lzo.hadoop.BlockDecompressorStream;
 
 import org.apache.hadoop.io.DataOutputBuffer;
-import org.apache.hadoop.io.compress.BlockCompressorStream;
-import org.apache.hadoop.io.compress.BlockDecompressorStream;
 import org.apache.hadoop.io.compress.CompressionInputStream;
 import org.apache.hadoop.io.compress.CompressionOutputStream;
 import org.apache.hadoop.io.compress.Compressor;
@@ -201,7 +201,7 @@ public class LzopCodec extends LzoCodec {
 		}
 	}
 
-	protected static class LzopInputStream extends BlockDecompressorStream {
+	public static class LzopInputStream extends BlockDecompressorStream {
 
 		private EnumSet<DChecksum> dflags = EnumSet.allOf(DChecksum.class);
 		private EnumSet<CChecksum> cflags = EnumSet.allOf(CChecksum.class);
