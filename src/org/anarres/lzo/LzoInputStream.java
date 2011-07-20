@@ -27,7 +27,6 @@ public class LzoInputStream extends InputStream {
     private byte[] outputBuffer = EMPTY_BYTE_ARRAY;
     private int outputBufferPos;
     private final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
-    private boolean eof = false;
 
     public LzoInputStream(InputStream in, LzoDecompressor decompressor) {
         this.in = in;

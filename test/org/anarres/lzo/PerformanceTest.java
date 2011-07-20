@@ -33,17 +33,20 @@ public class PerformanceTest {
 			LOG.info("Original data is " + data.length + " bytes.");
 			byte[] compressed = new byte[data.length];
 
-			for (int i = 0; i < 4; i++) {
+            LzoCompressor compressor = new LzoCompressor1x_1();
+            LzoDecompressor decompressor = new LzoDecompressor1x();
+
+			for (int i = 0; i < 8; i++) {
 				lzo_uintp compressed_length = new lzo_uintp(compressed.length);
 				LOG.info("Starting.");
 				long start = System.currentTimeMillis();
-				LzoCompressor1x_1.compress(data, 0, data.length , compressed, 0, compressed_length, new int[1<<14]);
+				compressor.compress(data, 0, data.length , compressed, 0, compressed_length);
 				long end = System.currentTimeMillis();
 				LOG.info("Compression took " + ((end - start) / 1000d) + " ms");
 
 				lzo_uintp uncompressed_length = new lzo_uintp(data.length);
 				start = System.currentTimeMillis();
-				LzoDecompressor1x.decompress(compressed, 0, compressed_length.value, data, 0, uncompressed_length, null);
+				decompressor.decompress(compressed, 0, compressed_length.value, data, 0, uncompressed_length);
 				end = System.currentTimeMillis();
 				LOG.info("Uncompression took " + ((end - start) / 1000d) + " ms");
 			}

@@ -129,9 +129,10 @@ GOTO_0: {	// Java-goto
 			{ state = match_next; break GOTO_0; }
         assert(t > 0); NEED_OP(t, break GOTO_0); NEED_IP(t+1, break GOTO_0);
         //Java do *op++ = *ip++ while (--t > 0);
-        System.arraycopy(in, in_ptr, out, out_ptr, t);
-        in_ptr += t;
-        out_ptr += t;
+        // System.arraycopy(in, in_ptr, out, out_ptr, t);
+        // in_ptr += t;
+        // out_ptr += t;
+		do out[out_ptr++] = in[in_ptr++]; while (--t > 0);
 		//Java goto first_literal_run;
         { state = first_literal_run; break GOTO_0; }
     }
@@ -214,9 +215,10 @@ GOTO_BEGIN(GOTO_PRE)
             //Java *op++ = *ip++; *op++ = *ip++; *op++ = *ip++;
             //Java do *op++ = *ip++; while (--t > 0);
             t += 3;
-            System.arraycopy(in, in_ptr, out, out_ptr, t);
-            in_ptr += t;
-            out_ptr += t;
+            // System.arraycopy(in, in_ptr, out, out_ptr, t);
+            // in_ptr += t;
+            // out_ptr += t;
+			do out[out_ptr++] = in[in_ptr++]; while (--t > 0);
         }
 #endif
 
