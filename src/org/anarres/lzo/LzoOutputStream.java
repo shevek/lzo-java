@@ -4,11 +4,8 @@
  */
 package org.anarres.lzo;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -194,12 +191,12 @@ public class LzoOutputStream extends OutputStream {
             int code = compressor.compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, 0, outputBufferLen);
             if (code != LzoTransformer.LZO_E_OK) {
                 logState("LZO error: " + code);
-                FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
+                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
                 throw new IllegalArgumentException(compressor.toErrorString(code));
             }
         } catch (IndexOutOfBoundsException e) {
             logState("IndexOutOfBoundsException: " + e);
-            FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
+            // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));
             throw new IOException(e);
         }
         // LOG.info(compressBufferLen + "(" + Integer.toHexString(compressBufferLen) + ") -> " + outputBufferLen + "(" + Integer.toHexString(outputBufferLen.value) + ")");

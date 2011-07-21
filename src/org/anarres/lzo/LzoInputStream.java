@@ -5,11 +5,8 @@
 package org.anarres.lzo;
 
 import java.io.EOFException;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -99,17 +96,17 @@ public class LzoInputStream extends InputStream {
             int code = decompressor.decompress(inputBuffer, 0, inputBufferLength, outputBuffer, 0, outputBufferLen);
             if (code != LzoTransformer.LZO_E_OK) {
                 logState("LZO error: " + code);
-                FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
+                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
                 throw new IllegalArgumentException(decompressor.toErrorString(code));
             }
             if (outputBufferLen.value != outputBufferLength) {
                 logState("Output underrun: ");
-                FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
+                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
                 throw new IllegalStateException("Expected " + outputBufferLength + " bytes, but got only " + outputBufferLen);
             }
         } catch (IndexOutOfBoundsException e) {
             logState("IndexOutOfBoundsException: " + e);
-            FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
+            // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(inputBuffer, 0, inputBufferLength));
             throw new IOException(e);
         }
         // LOG.info(inputBufferLength + " -> " + outputBufferLen);
