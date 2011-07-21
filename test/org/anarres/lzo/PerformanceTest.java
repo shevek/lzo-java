@@ -11,6 +11,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.Assume.*;
 
 /**
  *
@@ -31,6 +32,7 @@ public class PerformanceTest {
             LOG.info("Max memory is " + Runtime.getRuntime().maxMemory());
 
             File file = new File(PATH);
+            assumeTrue("Huge test data file " + file + " does not exist.", file.isFile());
             FileInputStream fi = new FileInputStream(new File(PATH));
             DataInputStream di = new DataInputStream(fi);
             int length = Math.min((int) file.length(), 512 * 1024 * 1024);
