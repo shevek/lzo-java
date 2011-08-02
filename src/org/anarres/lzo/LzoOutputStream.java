@@ -250,10 +250,10 @@ public class LzoOutputStream extends OutputStream {
         }
         // LOG.info(compressBufferLen + "(" + Integer.toHexString(compressBufferLen) + ") -> " + outputBufferLen + "(" + Integer.toHexString(outputBufferLen.value) + ")");
 
-        writeData(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, 0, outputBufferLen.value);
+        writeBlock(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, 0, outputBufferLen.value);
     }
 
-    protected void writeData(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen)
+    protected void writeBlock(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen)
             throws IOException {
         writeInt(inputLen);
         writeInt(outputLen);

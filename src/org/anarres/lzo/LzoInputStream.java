@@ -113,12 +113,12 @@ public class LzoInputStream extends InputStream {
 
     private boolean fill() throws IOException {
         while (available() == 0)
-            if (!readData())  // Always consumes 8 bytes, so guaranteed to terminate.
+            if (!readBlock())  // Always consumes 8 bytes, so guaranteed to terminate.
                 return false;
         return true;
     }
 
-    protected boolean readData() throws IOException {
+    protected boolean readBlock() throws IOException {
         int outputBufferLength = readInt(true);
         if (outputBufferLength == -1)
             return false;

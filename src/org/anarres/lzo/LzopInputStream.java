@@ -73,6 +73,28 @@ public class LzopInputStream extends LzoInputStream {
         // logState();
     }
 
+    public int getFlags() {
+        return flags;
+    }
+
+    public int getCompressedChecksumCount() {
+        int out = 0;
+        if (c_crc32_c != null)
+            out++;
+        if (c_adler32_c != null)
+            out++;
+        return out;
+    }
+
+    public int getUncompressedChecksumCount() {
+        int out = 0;
+        if (c_crc32_d != null)
+            out++;
+        if (c_adler32_d != null)
+            out++;
+        return out;
+    }
+
     private void logState() {
         LOG.info("Flags = " + flags);
         LOG.info("CRC32C = " + c_crc32_c);
@@ -210,7 +232,7 @@ public class LzopInputStream extends LzoInputStream {
     }
 
     @Override
-    protected boolean readData() throws IOException {
+    protected boolean readBlock() throws IOException {
         int outputBufferLength = readInt(false);
         if (outputBufferLength == 0)
             return false;

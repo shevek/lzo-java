@@ -140,7 +140,7 @@ public class LzopOutputStream extends LzoOutputStream {
     }
 
     @Override
-    protected void writeData(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen) throws IOException {
+    protected void writeBlock(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen) throws IOException {
         // LOG.info("inputLen=" + inputLen + "; outputLen=" + outputLen);
         writeInt(inputLen);
         if (outputLen < inputLen)
