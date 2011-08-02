@@ -65,6 +65,18 @@ public class LzopOutputStream extends LzoOutputStream {
     private final Adler32 c_adler32_d;
     private boolean closed = false;
 
+    /**
+     * Constructs a new LzopOutputStream.
+     *
+     * I recommend limiting flags to the following unless you REALLY know what
+     * you are doing:
+     * <ul>
+     * <li>{@link LzopConstants#F_ADLER32_C}</li>
+     * <li>{@link LzopConstants#F_ADLER32_D}</li>
+     * <li>{@link LzopConstants#F_CRC32_C}</li>
+     * <li>{@link LzopConstants#F_CRC32_D}</li>
+     * </ul>
+     */
     public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize, int flags) throws IOException {
         super(out, compressor, inputBufferSize);
         this.flags = flags;
