@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class LzoDecompressor1x extends AbstractLzoDecompressor {
 
+    public LzoDecompressor1x() {
+        super(LzoAlgorithm.LZO1X);
+    }
+
 #include "lzojava.h"
 #include "config1x.h"
 

@@ -47,6 +47,10 @@ package org.anarres.lzo;
  */
 public abstract class AbstractLzo1Compressor extends AbstractLzoCompressor {
 
+    public AbstractLzo1Compressor(LzoAlgorithm algorithm, LzoConstraint... constraints) {
+        super(algorithm, constraints);
+    }
+
     @Override
     public int getCompressionOverhead(int inputBufferSize) {
         return (inputBufferSize >> 4) + 64 + 3;

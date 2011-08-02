@@ -114,6 +114,10 @@ public class LzoDecompressor implements Decompressor {
         private CompressionStrategy(LzoAlgorithm algorithm) {
             this(algorithm, null);
         }
+
+        public org.anarres.lzo.LzoDecompressor newDecompressor() {
+            return LzoLibrary.getInstance().newDecompressor(algorithm, constraint);
+        }
     }; // CompressionStrategy
     private final org.anarres.lzo.LzoDecompressor decompressor;
     private byte[] outputBuffer;
@@ -128,7 +132,7 @@ public class LzoDecompressor implements Decompressor {
      * @param directBufferSize size of the direct-buffer
      */
     public LzoDecompressor(CompressionStrategy strategy, int outputBufferSize) {
-        this.decompressor = LzoLibrary.getInstance().newDecompressor(strategy.algorithm, strategy.constraint);
+        this.decompressor = strategy.newDecompressor();
         setOutputBufferSize(outputBufferSize);
     }
 

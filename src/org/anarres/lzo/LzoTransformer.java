@@ -57,5 +57,9 @@ public interface LzoTransformer {
     public static final int LZO_E_EOF_NOT_FOUND = -7;
     public static final int LZO_E_INPUT_NOT_CONSUMED = -8;
 
+    public LzoAlgorithm getAlgorithm();
+
+    public LzoConstraint[] getConstraints();
+
     public String toErrorString(int code);
 }

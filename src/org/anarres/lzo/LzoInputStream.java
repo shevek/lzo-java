@@ -55,24 +55,24 @@ public class LzoInputStream extends InputStream {
 
     private static final Log LOG = LogFactory.getLog(LzoInputStream.class.getName());
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-    private final InputStream in;
+    protected final InputStream in;
     private final LzoDecompressor decompressor;
-    private byte[] inputBuffer = EMPTY_BYTE_ARRAY;
-    private byte[] outputBuffer = EMPTY_BYTE_ARRAY;
-    private int outputBufferPos;
-    private final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
+    protected byte[] inputBuffer = EMPTY_BYTE_ARRAY;
+    protected byte[] outputBuffer = EMPTY_BYTE_ARRAY;
+    protected int outputBufferPos;
+    protected final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
 
     public LzoInputStream(InputStream in, LzoDecompressor decompressor) {
         this.in = in;
         this.decompressor = decompressor;
     }
 
-    private void setInputBufferSize(int inputBufferSize) {
+    public void setInputBufferSize(int inputBufferSize) {
         if (inputBufferSize > inputBuffer.length)
             inputBuffer = new byte[inputBufferSize];
     }
 
-    private void setOutputBufferSize(int outputBufferSize) {
+    public void setOutputBufferSize(int outputBufferSize) {
         if (outputBufferSize > outputBuffer.length)
             outputBuffer = new byte[outputBufferSize];
     }
@@ -106,27 +106,32 @@ public class LzoInputStream extends InputStream {
 
     private void logState(String when) {
         LOG.info("\n");
-        LOG.info(when + " Output buffer pos=" + outputBufferPos + "; length=" + outputBufferLen);
+        LOG.info(when + " Input buffer size=" + inputBuffer.length);
+        LOG.info(when + " Output buffer pos=" + outputBufferPos + "; length=" + outputBufferLen + "; size=" + outputBuffer.length);
         // testInvariants();
     }
 
     private boolean fill() throws IOException {
         while (available() == 0)
-            if (!decompress())  // Always consumes 8 bytes.
+            if (!readData())  // Always consumes 8 bytes, so guaranteed to terminate.
                 return false;
         return true;
     }
 
-    private boolean decompress() throws IOException {
+    protected boolean readData() throws IOException {
         int outputBufferLength = readInt(true);
         if (outputBufferLength == -1)
             return false;
         setOutputBufferSize(outputBufferLength);
         int inputBufferLength = readInt(false);
         setInputBufferSize(inputBufferLength);
-        readBytes(inputBuffer, inputBufferLength);
+        readBytes(inputBuffer, 0, inputBufferLength);
+        decompress(outputBufferLength, inputBufferLength);
+        return true;
+    }
 
-        // logState("Before setInput");
+    protected void decompress(int outputBufferLength, int inputBufferLength) throws IOException {
+        // logState("Before decompress");
         try {
             outputBufferPos = 0;
             outputBufferLen.value = outputBuffer.length;
@@ -147,25 +152,26 @@ public class LzoInputStream extends InputStream {
             throw new IOException(e);
         }
         // LOG.info(inputBufferLength + " -> " + outputBufferLen);
-        // logState("After setInput");
-
-        return true;
+        // logState("After decompress");
     }
 
-    private int readInt(boolean start_of_frame) throws IOException {
+    protected int readInt(boolean start_of_frame) throws IOException {
         int b1 = in.read();
-        if (b1 == -1)
-            return -1;
+        if (b1 == -1) {
+            if (start_of_frame)
+                return -1;
+            else
+                throw new EOFException("EOF before reading 4-byte integer.");
+        }
         int b2 = in.read();
         int b3 = in.read();
         int b4 = in.read();
         if ((b1 | b2 | b3 | b4) < 0)
-            throw new EOFException();
+            throw new EOFException("EOF while reading 4-byte integer.");
         return ((b1 << 24) + (b2 << 16) + (b3 << 8) + b4);
     }
 
-    private void readBytes(byte[] buf, int length) throws IOException {
-        int off = 0;
+    protected void readBytes(byte[] buf, int off, int length) throws IOException {
         while (length > 0) {
             int count = in.read(buf, off, length);
             if (count < 0)

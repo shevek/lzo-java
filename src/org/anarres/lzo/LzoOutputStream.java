@@ -53,7 +53,7 @@ import org.apache.commons.logging.LogFactory;
 public class LzoOutputStream extends OutputStream {
 
     private static final Log LOG = LogFactory.getLog(LzoOutputStream.class.getName());
-    private final OutputStream out;
+    protected final OutputStream out;
     private final LzoCompressor compressor; // Replace with BlockCompressor.
     private final byte[] inputBuffer;
     private int inputBufferLen;
@@ -82,6 +82,18 @@ public class LzoOutputStream extends OutputStream {
      */
     public LzoOutputStream(OutputStream out) {
         this(out, LzoLibrary.getInstance().newCompressor(null, null), 64 * 1024);
+    }
+
+    public LzoCompressor getCompressor() {
+        return compressor;
+    }
+
+    public LzoAlgorithm getAlgorithm() {
+        return getCompressor().getAlgorithm();
+    }
+
+    public LzoConstraint[] getConstraints() {
+        return getCompressor().getConstraints();
     }
 
     private void reset() {
@@ -238,12 +250,17 @@ public class LzoOutputStream extends OutputStream {
         }
         // LOG.info(compressBufferLen + "(" + Integer.toHexString(compressBufferLen) + ") -> " + outputBufferLen + "(" + Integer.toHexString(outputBufferLen.value) + ")");
 
-        writeInt(compressBufferLen);
-        writeInt(outputBufferLen.value);
-        out.write(outputBuffer, 0, outputBufferLen.value);
+        writeData(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, 0, outputBufferLen.value);
     }
 
-    private void writeInt(int v) throws IOException {
+    protected void writeData(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen)
+            throws IOException {
+        writeInt(inputLen);
+        writeInt(outputLen);
+        out.write(outputData, outputPos, outputLen);
+    }
+
+    protected void writeInt(int v) throws IOException {
         out.write((v >>> 24) & 0xFF);
         out.write((v >>> 16) & 0xFF);
         out.write((v >>> 8) & 0xFF);

@@ -46,4 +46,8 @@ package org.anarres.lzo;
  * @author shevek
  */
 public abstract class AbstractLzoDecompressor extends AbstractLzoTransformer implements LzoDecompressor {
+
+    public AbstractLzoDecompressor(LzoAlgorithm algorithm, LzoConstraint... constraints) {
+        super(algorithm, constraints);
+    }
 }

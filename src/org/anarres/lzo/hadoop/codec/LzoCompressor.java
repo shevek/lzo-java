@@ -133,6 +133,10 @@ public class LzoCompressor implements Compressor {
         private CompressionStrategy(LzoAlgorithm algorithm) {
             this(algorithm, null);
         }
+
+        public org.anarres.lzo.LzoCompressor newCompressor() {
+            return LzoLibrary.getInstance().newCompressor(algorithm, constraint);
+        }
     }; // CompressionStrategy
     private final org.anarres.lzo.LzoCompressor compressor; // The lzo compression algorithm.
     private final byte[] inputBuffer;
@@ -154,7 +158,7 @@ public class LzoCompressor implements Compressor {
      * @param outputBufferSize size of the output buffer to be used.
      */
     public LzoCompressor(CompressionStrategy strategy, int outputBufferSize) {
-        this.compressor = LzoLibrary.getInstance().newCompressor(strategy.algorithm, strategy.constraint);
+        this.compressor = strategy.newCompressor();
         this.inputBuffer = new byte[outputBufferSize];
         this.outputBuffer = new byte[outputBufferSize + (outputBufferSize >> 3) + 256];
         reset();

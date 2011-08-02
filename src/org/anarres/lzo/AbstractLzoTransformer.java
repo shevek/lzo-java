@@ -47,6 +47,24 @@ package org.anarres.lzo;
  */
 public class AbstractLzoTransformer implements LzoTransformer {
 
+    private final LzoAlgorithm algorithm;
+    private final LzoConstraint[] constraints;
+
+    public AbstractLzoTransformer(LzoAlgorithm algorithm, LzoConstraint... constraints) {
+        this.algorithm = algorithm;
+        this.constraints = constraints;
+    }
+
+    @Override
+    public LzoAlgorithm getAlgorithm() {
+        return algorithm;
+    }
+
+    @Override
+    public LzoConstraint[] getConstraints() {
+        return constraints;
+    }
+
     @Override
     public String toErrorString(int code) {
         switch (code) {

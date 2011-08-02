@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class LzoCompressor1x_1 extends AbstractLzo1Compressor {
 
+    public LzoCompressor1x_1() {
+        super(LzoAlgorithm.LZO1X);
+    }
+
 #include "lzojava.h"
 
 #define LZO_NEED_DICT_H 1

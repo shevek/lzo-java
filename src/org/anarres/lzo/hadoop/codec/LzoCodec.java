@@ -50,109 +50,147 @@ import org.apache.hadoop.io.compress.Decompressor;
  */
 public class LzoCodec extends Configured implements CompressionCodec {
 
-	private static final Log LOG = LogFactory.getLog(LzoCodec.class.getName());
+    private static final Log LOG = LogFactory.getLog(LzoCodec.class.getName());
+    public static final String LZO_COMPRESSOR_KEY = "io.compression.codec.lzo.compressor";
+    public static final String LZO_DECOMPRESSOR_KEY = "io.compression.codec.lzo.decompressor";
+    public static final String LZO_COMPRESSION_LEVEL_KEY = "io.compression.codec.lzo.compression.level";
+    public static final String LZO_BUFFER_SIZE_KEY = "io.compression.codec.lzo.buffersize";
+    public static final int DEFAULT_LZO_BUFFER_SIZE = 256 * 1024;
+    public static final int MAX_BLOCK_SIZE = 64 * 1024 * 1024;
+    public static final int UNDEFINED_COMPRESSION_LEVEL = -999;  // Constant from LzoCompressor.c
 
-	@Override
-	public CompressionOutputStream createOutputStream(OutputStream out)
-			throws IOException {
-		return createOutputStream(out, createCompressor());
-	}
+    static LzoCompressor.CompressionStrategy getCompressionStrategy(Configuration conf) {
+        assert conf != null : "Configuration cannot be null!";
+        return LzoCompressor.CompressionStrategy.valueOf(
+                conf.get(LZO_COMPRESSOR_KEY,
+                LzoCompressor.CompressionStrategy.LZO1X_1.name()));
+    }
 
-	@Override
-	public CompressionOutputStream createOutputStream(OutputStream out,
-			Compressor compressor) throws IOException {
-		/**
-		 * <b>http://www.oberhumer.com/opensource/lzo/lzofaq.php</b>
-		 *
-		 * How much can my data expand during compression ?
-		 * ================================================
-		 * LZO will expand incompressible data by a little amount.
-		 * I still haven't computed the exact values, but I suggest using
-		 * these formulas for a worst-case expansion calculation:
-		 *
-		 * Algorithm LZO1, LZO1A, LZO1B, LZO1C, LZO1F, LZO1X, LZO1Y, LZO1Z:
-		 * ----------------------------------------------------------------
-		 * output_block_size = input_block_size + (input_block_size / 16) + 64 + 3
-		 *
-		 * This is about 106% for a large block size.
-		 *
-		 * Algorithm LZO2A:
-		 * ----------------
-		 * output_block_size = input_block_size + (input_block_size / 8) + 128 + 3
-		 */
-		// Create the lzo output-stream
-		Configuration conf = getConf();
-		LzoCompressor.CompressionStrategy strategy =
-				LzoCompressor.CompressionStrategy.valueOf(
-				conf.get("io.compression.codec.lzo.compressor",
-				LzoCompressor.CompressionStrategy.LZO1X_1.name()));
-		int bufferSize =
-				conf.getInt("io.compression.codec.lzo.buffersize", 64 * 1024);
-		int compressionOverhead = strategy.name().contains("LZO1")
-				? (bufferSize >> 4) + 64 + 3
-				: (bufferSize >> 3) + 128 + 3;
+    static LzoDecompressor.CompressionStrategy getDecompressionStrategy(Configuration conf) {
+        assert conf != null : "Configuration cannot be null!";
+        return LzoDecompressor.CompressionStrategy.valueOf(
+                conf.get(LZO_DECOMPRESSOR_KEY,
+                LzoDecompressor.CompressionStrategy.LZO1X.name()));
+    }
 
-		return new BlockCompressorStream(out, compressor, bufferSize,
-				compressionOverhead);
-	}
+    static int getCompressionLevel(Configuration conf) {
+        assert conf != null : "Configuration cannot be null!";
+        return conf.getInt(LZO_COMPRESSION_LEVEL_KEY, UNDEFINED_COMPRESSION_LEVEL);
+    }
 
-	@Override
-	public Class<? extends Compressor> getCompressorType() {
-		return LzoCompressor.class;
-	}
+    static int getBufferSize(Configuration conf) {
+        assert conf != null : "Configuration cannot be null!";
+        return conf.getInt(LZO_BUFFER_SIZE_KEY, DEFAULT_LZO_BUFFER_SIZE);
+    }
 
-	@Override
-	public Compressor createCompressor() {
-		Configuration conf = getConf();
-		LzoCompressor.CompressionStrategy strategy =
-				LzoCompressor.CompressionStrategy.valueOf(
-				conf.get("io.compression.codec.lzo.compressor",
-				LzoCompressor.CompressionStrategy.LZO1X_1.name()));
-		int bufferSize =
-				conf.getInt("io.compression.codec.lzo.buffersize", 64 * 1024);
+    public static void setCompressionStrategy(Configuration conf,
+            LzoCompressor.CompressionStrategy strategy) {
+        assert conf != null : "Configuration cannot be null!";
+        conf.set(LZO_COMPRESSOR_KEY, strategy.name());
+    }
 
-		return new LzoCompressor(strategy, bufferSize);
-	}
+    public static void setDecompressionStrategy(Configuration conf,
+            LzoDecompressor.CompressionStrategy strategy) {
+        assert conf != null : "Configuration cannot be null!";
+        conf.set(LZO_DECOMPRESSOR_KEY, strategy.name());
+    }
 
-	@Override
-	public CompressionInputStream createInputStream(InputStream in)
-			throws IOException {
-		return createInputStream(in, createDecompressor());
-	}
+    public static void setCompressionLevel(Configuration conf, int compressionLevel) {
+        assert conf != null : "Configuration cannot be null!";
+        conf.setInt(LZO_COMPRESSION_LEVEL_KEY, compressionLevel);
+    }
 
-	@Override
-	public CompressionInputStream createInputStream(InputStream in,
-			Decompressor decompressor)
-			throws IOException {
-		Configuration conf = getConf();
-		return new BlockDecompressorStream(in, decompressor,
-				conf.getInt("io.compression.codec.lzo.buffersize", 64 * 1024));
-	}
+    public static void setBufferSize(Configuration conf, int bufferSize) {
+        assert conf != null : "Configuration cannot be null!";
+        conf.setInt(LZO_BUFFER_SIZE_KEY, bufferSize);
+    }
 
-	@Override
-	public Class<? extends Decompressor> getDecompressorType() {
-		return LzoDecompressor.class;
-	}
+    @Override
+    public CompressionOutputStream createOutputStream(OutputStream out)
+            throws IOException {
+        return createOutputStream(out, createCompressor());
+    }
 
-	@Override
-	public Decompressor createDecompressor() {
-		Configuration conf = getConf();
-		LzoDecompressor.CompressionStrategy strategy =
-				LzoDecompressor.CompressionStrategy.valueOf(
-				conf.get("io.compression.codec.lzo.decompressor",
-				LzoDecompressor.CompressionStrategy.LZO1X.name()));
-		int bufferSize =
-				conf.getInt("io.compression.codec.lzo.buffersize", 64 * 1024);
+    @Override
+    public CompressionOutputStream createOutputStream(OutputStream out,
+            Compressor compressor) throws IOException {
+        /**
+         * <b>http://www.oberhumer.com/opensource/lzo/lzofaq.php</b>
+         *
+         * How much can my data expand during compression ?
+         * ================================================
+         * LZO will expand incompressible data by a little amount.
+         * I still haven't computed the exact values, but I suggest using
+         * these formulas for a worst-case expansion calculation:
+         *
+         * Algorithm LZO1, LZO1A, LZO1B, LZO1C, LZO1F, LZO1X, LZO1Y, LZO1Z:
+         * ----------------------------------------------------------------
+         * output_block_size = input_block_size + (input_block_size / 16) + 64 + 3
+         *
+         * This is about 106% for a large block size.
+         *
+         * Algorithm LZO2A:
+         * ----------------
+         * output_block_size = input_block_size + (input_block_size / 8) + 128 + 3
+         */
+        // Create the lzo output-stream
+        Configuration conf = getConf();
+        LzoCompressor.CompressionStrategy strategy = getCompressionStrategy(conf);
+        int bufferSize = getBufferSize(conf);
+        int compressionOverhead = strategy.name().contains("LZO1")
+                ? (bufferSize >> 4) + 64 + 3
+                : (bufferSize >> 3) + 128 + 3;
 
-		return new LzoDecompressor(strategy, bufferSize);
-	}
+        return new BlockCompressorStream(out, compressor, bufferSize,
+                compressionOverhead);
+    }
 
-	/**
-	 * Get the default filename extension for this kind of compression.
-	 * @return the extension including the '.'
-	 */
-	@Override
-	public String getDefaultExtension() {
-		return ".lzo_deflate";
-	}
+    @Override
+    public Class<? extends Compressor> getCompressorType() {
+        return LzoCompressor.class;
+    }
+
+    @Override
+    public Compressor createCompressor() {
+        Configuration conf = getConf();
+        LzoCompressor.CompressionStrategy strategy = getCompressionStrategy(conf);
+        int bufferSize = getBufferSize(conf);
+        return new LzoCompressor(strategy, bufferSize);
+    }
+
+    @Override
+    public CompressionInputStream createInputStream(InputStream in)
+            throws IOException {
+        return createInputStream(in, createDecompressor());
+    }
+
+    @Override
+    public CompressionInputStream createInputStream(InputStream in,
+            Decompressor decompressor)
+            throws IOException {
+        Configuration conf = getConf();
+        return new BlockDecompressorStream(in, decompressor, getBufferSize(conf));
+    }
+
+    @Override
+    public Class<? extends Decompressor> getDecompressorType() {
+        return LzoDecompressor.class;
+    }
+
+    @Override
+    public Decompressor createDecompressor() {
+        Configuration conf = getConf();
+        LzoDecompressor.CompressionStrategy strategy = getDecompressionStrategy(conf);
+        int bufferSize = getBufferSize(conf);
+        return new LzoDecompressor(strategy, bufferSize);
+    }
+
+    /**
+     * Get the default filename extension for this kind of compression.
+     * @return the extension including the '.'
+     */
+    @Override
+    public String getDefaultExtension() {
+        return ".lzo_deflate";
+    }
 }
