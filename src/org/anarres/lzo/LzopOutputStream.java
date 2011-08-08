@@ -46,7 +46,6 @@ import java.io.OutputStream;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
-import org.anarres.lzo.hadoop.codec.LzopCodec;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.io.DataOutputBuffer;
