@@ -65,38 +65,55 @@ import static org.junit.Assert.*;
 public class LzopStreamTest {
 
     private static final Log LOG = LogFactory.getLog(LzopStreamTest.class);
+    private static long[] FLAGS = new long[]{
+        0L,
+        // Adler32
+        LzopConstants.F_ADLER32_C,
+        LzopConstants.F_ADLER32_D,
+        LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D,
+        // CRC32
+        LzopConstants.F_CRC32_C,
+        LzopConstants.F_CRC32_D,
+        LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D,
+        // Both
+        LzopConstants.F_ADLER32_C | LzopConstants.F_CRC32_C,
+        LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
+        LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
+    };
 
     public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) throws IOException {
-        try {
-            LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
-            LOG.info("\nCompressing " + orig.length + " bytes using " + algorithm);
+        for (long flags : FLAGS) {
+            try {
+                LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
+                LOG.info("Compressing " + orig.length + " bytes using " + algorithm);
 
-            // LOG.info("Original:   " + Arrays.toString(orig));
+                // LOG.info("Original:   " + Arrays.toString(orig));
 
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-            LzopOutputStream cs = new LzopOutputStream(os, compressor, 256);
-            cs.write(orig);
-            cs.close();
+                ByteArrayOutputStream os = new ByteArrayOutputStream();
+                LzopOutputStream cs = new LzopOutputStream(os, compressor, 256, flags);
+                cs.write(orig);
+                cs.close();
 
-            LOG.info("Compressed: OK.");
+                // LOG.info("Compressed: OK.");
 
-            FileUtils.writeByteArrayToFile(new File("temp.lzo"), os.toByteArray());
+                FileUtils.writeByteArrayToFile(new File("temp.lzo"), os.toByteArray());
 
-            LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(algorithm, null);
+                // LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(algorithm, null);
 
-            ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
-            LzopInputStream us = new LzopInputStream(is);
-            DataInputStream ds = new DataInputStream(us);
-            byte[] uncompressed = new byte[orig.length];
-            ds.readFully(uncompressed);
+                ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+                LzopInputStream us = new LzopInputStream(is);
+                DataInputStream ds = new DataInputStream(us);
+                byte[] uncompressed = new byte[orig.length];
+                ds.readFully(uncompressed);
 
-            LOG.info("Output:     OK.");
-            // LOG.info("Output:     " + Arrays.toString(uncompressed));
+                // LOG.info("Output:     OK.");
+                // LOG.info("Output:     " + Arrays.toString(uncompressed));
 
-            assertArrayEquals(orig, uncompressed);
-        } finally {
-            System.out.flush();
-            System.err.flush();
+                assertArrayEquals(orig, uncompressed);
+            } finally {
+                System.out.flush();
+                System.err.flush();
+            }
         }
     }
 

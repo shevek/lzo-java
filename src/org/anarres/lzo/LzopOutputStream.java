@@ -57,7 +57,7 @@ import org.apache.hadoop.io.DataOutputBuffer;
 public class LzopOutputStream extends LzoOutputStream {
 
     private static final Log LOG = LogFactory.getLog(LzopOutputStream.class);
-    private final int flags;
+    private final long flags;
     private final CRC32 c_crc32_c;
     private final CRC32 c_crc32_d;
     private final Adler32 c_adler32_c;
@@ -76,7 +76,7 @@ public class LzopOutputStream extends LzoOutputStream {
      * <li>{@link LzopConstants#F_CRC32_D}</li>
      * </ul>
      */
-    public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize, int flags) throws IOException {
+    public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize, long flags) throws IOException {
         super(out, compressor, inputBufferSize);
         this.flags = flags;
         this.c_crc32_c = ((flags & LzopConstants.F_CRC32_C) == 0) ? null : new CRC32();
@@ -87,7 +87,7 @@ public class LzopOutputStream extends LzoOutputStream {
     }
 
     public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize) throws IOException {
-        this(out, compressor, inputBufferSize, 0);
+        this(out, compressor, inputBufferSize, 0L);
     }
 
     public LzopOutputStream(OutputStream out, LzoCompressor compressor) throws IOException {
@@ -146,7 +146,7 @@ public class LzopOutputStream extends LzoOutputStream {
         csum.reset();
         csum.update(data, off, len);
         long value = csum.getValue();
-        LOG.info("Writing checksum " + csum);
+        // LOG.info("Writing checksum " + csum);
         writeInt((int) (value & 0xFFFFFFFF));
     }
 
