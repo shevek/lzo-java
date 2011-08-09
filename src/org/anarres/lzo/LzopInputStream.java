@@ -96,7 +96,7 @@ public class LzopInputStream extends LzoInputStream {
     }
 
     private void logState() {
-        LOG.info("Flags = " + flags);
+        LOG.info("Flags = " + Integer.toHexString(flags));
         LOG.info("CRC32C = " + c_crc32_c);
         LOG.info("CRC32D = " + c_crc32_d);
         LOG.info("Adler32C = " + c_adler32_c);
@@ -222,7 +222,6 @@ public class LzopInputStream extends LzoInputStream {
     private void testChecksum(Checksum csum, int value, byte[] data, int off, int len) throws IOException {
         if (csum == null)
             return;
-        // LOG.info("Testing checksum " + csum);
         csum.reset();
         csum.update(data, off, len);
         if (value != (int) csum.getValue())
@@ -253,11 +252,11 @@ public class LzopInputStream extends LzoInputStream {
         int v_adler32_c = readChecksum(c_adler32_c);
         int v_crc32_c = readChecksum(c_crc32_c);
         readBytes(inputBuffer, 0, inputBufferLength);
-        testChecksum(c_adler32_d, v_adler32_d, inputBuffer, 0, inputBufferLength);
-        testChecksum(c_crc32_d, v_crc32_d, inputBuffer, 0, inputBufferLength);
-        decompress(outputBufferLength, inputBufferLength);
         testChecksum(c_adler32_c, v_adler32_c, inputBuffer, 0, inputBufferLength);
         testChecksum(c_crc32_c, v_crc32_c, inputBuffer, 0, inputBufferLength);
+        decompress(outputBufferLength, inputBufferLength);
+        testChecksum(c_adler32_d, v_adler32_d, outputBuffer, 0, outputBufferLength);
+        testChecksum(c_crc32_d, v_crc32_d, outputBuffer, 0, outputBufferLength);
         return true;
     }
 }
