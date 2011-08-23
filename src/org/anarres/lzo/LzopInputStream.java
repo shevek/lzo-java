@@ -62,6 +62,7 @@ public class LzopInputStream extends LzoInputStream {
     private final CRC32 c_crc32_d;
     private final Adler32 c_adler32_c;
     private final Adler32 c_adler32_d;
+    private boolean eof;
 
     public LzopInputStream(InputStream in) throws IOException {
         super(in, new LzoDecompressor1x());
@@ -70,6 +71,7 @@ public class LzopInputStream extends LzoInputStream {
         this.c_crc32_d = ((flags & LzopConstants.F_CRC32_D) == 0) ? null : new CRC32();
         this.c_adler32_c = ((flags & LzopConstants.F_ADLER32_C) == 0) ? null : new Adler32();
         this.c_adler32_d = ((flags & LzopConstants.F_ADLER32_D) == 0) ? null : new Adler32();
+        this.eof = false;
         // logState();
     }
 
@@ -95,12 +97,13 @@ public class LzopInputStream extends LzoInputStream {
         return out;
     }
 
-    private void logState() {
-        LOG.info("Flags = " + Integer.toHexString(flags));
-        LOG.info("CRC32C = " + c_crc32_c);
-        LOG.info("CRC32D = " + c_crc32_d);
-        LOG.info("Adler32C = " + c_adler32_c);
-        LOG.info("Adler32D = " + c_adler32_d);
+    protected void logState(String when) {
+        super.logState(when);
+        LOG.info(when + " Flags = " + Integer.toHexString(flags));
+        // LOG.info(when + " CRC32C = " + c_crc32_c);
+        // LOG.info(when + " CRC32D = " + c_crc32_d);
+        // LOG.info(when + " Adler32C = " + c_adler32_c);
+        // LOG.info(when + " Adler32D = " + c_adler32_d);
     }
 
     /**
@@ -232,9 +235,15 @@ public class LzopInputStream extends LzoInputStream {
 
     @Override
     protected boolean readBlock() throws IOException {
-        int outputBufferLength = readInt(false);
-        if (outputBufferLength == 0)
+        // logState("Before readBlock");
+        if (eof)
             return false;
+        int outputBufferLength = readInt(false);
+        if (outputBufferLength == 0) {
+            // logState("After empty readBlock");
+            eof = true;
+            return false;
+        }
         setOutputBufferSize(outputBufferLength);
         int inputBufferLength = readInt(false);
         setInputBufferSize(inputBufferLength);
@@ -247,6 +256,7 @@ public class LzopInputStream extends LzoInputStream {
             readBytes(outputBuffer, 0, outputBufferLength);
             testChecksum(c_adler32_d, v_adler32_d, outputBuffer, 0, outputBufferLength);
             testChecksum(c_crc32_d, v_crc32_d, outputBuffer, 0, outputBufferLength);
+            // logState("After uncompressed readBlock");
             return true;
         }
         int v_adler32_c = readChecksum(c_adler32_c);
@@ -257,6 +267,7 @@ public class LzopInputStream extends LzoInputStream {
         decompress(outputBufferLength, inputBufferLength);
         testChecksum(c_adler32_d, v_adler32_d, outputBuffer, 0, outputBufferLength);
         testChecksum(c_crc32_d, v_crc32_d, outputBuffer, 0, outputBufferLength);
+        // logState("After compressed readBlock");
         return true;
     }
 }

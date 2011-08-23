@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class LzopFileTest {
 
-    private File getDataDirectory() {
+    public static File getDataDirectory() {
         String path = System.getProperty("test.data.dir");
         File file = new File(path == null ? "test/data" : path);
         assertTrue(file + " is a directory.", file.isDirectory());

@@ -104,7 +104,7 @@ public class LzoInputStream extends InputStream {
         return len;
     }
 
-    private void logState(String when) {
+    protected void logState(String when) {
         LOG.info("\n");
         LOG.info(when + " Input buffer size=" + inputBuffer.length);
         LOG.info(when + " Output buffer pos=" + outputBufferPos + "; length=" + outputBufferLen + "; size=" + outputBuffer.length);
@@ -119,6 +119,7 @@ public class LzoInputStream extends InputStream {
     }
 
     protected boolean readBlock() throws IOException {
+        // logState("Before readBlock");
         int outputBufferLength = readInt(true);
         if (outputBufferLength == -1)
             return false;
