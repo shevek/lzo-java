@@ -1,6 +1,6 @@
 /*
  * This file is part of lzo-java, an implementation of LZO in Java.
- * https://github.com/Karmasphere/lzo-java
+ * https://github.com/shevek/lzo-java
  *
  * The Java portion of this library is:
  * Copyright (C) 2011 Shevek <shevek@anarres.org>
