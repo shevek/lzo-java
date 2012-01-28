@@ -205,6 +205,8 @@ public class LzoDecompressor implements Decompressor {
     @Override
     public boolean finished() {
         // logState("Before finished");
+		if (outputBufferLen.value == 0 && outputBufferPos == 0)
+			return false;
         return outputBufferLen.value <= 0;
         // return false;
     }
