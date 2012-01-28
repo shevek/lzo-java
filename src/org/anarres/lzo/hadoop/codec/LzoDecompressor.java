@@ -205,8 +205,9 @@ public class LzoDecompressor implements Decompressor {
     @Override
     public boolean finished() {
         // logState("Before finished");
-		if (outputBufferLen.value == 0 && outputBufferPos == 0)
-			return false;
+// https://github.com/hortonworks/hadoop-lzo/commit/729bcc3d0d86fefb5a9b0a76fbcdbc20bc497db8
+//		if (outputBufferLen.value == 0 && outputBufferPos == 0)
+//			return false;
         return outputBufferLen.value <= 0;
         // return false;
     }
