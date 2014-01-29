@@ -1,0 +1,56 @@
+// Establish version and status
+ext.githubProjectName = rootProject.name // Change if github project name is not the same as the root project's name
+
+buildscript {
+    repositories {
+        // mavenLocal()
+        mavenCentral() // maven { url 'http://jcenter.bintray.com' }
+    }
+    apply from: file('gradle/buildscript.gradle'), to: buildscript 
+}
+
+allprojects {
+    repositories { 
+        // mavenLocal()
+        mavenCentral() // maven { url: 'http://jcenter.bintray.com' }
+    }
+}
+
+apply from: file('gradle/convention.gradle')
+apply from: file('gradle/maven.gradle')
+apply from: file('gradle/check.gradle')
+apply from: file('gradle/license.gradle')
+// apply from: file('gradle/release.gradle')
+
+subprojects {
+	group = "org.anarres.lzo"
+
+	dependencies {
+		compile 'com.google.code.findbugs:jsr305:2.0.2'
+
+		testCompile 'junit:junit:4.8.1'
+		testCompile 'commons-io:commons-io:2.4'
+	}
+}
+
+project(':lzo-core') {
+	apply plugin: 'jcpp'
+
+	dependencies {
+		compile 'commons-logging:commons-logging:1.1.1'
+	}
+
+	jcpp {
+		localIncludePath << project.file("src/main/jcpp/include")
+		localIncludePath << project.file("src/main/jcpp/src")
+	}
+}
+
+project(':lzo-hadoop') {
+	dependencies {
+		compile project(':lzo-core')
+		compile 'org.apache.hadoop:hadoop-core:1.2.1'
+
+		testCompile project(':lzo-core').sourceSets.test.output
+	}
+}
