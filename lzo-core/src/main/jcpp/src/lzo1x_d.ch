@@ -257,9 +257,9 @@ case first_literal_run:
 		PRINT("Going to copy first literal match; m_pos=" + m_pos + "; len=3(const)");
         TEST_LB(m_pos, break GOTO_LOOP_OUTER); NEED_OP(3, break GOTO_LOOP_OUTER);
         //Java *op++ = *m_pos++; *op++ = *m_pos++; *op++ = *m_pos;
-        out[out_ptr++] = in[m_pos++];
-        out[out_ptr++] = in[m_pos++];
-        out[out_ptr++] = in[m_pos];
+        out[out_ptr++] = out[m_pos++];
+        out[out_ptr++] = out[m_pos++];
+        out[out_ptr++] = out[m_pos];
 #endif /* COPY_DICT */
         //Java goto match_done;
 		{ state = match_done; break GOTO_PRE; }
