@@ -80,6 +80,8 @@ public class LzopStreamTest {
         LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
         LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
     };
+    private static LzoAlgorithm[] lzopAlgorithms = { LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999 };
+
 
     public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) throws IOException {
         for (long flags : FLAGS) {
@@ -123,11 +125,13 @@ public class LzopStreamTest {
     public void testBlank() throws Exception {
         byte[] orig = new byte[512 * 1024];
         Arrays.fill(orig, (byte) 0);
-        try {
-            testAlgorithm(LzoAlgorithm.LZO1X, orig);
-        } catch (UnsupportedOperationException e) {
-            // LOG.info("Unsupported algorithm " + algorithm);
-        }
+        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+            try {
+                testAlgorithm(algorithm, orig);
+            } catch (UnsupportedOperationException e) {
+                // LOG.info("Unsupported algorithm " + algorithm);
+            }
+        }   
     }
 
     // Highly cyclic.
@@ -136,11 +140,13 @@ public class LzopStreamTest {
         byte[] orig = new byte[512 * 1024];
         for (int i = 0; i < orig.length; i++)
             orig[i] = (byte) (i & 0xf);
-        try {
-            testAlgorithm(LzoAlgorithm.LZO1X, orig);
-        } catch (UnsupportedOperationException e) {
-            // LOG.info("Unsupported algorithm " + algorithm);
-        }
+        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+            try {
+                testAlgorithm(algorithm, orig);
+            } catch (UnsupportedOperationException e) {
+                // LOG.info("Unsupported algorithm " + algorithm);
+            }
+        }   
     }
 
     // Essentially uncompressible.
@@ -150,11 +156,13 @@ public class LzopStreamTest {
         for (int i = 0; i < 10; i++) {
             byte[] orig = new byte[256 * 1024];
             r.nextBytes(orig);
-            try {
-                testAlgorithm(LzoAlgorithm.LZO1X, orig);
-            } catch (UnsupportedOperationException e) {
-                // LOG.info("Unsupported algorithm " + algorithm);
-            }
+            for (LzoAlgorithm algorithm : lzopAlgorithms) {
+                try {
+                    testAlgorithm(algorithm, orig);
+                } catch (UnsupportedOperationException e) {
+                    // LOG.info("Unsupported algorithm " + algorithm);
+                }
+            }   
         }
     }
 
@@ -164,11 +172,13 @@ public class LzopStreamTest {
         LOG.info("Class is " + name);
         InputStream in = getClass().getClassLoader().getResourceAsStream(name);
         byte[] orig = IOUtils.toByteArray(in);
-        try {
-            testAlgorithm(LzoAlgorithm.LZO1X, orig);
-        } catch (UnsupportedOperationException e) {
-            // LOG.info("Unsupported algorithm " + algorithm);
-        }
+        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+            try {
+                testAlgorithm(algorithm, orig);
+            } catch (UnsupportedOperationException e) {
+                // LOG.info("Unsupported algorithm " + algorithm);
+            }
+        }   
     }
 
     @Test
@@ -177,4 +187,8 @@ public class LzopStreamTest {
         testClass(Integer.class);
         testClass(Formatter.class);
     }
+
+
+
+
 }

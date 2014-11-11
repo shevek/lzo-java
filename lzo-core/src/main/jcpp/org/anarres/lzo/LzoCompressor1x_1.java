@@ -12,6 +12,12 @@ public class LzoCompressor1x_1 extends AbstractLzo1Compressor {
         return 5;
     }
 
+    @Override 
+    public String toString() {
+        return "LZO1X1";
+    }
+
+
 #include "lzojava.h"
 
 #define LZO_NEED_DICT_H 1

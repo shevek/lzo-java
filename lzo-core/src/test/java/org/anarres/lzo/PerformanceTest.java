@@ -25,9 +25,9 @@ public class PerformanceTest {
     private static final String PATH = "/home/shevek/vm/karmasphere-aws-vm/Karmasphere AWS VM-s003.vmdk";
     // private static final String PATH = "/home/shevek/thirdparty/archive/fp.log";
 
-    @Test
-    public void testBlockCompress() throws Exception {
+    public void testBlockCompress(LzoCompressor compressor) throws Exception {
         try {
+            LOG.info("Running performance test for " + compressor);
             LOG.info("Total memory is " + Runtime.getRuntime().totalMemory());
             LOG.info("Max memory is " + Runtime.getRuntime().maxMemory());
 
@@ -41,7 +41,6 @@ public class PerformanceTest {
             LOG.info("Original data is " + data.length + " bytes.");
             byte[] compressed = new byte[data.length];
 
-            LzoCompressor compressor = new LzoCompressor1x_1();
             LzoDecompressor decompressor = new LzoDecompressor1x();
 
             for (int i = 0; i < 8; i++) {
@@ -66,5 +65,13 @@ public class PerformanceTest {
             System.err.flush();
             Thread.sleep(100);
         }
+    }
+
+    @Test
+    public void testBlockCompress() throws Exception {
+        testBlockCompress(new LzoCompressor1x_1());
+        testBlockCompress(new LzoCompressor1x_999(7));
+        testBlockCompress(new LzoCompressor1x_999(8));
+        testBlockCompress(new LzoCompressor1x_999(9));
     }
 }
