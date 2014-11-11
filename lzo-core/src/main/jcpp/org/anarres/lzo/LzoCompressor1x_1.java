@@ -8,6 +8,10 @@ public class LzoCompressor1x_1 extends AbstractLzo1Compressor {
         super(LzoAlgorithm.LZO1X);
     }
 
+    public int getCompressionLevel() {
+        return 5;
+    }
+
 #include "lzojava.h"
 
 #define LZO_NEED_DICT_H 1

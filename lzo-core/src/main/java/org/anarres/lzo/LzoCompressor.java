@@ -49,6 +49,8 @@ public interface LzoCompressor extends LzoTransformer {
 
     public int getCompressionOverhead(int inputBufferSize);
 
+    public int getCompressionLevel();
+
     public int compress(byte[] in, int in_base, int in_len,
             byte[] out, int out_base, lzo_uintp out_len);
 }
