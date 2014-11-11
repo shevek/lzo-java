@@ -394,9 +394,6 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         s.m_len = 0;
         s.m_off = 0;
 
-        for (int i = 0; i < 34; i++)
-            s.best_off[i] = s.best_pos[i] = 0;
-
         s.max_chain = 0x800;
 
         s.use_best_off = false;
@@ -411,7 +408,7 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         if (s.look > 0) {
             if (s.look > 0x800)
                 s.look = 0x800;
-            System.arraycopy(in, s.ip, s.b, c.ip, s.look);
+            System.arraycopy(in, c.ip, s.b, s.ip, s.look);
             c.ip += s.look;
             s.ip += s.look;
         }
@@ -430,7 +427,7 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         }
     }
 
-    private static void compress_internal(byte[] in, int in_len,
+    private static void compress_internal(byte[] in, int in_base, int in_len,
                                           byte[] out, int out_base, lzo_uintp out_len,
                                           int try_lazy_parm,
                                           int good_length,
@@ -453,8 +450,8 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         Lzo1x999T c = new Lzo1x999T();
         Lzo1x999SWD swd = new Lzo1x999SWD();
 
-        c.ip = 0;
-        c.in_end = in_len;
+        c.ip = in_base;
+        c.in_end = in_base + in_len;
 
         int op = c.out_base = out_base;
 
@@ -581,6 +578,11 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         return compression_level + 1;
     }
 
+    @Override 
+    public String toString() {
+        return "LZO1X999" + getCompressionLevel();
+    }
+
     public int compress(byte[] in, int in_base, int in_len,
                         byte[] out, int out_base, lzo_uintp out_len) {
         int[] try_lazy_parm = {0, 0, 0, 1, 1, 1, 2, 2, 2};
@@ -589,7 +591,7 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
         int[] max_chain = {4, 8, 16, 16, 32, 128, 256, 2048, 4096};
         int[] flags = {0, 0, 0, 0, 0, 0, 0, 1, 1};
 
-        compress_internal(in, in_len,
+        compress_internal(in, in_base, in_len,
                 out, out_base, out_len,
                 try_lazy_parm[compression_level],
                 good_length[compression_level],
