@@ -216,12 +216,12 @@ public class LzoOutputStream extends OutputStream {
 
         // Do compression.
         if (inputBufferLen > 0) {
-            compressBuffer = inputBuffer;
+            compressBuffer = inputBuffer.clone();
             compressBufferPos = 0;
             compressBufferLen = inputBufferLen;
             inputBufferLen = 0;
         } else if (inputHoldoverBuffer != null) {
-            compressBuffer = inputHoldoverBuffer;
+            compressBuffer = inputHoldoverBuffer.clone();
             compressBufferPos = inputHoldoverBufferPos;
             // If this is ever less than inputBuffer.length, then we should have copied it into the input buffer.
             compressBufferLen = Math.min(inputBuffer.length, inputHoldoverBufferLen);
