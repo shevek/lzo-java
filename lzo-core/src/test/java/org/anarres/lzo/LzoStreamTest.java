@@ -54,6 +54,43 @@ public class LzoStreamTest {
         assertArrayEquals(orig, uncompressed);
     }
 
+    @Test
+    public void testHoldover() throws IOException {
+        LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(null, null);
+        LOG.info("\nRunning holdover test");
+
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        ByteArrayOutputStream ts = new ByteArrayOutputStream();
+        LzoOutputStream cs = new LzoOutputStream(os, compressor, 256);
+
+        byte[] data = new byte[256];
+        for (int i = 0; i < data.length; i++)
+            data[i] = (byte) (i & 0xf);
+
+        for (int i = 0; i < data.length-10; i++) {
+            byte[] chunk = Arrays.copyOfRange(data, i, i+10);
+            cs.write(chunk);
+            ts.write(chunk);
+        }
+
+        cs.close();
+        LOG.info("Compressed: OK.");
+
+        byte[] test = ts.toByteArray();
+
+        LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(LzoAlgorithm.LZO1X, null);
+
+        ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+        LzoInputStream us = new LzoInputStream(is, decompressor);
+        DataInputStream ds = new DataInputStream(us);
+        byte[] uncompressed = new byte[test.length];
+        ds.readFully(uncompressed);
+
+        LOG.info("Output:     OK.");
+        assertArrayEquals(test, uncompressed);
+
+    }
+
     // Totally RLE.
     @Test
     public void testBlank() throws Exception {
