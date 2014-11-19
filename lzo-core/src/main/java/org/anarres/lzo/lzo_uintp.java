@@ -41,18 +41,21 @@
  */
 package org.anarres.lzo;
 
+import javax.annotation.Nonnegative;
+
 /**
  *
  * @author shevek
  */
 public class lzo_uintp {
 
+    @Nonnegative
 	public int value;
 
 	public lzo_uintp() {
 	}
 
-	public lzo_uintp(int value) {
+	public lzo_uintp(@Nonnegative int value) {
 		this.value = value;
 	}
 

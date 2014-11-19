@@ -41,6 +41,9 @@
  */
 package org.anarres.lzo;
 
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnull;
+
 /**
  *
  * @author shevek
@@ -52,6 +55,7 @@ public class LzoLibrary {
         private static final LzoLibrary INSTANCE = new LzoLibrary();
     }
 
+    @Nonnull
     public static LzoLibrary getInstance() {
         return Inner.INSTANCE;
     }
@@ -59,7 +63,8 @@ public class LzoLibrary {
     /**
      * Returns a new compressor for the given algorithm. Default compression level for LZO1X999 is 7.
      */
-    public LzoCompressor newCompressor(LzoAlgorithm algorithm, LzoConstraint constraint) {
+    @Nonnull
+    public LzoCompressor newCompressor(@CheckForNull LzoAlgorithm algorithm, @CheckForNull LzoConstraint constraint) {
         if (algorithm == null)
             return new LzoCompressor1x_1();
         switch (algorithm) {
@@ -78,7 +83,8 @@ public class LzoLibrary {
      * Returns a new decompressor for the given algorithm.
      * The only constraint which makes sense is {@link LzoConstraint#SAFETY}.
      */
-    public LzoDecompressor newDecompressor(LzoAlgorithm algorithm, LzoConstraint constraint) {
+    @Nonnull
+    public LzoDecompressor newDecompressor(@CheckForNull LzoAlgorithm algorithm, @CheckForNull LzoConstraint constraint) {
         if (algorithm == null)
             throw new NullPointerException("No algorithm specified.");
         switch (algorithm) {

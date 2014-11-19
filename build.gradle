@@ -46,6 +46,15 @@ project(':lzo-core') {
 	}
 }
 
+project(':lzo-commons') {
+	dependencies {
+		compile project(':lzo-core')
+		compile 'org.apache.commons:commons-compress:1.9'
+
+		testCompile project(':lzo-core').sourceSets.test.output
+	}
+}
+
 project(':lzo-hadoop') {
 	dependencies {
 		compile project(':lzo-core')

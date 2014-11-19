@@ -47,6 +47,9 @@ import java.util.Arrays;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
+import javax.annotation.CheckForNull;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -64,7 +67,7 @@ public class LzopInputStream extends LzoInputStream {
     private final Adler32 c_adler32_d;
     private boolean eof;
 
-    public LzopInputStream(InputStream in) throws IOException {
+    public LzopInputStream(@Nonnull InputStream in) throws IOException {
         super(in, new LzoDecompressor1x());
         this.flags = readHeader();
         this.c_crc32_c = ((flags & LzopConstants.F_CRC32_C) == 0) ? null : new CRC32();
@@ -79,6 +82,7 @@ public class LzopInputStream extends LzoInputStream {
         return flags;
     }
 
+    @Nonnegative
     public int getCompressedChecksumCount() {
         int out = 0;
         if (c_crc32_c != null)
@@ -88,6 +92,7 @@ public class LzopInputStream extends LzoInputStream {
         return out;
     }
 
+    @Nonnegative
     public int getUncompressedChecksumCount() {
         int out = 0;
         if (c_crc32_d != null)
@@ -97,7 +102,8 @@ public class LzopInputStream extends LzoInputStream {
         return out;
     }
 
-    protected void logState(String when) {
+    @Override
+    protected void logState(@Nonnull String when) {
         super.logState(when);
         LOG.info(when + " Flags = " + Integer.toHexString(flags));
         // LOG.info(when + " CRC32C = " + c_crc32_c);
@@ -110,7 +116,8 @@ public class LzopInputStream extends LzoInputStream {
      * Read len bytes into buf, st LSB of int returned is the last byte of the
      * first word read.
      */
-    private int readInt(byte[] buf, int len)
+    // @Nonnegative ?
+    private int readInt(@Nonnull byte[] buf, @Nonnegative int len)
             throws IOException {
         readBytes(buf, 0, len);
         int ret = (0xFF & buf[0]) << 24;
@@ -124,7 +131,8 @@ public class LzopInputStream extends LzoInputStream {
      * Read bytes, update checksums, return first four bytes as an int, first
      * byte read in the MSB.
      */
-    private int readHeaderItem(byte[] buf, int len, Adler32 adler, CRC32 crc32) throws IOException {
+    // @Nonnegative ?
+    private int readHeaderItem(@Nonnull byte[] buf, @Nonnegative int len, @Nonnull Adler32 adler, @Nonnull CRC32 crc32) throws IOException {
         int ret = readInt(buf, len);
         adler.update(buf, 0, len);
         crc32.update(buf, 0, len);
@@ -215,14 +223,14 @@ public class LzopInputStream extends LzoInputStream {
         return flags;
     }
 
-    private int readChecksum(Checksum csum) throws IOException {
+    private int readChecksum(@CheckForNull Checksum csum) throws IOException {
         if (csum == null)
             return 0;
         // LOG.info("Reading checksum " + csum);
         return readInt(false);
     }
 
-    private void testChecksum(Checksum csum, int value, byte[] data, int off, int len) throws IOException {
+    private void testChecksum(@CheckForNull Checksum csum, int value, @Nonnull byte[] data, @Nonnegative int off, @Nonnegative int len) throws IOException {
         if (csum == null)
             return;
         csum.reset();

@@ -44,6 +44,9 @@ package org.anarres.lzo;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.annotation.CheckForSigned;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -62,17 +65,17 @@ public class LzoInputStream extends InputStream {
     protected int outputBufferPos;
     protected final lzo_uintp outputBufferLen = new lzo_uintp();	// Also, end, since we base outputBuffer at 0.
 
-    public LzoInputStream(InputStream in, LzoDecompressor decompressor) {
+    public LzoInputStream(@Nonnull InputStream in, @Nonnull LzoDecompressor decompressor) {
         this.in = in;
         this.decompressor = decompressor;
     }
 
-    public void setInputBufferSize(int inputBufferSize) {
+    public void setInputBufferSize(@Nonnegative int inputBufferSize) {
         if (inputBufferSize > inputBuffer.length)
             inputBuffer = new byte[inputBufferSize];
     }
 
-    public void setOutputBufferSize(int outputBufferSize) {
+    public void setOutputBufferSize(@Nonnegative int outputBufferSize) {
         if (outputBufferSize > outputBuffer.length)
             outputBuffer = new byte[outputBufferSize];
     }
@@ -104,7 +107,7 @@ public class LzoInputStream extends InputStream {
         return len;
     }
 
-    protected void logState(String when) {
+    protected void logState(@Nonnull String when) {
         LOG.info("\n");
         LOG.info(when + " Input buffer size=" + inputBuffer.length);
         LOG.info(when + " Output buffer pos=" + outputBufferPos + "; length=" + outputBufferLen + "; size=" + outputBuffer.length);
@@ -131,7 +134,7 @@ public class LzoInputStream extends InputStream {
         return true;
     }
 
-    protected void decompress(int outputBufferLength, int inputBufferLength) throws IOException {
+    protected void decompress(@Nonnegative int outputBufferLength, @Nonnegative int inputBufferLength) throws IOException {
         // logState("Before decompress");
         try {
             outputBufferPos = 0;
@@ -156,6 +159,7 @@ public class LzoInputStream extends InputStream {
         // logState("After decompress");
     }
 
+    @CheckForSigned
     protected int readInt(boolean start_of_frame) throws IOException {
         int b1 = in.read();
         if (b1 == -1) {
@@ -172,7 +176,7 @@ public class LzoInputStream extends InputStream {
         return ((b1 << 24) + (b2 << 16) + (b3 << 8) + b4);
     }
 
-    protected void readBytes(byte[] buf, int off, int length) throws IOException {
+    protected void readBytes(@Nonnull byte[] buf, @Nonnegative int off, @Nonnegative int length) throws IOException {
         while (length > 0) {
             int count = in.read(buf, off, length);
             if (count < 0)

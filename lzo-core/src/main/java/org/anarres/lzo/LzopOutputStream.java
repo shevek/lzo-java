@@ -48,6 +48,10 @@ import java.io.OutputStream;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
+import javax.annotation.CheckForNull;
+import javax.annotation.CheckForSigned;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -77,7 +81,7 @@ public class LzopOutputStream extends LzoOutputStream {
      * <li>{@link LzopConstants#F_CRC32_D}</li>
      * </ul>
      */
-    public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize, long flags) throws IOException {
+    public LzopOutputStream(OutputStream out, LzoCompressor compressor, @CheckForSigned int inputBufferSize, long flags) throws IOException {
         super(out, compressor, inputBufferSize);
         this.flags = flags;
         this.c_crc32_c = ((flags & LzopConstants.F_CRC32_C) == 0) ? null : new CRC32();
@@ -87,11 +91,11 @@ public class LzopOutputStream extends LzoOutputStream {
         writeLzopHeader();
     }
 
-    public LzopOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize) throws IOException {
+    public LzopOutputStream(@Nonnull OutputStream out, @Nonnull LzoCompressor compressor, @CheckForSigned int inputBufferSize) throws IOException {
         this(out, compressor, inputBufferSize, 0L);
     }
 
-    public LzopOutputStream(OutputStream out, LzoCompressor compressor) throws IOException {
+    public LzopOutputStream(@Nonnull OutputStream out, @Nonnull LzoCompressor compressor) throws IOException {
         this(out, compressor, 256 * 1024);
     }
 
@@ -144,7 +148,7 @@ public class LzopOutputStream extends LzoOutputStream {
         }
     }
 
-    private void writeChecksum(Checksum csum, byte[] data, int off, int len) throws IOException {
+    private void writeChecksum(@CheckForNull Checksum csum, @Nonnull byte[] data, @Nonnegative int off, @Nonnegative int len) throws IOException {
         if (csum == null)
             return;
         csum.reset();
@@ -155,7 +159,7 @@ public class LzopOutputStream extends LzoOutputStream {
     }
 
     @Override
-    protected void writeBlock(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen) throws IOException {
+    protected void writeBlock(@Nonnull byte[] inputData, @Nonnegative int inputPos, @Nonnegative int inputLen, @Nonnull byte[] outputData, @Nonnegative int outputPos, @Nonnegative int outputLen) throws IOException {
         // LOG.info("inputLen=" + inputLen + "; outputLen=" + outputLen);
         writeInt(inputLen);
         if (outputLen < inputLen)

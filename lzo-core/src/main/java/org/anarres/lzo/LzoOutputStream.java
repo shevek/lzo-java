@@ -43,6 +43,9 @@ package org.anarres.lzo;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import javax.annotation.CheckForSigned;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -67,9 +70,11 @@ public class LzoOutputStream extends OutputStream {
      * Creates a new compressor using the specified {@link LzoCompressor}.
      *
      * @param compressor lzo compression algorithm to use
-     * @param inputBufferSize size of the buffers to be used.
+     * @param inputBufferSize size of the buffers to be used. If &lt;0, uses the default 64K.
      */
-    public LzoOutputStream(OutputStream out, LzoCompressor compressor, int inputBufferSize) {
+    public LzoOutputStream(@Nonnull OutputStream out, @Nonnull LzoCompressor compressor, @CheckForSigned int inputBufferSize) {
+        if (inputBufferSize <= 0)
+            inputBufferSize = 64 * 1024;
         this.out = out;
         this.compressor = compressor;
         this.inputBuffer = new byte[inputBufferSize];
@@ -78,20 +83,30 @@ public class LzoOutputStream extends OutputStream {
     }
 
     /**
-     * Creates a new compressor with the default lzo1x_1 compression.
+     * Creates a new compressor with the specified compression.
      */
-    public LzoOutputStream(OutputStream out) {
-        this(out, LzoLibrary.getInstance().newCompressor(null, null), 64 * 1024);
+    public LzoOutputStream(@Nonnull OutputStream out, @Nonnull LzoCompressor compressor) {
+        this(out, compressor, 0);
     }
 
+    /**
+     * Creates a new compressor with the default lzo1x_1 compression.
+     */
+    public LzoOutputStream(@Nonnull OutputStream out) {
+        this(out, LzoLibrary.getInstance().newCompressor(null, null));
+    }
+
+    @Nonnull
     public LzoCompressor getCompressor() {
         return compressor;
     }
 
+    @Nonnull
     public LzoAlgorithm getAlgorithm() {
         return getCompressor().getAlgorithm();
     }
 
+    @Nonnull
     public LzoConstraint[] getConstraints() {
         return getCompressor().getConstraints();
     }
@@ -104,7 +119,7 @@ public class LzoOutputStream extends OutputStream {
         outputBufferLen.value = 0;
     }
 
-    private void logState(String when) {
+    private void logState(@Nonnull String when) {
         LOG.info("\n");
         LOG.info(when + " Input buffer length=" + inputBufferLen + "/" + inputBuffer.length);
         if (inputHoldoverBuffer == null) {
@@ -253,7 +268,7 @@ public class LzoOutputStream extends OutputStream {
         writeBlock(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, 0, outputBufferLen.value);
     }
 
-    protected void writeBlock(byte[] inputData, int inputPos, int inputLen, byte[] outputData, int outputPos, int outputLen)
+    protected void writeBlock(@Nonnull byte[] inputData, @Nonnegative int inputPos, @Nonnegative int inputLen, @Nonnull byte[] outputData, @Nonnegative int outputPos, @Nonnegative int outputLen)
             throws IOException {
         writeInt(inputLen);
         writeInt(outputLen);

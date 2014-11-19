@@ -41,12 +41,15 @@
  */
 package org.anarres.lzo;
 
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
+
 /**
  *
  * @author shevek
  */
 public interface LzoDecompressor extends LzoTransformer {
 
-    public int decompress(byte[] in, int in_base, int in_len,
-            byte[] out, int out_base, lzo_uintp out_len);
+    public int decompress(@Nonnull byte[] in, @Nonnegative int in_base, @Nonnegative int in_len,
+            @Nonnull byte[] out, @Nonnegative int out_base, @Nonnull lzo_uintp out_len);
 }

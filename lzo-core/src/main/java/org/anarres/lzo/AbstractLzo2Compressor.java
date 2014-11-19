@@ -41,13 +41,15 @@
  */
 package org.anarres.lzo;
 
+import javax.annotation.Nonnull;
+
 /**
  *
  * @author shevek
  */
 public abstract class AbstractLzo2Compressor extends AbstractLzoCompressor {
 
-    public AbstractLzo2Compressor(LzoAlgorithm algorithm, LzoConstraint... constraints) {
+    public AbstractLzo2Compressor(@Nonnull LzoAlgorithm algorithm, @Nonnull LzoConstraint... constraints) {
         super(algorithm, constraints);
     }
 
