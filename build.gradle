@@ -3,6 +3,10 @@ ext.githubProjectName = 'lzo-java'
 
 buildscript {
     apply from: file('gradle/buildscript.gradle'), to: buildscript 
+
+	dependencies {
+		classpath 'org.anarres.gradle:gradle-jcpp-plugin:1.0.2'
+	}
 }
 
 apply from: file('gradle/convention.gradle')
@@ -16,6 +20,7 @@ subprojects {
 	group = "org.anarres.lzo"
 
 	dependencies {
+		testCompile 'org.slf4j:slf4j-api:1.7.7'
 		testCompile 'commons-io:commons-io:2.4'
 	}
 }

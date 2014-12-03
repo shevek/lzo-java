@@ -1,6 +1,4 @@
-// Dependency for plugin was set in buildscript.gradle
-
-subprojects {
+allprojects {
 	apply plugin: 'license' //nl.javadude.gradle.plugins.license.LicensePlugin
 	license {
 		header rootProject.file('codequality/HEADER')
@@ -9,5 +7,3 @@ subprojects {
 		ignoreFailures true
 	}
 }
-
-apply plugin: 'license' //nl.javadude.gradle.plugins.license.LicensePlugin
