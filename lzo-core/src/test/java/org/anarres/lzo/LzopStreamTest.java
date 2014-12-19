@@ -41,11 +41,10 @@
  */
 package org.anarres.lzo;
 
-import java.io.File;
-import org.junit.Ignore;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
@@ -65,7 +64,7 @@ import static org.junit.Assert.*;
 public class LzopStreamTest {
 
     private static final Log LOG = LogFactory.getLog(LzopStreamTest.class);
-    private static long[] FLAGS = new long[]{
+    private static final long[] FLAGS = new long[]{
         0L,
         // Adler32
         LzopConstants.F_ADLER32_C,
@@ -80,7 +79,7 @@ public class LzopStreamTest {
         LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
         LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
     };
-    private static LzoAlgorithm[] lzopAlgorithms = {LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999};
+    private static final LzoAlgorithm[] lzopAlgorithms = {LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999};
 
     public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) throws IOException {
         for (long flags : FLAGS) {

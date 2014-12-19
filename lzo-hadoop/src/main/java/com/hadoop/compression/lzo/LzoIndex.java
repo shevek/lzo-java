@@ -21,7 +21,6 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.util.Arrays;
 import org.anarres.lzo.LzopInputStream;
-
 import org.apache.hadoop.conf.Configurable;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;

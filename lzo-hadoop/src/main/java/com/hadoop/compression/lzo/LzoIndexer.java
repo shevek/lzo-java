@@ -20,7 +20,6 @@ package com.hadoop.compression.lzo;
 import java.io.IOException;
 import java.net.URI;
 import java.text.DecimalFormat;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;
@@ -59,7 +58,7 @@ public class LzoIndexer {
      * @return Indented space for the given indentation level.
      */
     private String getNesting(int nestingLevel) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < nestingLevel; i++) {
             sb.append(INDENT_STRING);
         }

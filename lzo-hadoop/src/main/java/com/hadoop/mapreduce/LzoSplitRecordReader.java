@@ -2,7 +2,6 @@ package com.hadoop.mapreduce;
 
 import java.io.EOFException;
 import java.io.IOException;
-
 import org.anarres.lzo.LzopInputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

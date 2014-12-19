@@ -17,13 +17,14 @@
  */
 package com.hadoop.mapreduce;
 
+import com.hadoop.compression.lzo.LzoIndex;
+import com.hadoop.compression.lzo.LzopCodec;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
@@ -37,9 +38,6 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
-
-import com.hadoop.compression.lzo.LzoIndex;
-import com.hadoop.compression.lzo.LzopCodec;
 
 /**
  * An {@link InputFormat} for lzop compressed text files. Files are broken into

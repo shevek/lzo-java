@@ -17,6 +17,8 @@
  */
 package com.hadoop.mapred;
 
+import com.hadoop.compression.lzo.LzoIndex;
+import com.hadoop.compression.lzo.LzopCodec;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +26,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -36,9 +37,6 @@ import org.apache.hadoop.mapred.InputSplit;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.RecordReader;
 import org.apache.hadoop.mapred.Reporter;
-
-import com.hadoop.compression.lzo.LzoIndex;
-import com.hadoop.compression.lzo.LzopCodec;
 
 /**
  * This class conforms to the old (org.apache.hadoop.mapred.*) hadoop API style 

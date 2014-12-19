@@ -18,7 +18,6 @@ package org.apache.hadoop.io.compress;
 
 import java.io.IOException;
 import java.io.OutputStream;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

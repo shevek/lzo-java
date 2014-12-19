@@ -31,9 +31,8 @@ import org.anarres.lzo.LzoAlgorithm;
 import org.anarres.lzo.LzoConstraint;
 import org.anarres.lzo.LzoLibrary;
 import org.anarres.lzo.LzoTransformer;
-import org.anarres.lzo.lzo_uintp;
 import org.anarres.lzo.SuppressWarnings;
-
+import org.anarres.lzo.lzo_uintp;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;

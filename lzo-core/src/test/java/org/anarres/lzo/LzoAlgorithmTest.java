@@ -4,13 +4,13 @@
  */
 package org.anarres.lzo;
 
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Formatter;
+import java.util.Random;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import java.util.Formatter;
-import java.io.InputStream;
-import java.util.Random;
-import java.util.Arrays;
-import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
