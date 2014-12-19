@@ -15,7 +15,6 @@
  * along with Hadoop-Gpl-Compression.  If not, see
  * <http://www.gnu.org/licenses/>.
  */
-
 package com.hadoop.mapred;
 
 import java.io.IOException;
@@ -50,82 +49,82 @@ import com.hadoop.compression.lzo.LzopCodec;
  * com.hadoop.mapred.DeprecatedLzoTextInputFormat, not 
  * com.hadoop.mapreduce.LzoTextInputFormat.  The classes attempt to be alike in
  * every other respect.
-*/
-
+ */
 @SuppressWarnings("deprecation")
 public class DeprecatedLzoTextInputFormat extends FileInputFormat<LongWritable, Text> {
-  public static final String LZO_INDEX_SUFFIX = ".index";
-  private final Map<Path, LzoIndex> indexes = new HashMap<Path, LzoIndex>();
 
-  @Override
-  protected FileStatus[] listStatus(JobConf conf) throws IOException {
-    List<FileStatus> files = new ArrayList<FileStatus>(Arrays.asList(super.listStatus(conf)));
+    public static final String LZO_INDEX_SUFFIX = ".index";
+    private final Map<Path, LzoIndex> indexes = new HashMap<Path, LzoIndex>();
 
-    String fileExtension = new LzopCodec().getDefaultExtension();
+    @Override
+    protected FileStatus[] listStatus(JobConf conf) throws IOException {
+        List<FileStatus> files = new ArrayList<FileStatus>(Arrays.asList(super.listStatus(conf)));
 
-    Iterator<FileStatus> it = files.iterator();
-    while (it.hasNext()) {
-      FileStatus fileStatus = it.next();
-      Path file = fileStatus.getPath();
+        String fileExtension = new LzopCodec().getDefaultExtension();
 
-      if (!file.toString().endsWith(fileExtension)) {
-        // Get rid of non-LZO files.
-        it.remove();
-      } else {
-        FileSystem fs = file.getFileSystem(conf);
-        LzoIndex index = LzoIndex.readIndex(fs, file);
-        indexes.put(file, index);
-      }
+        Iterator<FileStatus> it = files.iterator();
+        while (it.hasNext()) {
+            FileStatus fileStatus = it.next();
+            Path file = fileStatus.getPath();
+
+            if (!file.toString().endsWith(fileExtension)) {
+                // Get rid of non-LZO files.
+                it.remove();
+            } else {
+                FileSystem fs = file.getFileSystem(conf);
+                LzoIndex index = LzoIndex.readIndex(fs, file);
+                indexes.put(file, index);
+            }
+        }
+
+        return files.toArray(new FileStatus[]{});
     }
 
-    return files.toArray(new FileStatus[] {});
-  }
-
-  @Override
-  protected boolean isSplitable(FileSystem fs, Path filename) {
-    LzoIndex index = indexes.get(filename);
-    return !index.isEmpty();
-  }
-
-  @Override
-  public InputSplit[] getSplits(JobConf conf, int numSplits) throws IOException {
-    FileSplit[] splits = (FileSplit[])super.getSplits(conf, numSplits);
-    // Find new starts/ends of the filesplit that align with the LZO blocks.
-
-    List<FileSplit> result = new ArrayList<FileSplit>();
-
-    for (FileSplit fileSplit: splits) {
-      Path file = fileSplit.getPath();
-      FileSystem fs = file.getFileSystem(conf);
-      LzoIndex index = indexes.get(file);
-      if (index == null) {
-        throw new IOException("Index not found for " + file);
-      }
-      if (index.isEmpty()) {
-        // Empty index, keep it as is.
-        result.add(fileSplit);
-        continue;
-      }
-
-      long start = fileSplit.getStart();
-      long end = start + fileSplit.getLength();
-
-      long lzoStart = index.alignSliceStartToIndex(start, end);
-      long lzoEnd = index.alignSliceEndToIndex(end, fs.getFileStatus(file).getLen());
-
-      if (lzoStart != LzoIndex.NOT_FOUND  && lzoEnd != LzoIndex.NOT_FOUND) {
-        result.add(new FileSplit(file, lzoStart, lzoEnd - lzoStart, fileSplit.getLocations()));
-      }
+    @Override
+    protected boolean isSplitable(FileSystem fs, Path filename) {
+        LzoIndex index = indexes.get(filename);
+        return !index.isEmpty();
     }
 
-    return result.toArray(new FileSplit[result.size()]);
-  }
+    @Override
+    public InputSplit[] getSplits(JobConf conf, int numSplits) throws IOException {
+        FileSplit[] splits = (FileSplit[]) super.getSplits(conf, numSplits);
+        // Find new starts/ends of the filesplit that align with the LZO blocks.
 
-  @Override
-  public RecordReader<LongWritable, Text> getRecordReader(InputSplit split,
-      JobConf conf, Reporter reporter) throws IOException {
-    reporter.setStatus(split.toString());
-    return new DeprecatedLzoLineRecordReader(conf, (FileSplit)split);
-  }
+        List<FileSplit> result = new ArrayList<FileSplit>();
+
+        for (FileSplit fileSplit : splits) {
+            Path file = fileSplit.getPath();
+            FileSystem fs = file.getFileSystem(conf);
+            LzoIndex index = indexes.get(file);
+            if (index == null) {
+                throw new IOException("Index not found for " + file);
+            }
+            if (index.isEmpty()) {
+                // Empty index, keep it as is.
+                result.add(fileSplit);
+                continue;
+            }
+
+            long start = fileSplit.getStart();
+            long end = start + fileSplit.getLength();
+
+            long lzoStart = index.alignSliceStartToIndex(start, end);
+            long lzoEnd = index.alignSliceEndToIndex(end, fs.getFileStatus(file).getLen());
+
+            if (lzoStart != LzoIndex.NOT_FOUND && lzoEnd != LzoIndex.NOT_FOUND) {
+                result.add(new FileSplit(file, lzoStart, lzoEnd - lzoStart, fileSplit.getLocations()));
+            }
+        }
+
+        return result.toArray(new FileSplit[result.size()]);
+    }
+
+    @Override
+    public RecordReader<LongWritable, Text> getRecordReader(InputSplit split,
+            JobConf conf, Reporter reporter) throws IOException {
+        reporter.setStatus(split.toString());
+        return new DeprecatedLzoLineRecordReader(conf, (FileSplit) split);
+    }
 
 }

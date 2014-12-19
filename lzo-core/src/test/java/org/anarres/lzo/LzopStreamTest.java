@@ -80,8 +80,7 @@ public class LzopStreamTest {
         LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
         LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
     };
-    private static LzoAlgorithm[] lzopAlgorithms = { LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999 };
-
+    private static LzoAlgorithm[] lzopAlgorithms = {LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999};
 
     public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) throws IOException {
         for (long flags : FLAGS) {
@@ -90,19 +89,16 @@ public class LzopStreamTest {
                 LOG.info("Compressing " + orig.length + " bytes using " + algorithm);
 
                 // LOG.info("Original:   " + Arrays.toString(orig));
-
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
                 LzopOutputStream cs = new LzopOutputStream(os, compressor, 256, flags);
                 cs.write(orig);
                 cs.close();
 
                 // LOG.info("Compressed: OK.");
-
                 FileUtils.forceMkdir(new File("build/tmp"));
                 FileUtils.writeByteArrayToFile(new File("build/tmp/temp.lzo"), os.toByteArray());
 
                 // LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(algorithm, null);
-
                 ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
                 LzopInputStream us = new LzopInputStream(is);
                 DataInputStream ds = new DataInputStream(us);
@@ -111,7 +107,6 @@ public class LzopStreamTest {
 
                 // LOG.info("Output:     OK.");
                 // LOG.info("Output:     " + Arrays.toString(uncompressed));
-
                 assertArrayEquals(orig, uncompressed);
             } finally {
                 System.out.flush();
@@ -131,7 +126,7 @@ public class LzopStreamTest {
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
-        }   
+        }
     }
 
     // Highly cyclic.
@@ -146,7 +141,7 @@ public class LzopStreamTest {
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
-        }   
+        }
     }
 
     // Essentially uncompressible.
@@ -162,7 +157,7 @@ public class LzopStreamTest {
                 } catch (UnsupportedOperationException e) {
                     // LOG.info("Unsupported algorithm " + algorithm);
                 }
-            }   
+            }
         }
     }
 
@@ -178,7 +173,7 @@ public class LzopStreamTest {
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
-        }   
+        }
     }
 
     @Test
@@ -187,8 +182,5 @@ public class LzopStreamTest {
         testClass(Integer.class);
         testClass(Formatter.class);
     }
-
-
-
 
 }

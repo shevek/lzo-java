@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.anarres.lzo;
 
 import java.io.ByteArrayInputStream;
@@ -32,7 +31,6 @@ public class LzoStreamTest {
         LOG.info("\nCompressing " + orig.length + " bytes using " + algorithm);
 
         // LOG.info("Original:   " + Arrays.toString(orig));
-
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         LzoOutputStream cs = new LzoOutputStream(os, compressor, 256);
         cs.write(orig);
@@ -67,8 +65,8 @@ public class LzoStreamTest {
         for (int i = 0; i < data.length; i++)
             data[i] = (byte) (i & 0xf);
 
-        for (int i = 0; i < data.length-10; i++) {
-            byte[] chunk = Arrays.copyOfRange(data, i, i+10);
+        for (int i = 0; i < data.length - 10; i++) {
+            byte[] chunk = Arrays.copyOfRange(data, i, i + 10);
             cs.write(chunk);
             ts.write(chunk);
         }

@@ -17,7 +17,6 @@
  */
 package com.hadoop.compression.lzo;
 
-
 import org.apache.hadoop.io.compress.CompressionCodec;
 
 /**

@@ -27,7 +27,6 @@ public class LzoAlgorithmTest {
         LOG.info("\nCompressing " + orig.length + " " + desc + " bytes using " + algorithm);
 
         // LOG.info("Original:   " + Arrays.toString(orig));
-
         byte[] compressed = new byte[orig.length * 2];
         lzo_uintp compressed_length = new lzo_uintp(compressed.length);
         int compressed_code = compressor.compress(orig, 0, orig.length, compressed, 0, compressed_length);

@@ -47,27 +47,27 @@ import org.apache.hadoop.io.compress.CompressionCodec;
  */
 public class LzopCodec extends LzoCodec {
 
-	@Override
-	public CompressionOutputStream createOutputStream(OutputStream out, Compressor compressor) throws IOException {
+    @Override
+    public CompressionOutputStream createOutputStream(OutputStream out, Compressor compressor) throws IOException {
         Configuration conf = getConf();
-		LzoCompressor.CompressionStrategy strategy = LzoCodec.getCompressionStrategy(conf);
-		int bufferSize = LzoCodec.getBufferSize(conf);
-		return new LzopOutputStream(out, strategy, bufferSize);
-	}
+        LzoCompressor.CompressionStrategy strategy = LzoCodec.getCompressionStrategy(conf);
+        int bufferSize = LzoCodec.getBufferSize(conf);
+        return new LzopOutputStream(out, strategy, bufferSize);
+    }
 
-	@Override
-	public CompressionInputStream createInputStream(InputStream in, Decompressor decompressor) throws IOException {
-		// Ensure native-lzo library is loaded & initialized
-		return new LzopInputStream(in);
-	}
+    @Override
+    public CompressionInputStream createInputStream(InputStream in, Decompressor decompressor) throws IOException {
+        // Ensure native-lzo library is loaded & initialized
+        return new LzopInputStream(in);
+    }
 
-	@Override
-	public Decompressor createDecompressor() {
-		return null;
-	}
+    @Override
+    public Decompressor createDecompressor() {
+        return null;
+    }
 
-	@Override
-	public String getDefaultExtension() {
-		return ".lzo";
-	}
+    @Override
+    public String getDefaultExtension() {
+        return ".lzo";
+    }
 }

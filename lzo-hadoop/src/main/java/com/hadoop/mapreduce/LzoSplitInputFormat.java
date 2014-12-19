@@ -12,16 +12,16 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 public class LzoSplitInputFormat extends FileInputFormat<Path, LongWritable> {
 
-  @Override
-  public RecordReader<Path, LongWritable> createRecordReader(InputSplit inputSplit,
-      TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
-    return new LzoSplitRecordReader();
-  }
+    @Override
+    public RecordReader<Path, LongWritable> createRecordReader(InputSplit inputSplit,
+            TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
+        return new LzoSplitRecordReader();
+    }
 
-  @Override
-  protected boolean isSplitable(JobContext context, Path filename) {
+    @Override
+    protected boolean isSplitable(JobContext context, Path filename) {
     // Force the files to be unsplittable, because indexing requires seeing all the
-    // compressed blocks in succession.
-    return false;
-  }
+        // compressed blocks in succession.
+        return false;
+    }
 }

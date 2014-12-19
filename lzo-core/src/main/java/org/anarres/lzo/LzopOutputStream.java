@@ -116,11 +116,11 @@ public class LzopOutputStream extends LzoOutputStream {
                     dob.writeByte(5);
                     break;
                 /*
-                case LZO1X_15:
-                dob.writeByte(LzopConstants.M_LZO1X_1_15);
-                dob.writeByte(1);
-                break;
-                */
+                 case LZO1X_15:
+                 dob.writeByte(LzopConstants.M_LZO1X_1_15);
+                 dob.writeByte(1);
+                 break;
+                 */
                 case LZO1X_999:
                     dob.writeByte(LzopConstants.M_LZO1X_999);
                     dob.writeByte(getCompressor().getCompressionLevel());

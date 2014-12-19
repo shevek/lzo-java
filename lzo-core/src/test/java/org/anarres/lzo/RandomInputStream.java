@@ -13,19 +13,19 @@ import org.apache.commons.io.input.NullInputStream;
  */
 public class RandomInputStream extends NullInputStream {
 
-	private final Random r = new Random();
+    private final Random r = new Random();
 
-	public RandomInputStream(long size) {
-		super(size);
-	}
+    public RandomInputStream(long size) {
+        super(size);
+    }
 
-	@Override
-	protected int processByte() {
-		return r.nextInt() & 0xff;
-	}
+    @Override
+    protected int processByte() {
+        return r.nextInt() & 0xff;
+    }
 
-	@Override
-	protected void processBytes(byte[] bytes, int offset, int length) {
-		r.nextBytes(bytes);
-	}
+    @Override
+    protected void processBytes(byte[] bytes, int offset, int length) {
+        r.nextBytes(bytes);
+    }
 }

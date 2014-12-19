@@ -15,7 +15,6 @@
  * along with Hadoop-Gpl-Compression.  If not, see
  * <http://www.gnu.org/licenses/>.
  */
- 
 package com.hadoop.mapreduce;
 
 import java.io.IOException;
@@ -49,82 +48,82 @@ import com.hadoop.compression.lzo.LzopCodec;
  */
 public class LzoTextInputFormat extends FileInputFormat<LongWritable, Text> {
 
-  private final Map<Path, LzoIndex> indexes = new HashMap<Path, LzoIndex>();
+    private final Map<Path, LzoIndex> indexes = new HashMap<Path, LzoIndex>();
 
-  @Override
-  protected List<FileStatus> listStatus(JobContext job) throws IOException {
-    List<FileStatus> files = super.listStatus(job);
+    @Override
+    protected List<FileStatus> listStatus(JobContext job) throws IOException {
+        List<FileStatus> files = super.listStatus(job);
 
-    String fileExtension = new LzopCodec().getDefaultExtension();
-    Configuration conf = job.getConfiguration();
+        String fileExtension = new LzopCodec().getDefaultExtension();
+        Configuration conf = job.getConfiguration();
 
-    for (Iterator<FileStatus> iterator = files.iterator(); iterator.hasNext();) {
-      FileStatus fileStatus = iterator.next();
-      Path file = fileStatus.getPath();
-      FileSystem fs = file.getFileSystem(conf);
+        for (Iterator<FileStatus> iterator = files.iterator(); iterator.hasNext();) {
+            FileStatus fileStatus = iterator.next();
+            Path file = fileStatus.getPath();
+            FileSystem fs = file.getFileSystem(conf);
 
-      if (!file.toString().endsWith(fileExtension)) {
-        //get rid of non lzo files
-        iterator.remove();
-      } else {
-        //read the index file
-        LzoIndex index = LzoIndex.readIndex(fs, file);
-        indexes.put(file, index);
-      }
+            if (!file.toString().endsWith(fileExtension)) {
+                //get rid of non lzo files
+                iterator.remove();
+            } else {
+                //read the index file
+                LzoIndex index = LzoIndex.readIndex(fs, file);
+                indexes.put(file, index);
+            }
+        }
+
+        return files;
     }
 
-    return files;
-  }
+    @Override
+    protected boolean isSplitable(JobContext context, Path filename) {
+        LzoIndex index = indexes.get(filename);
+        return !index.isEmpty();
+    }
 
-  @Override
-  protected boolean isSplitable(JobContext context, Path filename) {
-    LzoIndex index = indexes.get(filename);
-    return !index.isEmpty();
-  }
-
-  @Override
-  public List<InputSplit> getSplits(JobContext job) throws IOException {
-    List<InputSplit> splits = super.getSplits(job);
-    Configuration conf = job.getConfiguration();
+    @Override
+    public List<InputSplit> getSplits(JobContext job) throws IOException {
+        List<InputSplit> splits = super.getSplits(job);
+        Configuration conf = job.getConfiguration();
     // find new start/ends of the filesplit that aligns
-    // with the lzo blocks
+        // with the lzo blocks
 
-    List<InputSplit> result = new ArrayList<InputSplit>();
+        List<InputSplit> result = new ArrayList<InputSplit>();
 
-    for (InputSplit genericSplit : splits) {
-      // load the index
-      FileSplit fileSplit = (FileSplit) genericSplit;
-      Path file = fileSplit.getPath();
-      FileSystem fs = file.getFileSystem(conf);
-      LzoIndex index = indexes.get(file);
-      if (index == null) {
-        throw new IOException("Index not found for " + file);
-      }
+        for (InputSplit genericSplit : splits) {
+            // load the index
+            FileSplit fileSplit = (FileSplit) genericSplit;
+            Path file = fileSplit.getPath();
+            FileSystem fs = file.getFileSystem(conf);
+            LzoIndex index = indexes.get(file);
+            if (index == null) {
+                throw new IOException("Index not found for " + file);
+            }
 
-      if (index.isEmpty()) {
-        // empty index, keep as is
-        result.add(fileSplit);
-        continue;
-      }
+            if (index.isEmpty()) {
+                // empty index, keep as is
+                result.add(fileSplit);
+                continue;
+            }
 
-      long start = fileSplit.getStart();
-      long end = start + fileSplit.getLength();
+            long start = fileSplit.getStart();
+            long end = start + fileSplit.getLength();
 
-      long lzoStart = index.alignSliceStartToIndex(start, end);
-      long lzoEnd = index.alignSliceEndToIndex(end, fs.getFileStatus(file).getLen());
+            long lzoStart = index.alignSliceStartToIndex(start, end);
+            long lzoEnd = index.alignSliceEndToIndex(end, fs.getFileStatus(file).getLen());
 
-      if (lzoStart != LzoIndex.NOT_FOUND  && lzoEnd != LzoIndex.NOT_FOUND) {
-        result.add(new FileSplit(file, lzoStart, lzoEnd - lzoStart, fileSplit.getLocations()));
-      }
+            if (lzoStart != LzoIndex.NOT_FOUND && lzoEnd != LzoIndex.NOT_FOUND) {
+                result.add(new FileSplit(file, lzoStart, lzoEnd - lzoStart, fileSplit.getLocations()));
+            }
+        }
+
+        return result;
     }
 
-    return result;
-  }
+    @Override
+    public RecordReader<LongWritable, Text> createRecordReader(InputSplit split,
+            TaskAttemptContext taskAttempt) throws IOException, InterruptedException {
 
-  @Override
-  public RecordReader<LongWritable, Text> createRecordReader(InputSplit split,
-      TaskAttemptContext taskAttempt) throws IOException, InterruptedException {
-
-    return new LzoLineRecordReader();
-  }
+        return new LzoLineRecordReader();
+    }
 }

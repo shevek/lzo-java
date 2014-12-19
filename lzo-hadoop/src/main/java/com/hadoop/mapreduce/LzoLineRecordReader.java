@@ -15,7 +15,6 @@
  * along with Hadoop-Gpl-Compression.  If not, see
  * <http://www.gnu.org/licenses/>.
  */
-
 package com.hadoop.mapreduce;
 
 import java.io.IOException;
@@ -40,99 +39,98 @@ import org.apache.hadoop.util.LineReader;
  */
 public class LzoLineRecordReader extends RecordReader<LongWritable, Text> {
 
-  private long start;
-  private long pos;
-  private long end;
-  private LineReader in;
-  private FSDataInputStream fileIn;
+    private long start;
+    private long pos;
+    private long end;
+    private LineReader in;
+    private FSDataInputStream fileIn;
 
-  private final LongWritable key = new LongWritable();
-  private final Text value = new Text();
+    private final LongWritable key = new LongWritable();
+    private final Text value = new Text();
 
-  /**
-   * Get the progress within the split.
-   */
-  @Override
-  public float getProgress() {
-    if (start == end) {
-      return 0.0f;
-    } else {
-      return Math.min(1.0f, (pos - start) / (float) (end - start));
-    }
-  }
-
-  public synchronized long getPos() throws IOException {
-    return pos;
-  }
-
-  @Override
-  public synchronized void close() throws IOException {
-    if (in != null) {
-      in.close();
-    }
-  }
-
-  @Override
-  public LongWritable getCurrentKey() throws IOException, InterruptedException {
-    return key;
-  }
-
-  @Override
-  public Text getCurrentValue() throws IOException, InterruptedException {
-    return value;
-  }
-
-  @Override
-  public void initialize(InputSplit genericSplit, TaskAttemptContext context) throws IOException, InterruptedException {
-    FileSplit split = (FileSplit) genericSplit;
-    start = split.getStart();
-    end = start + split.getLength();
-    final Path file = split.getPath();
-    Configuration job = context.getConfiguration();
-
-    FileSystem fs = file.getFileSystem(job);
-    CompressionCodecFactory compressionCodecs = new CompressionCodecFactory(job);
-    final CompressionCodec codec = compressionCodecs.getCodec(file);
-    if (codec == null) {
-      throw new IOException("Codec for file " + file + " not found, cannot run");
+    /**
+     * Get the progress within the split.
+     */
+    @Override
+    public float getProgress() {
+        if (start == end) {
+            return 0.0f;
+        } else {
+            return Math.min(1.0f, (pos - start) / (float) (end - start));
+        }
     }
 
-    // open the file and seek to the start of the split
-    fileIn = fs.open(split.getPath());
-
-    // creates input stream and also reads the file header
-    in = new LineReader(codec.createInputStream(fileIn), job);
-
-    if (start != 0) {
-      fileIn.seek(start);
-
-      // read and ignore the first line
-      in.readLine(new Text());
-      start = fileIn.getPos();
+    public synchronized long getPos() throws IOException {
+        return pos;
     }
 
-    this.pos = start;
-  }
+    @Override
+    public synchronized void close() throws IOException {
+        if (in != null) {
+            in.close();
+        }
+    }
 
-  @Override
-  public boolean nextKeyValue() throws IOException, InterruptedException {
+    @Override
+    public LongWritable getCurrentKey() throws IOException, InterruptedException {
+        return key;
+    }
+
+    @Override
+    public Text getCurrentValue() throws IOException, InterruptedException {
+        return value;
+    }
+
+    @Override
+    public void initialize(InputSplit genericSplit, TaskAttemptContext context) throws IOException, InterruptedException {
+        FileSplit split = (FileSplit) genericSplit;
+        start = split.getStart();
+        end = start + split.getLength();
+        final Path file = split.getPath();
+        Configuration job = context.getConfiguration();
+
+        FileSystem fs = file.getFileSystem(job);
+        CompressionCodecFactory compressionCodecs = new CompressionCodecFactory(job);
+        final CompressionCodec codec = compressionCodecs.getCodec(file);
+        if (codec == null) {
+            throw new IOException("Codec for file " + file + " not found, cannot run");
+        }
+
+        // open the file and seek to the start of the split
+        fileIn = fs.open(split.getPath());
+
+        // creates input stream and also reads the file header
+        in = new LineReader(codec.createInputStream(fileIn), job);
+
+        if (start != 0) {
+            fileIn.seek(start);
+
+            // read and ignore the first line
+            in.readLine(new Text());
+            start = fileIn.getPos();
+        }
+
+        this.pos = start;
+    }
+
+    @Override
+    public boolean nextKeyValue() throws IOException, InterruptedException {
     //since the lzop codec reads everything in lzo blocks
-    //we can't stop if the pos == end
-    //instead we wait for the next block to be read in when
-    //pos will be > end
-    while (pos <= end) {
-      key.set(pos);
+        //we can't stop if the pos == end
+        //instead we wait for the next block to be read in when
+        //pos will be > end
+        while (pos <= end) {
+            key.set(pos);
 
-      int newSize = in.readLine(value);
-      if (newSize == 0) {
+            int newSize = in.readLine(value);
+            if (newSize == 0) {
+                return false;
+            }
+            pos = fileIn.getPos();
+
+            return true;
+        }
+
         return false;
-      }
-      pos = fileIn.getPos();
-
-      return true;
     }
-
-    return false;
-  }
 }
-

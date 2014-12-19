@@ -50,17 +50,17 @@ import javax.annotation.Nonnegative;
 public class lzo_uintp {
 
     @Nonnegative
-	public int value;
+    public int value;
 
-	public lzo_uintp() {
-	}
+    public lzo_uintp() {
+    }
 
-	public lzo_uintp(@Nonnegative int value) {
-		this.value = value;
-	}
+    public lzo_uintp(@Nonnegative int value) {
+        this.value = value;
+    }
 
-	@Override
-	public String toString() {
-		return String.valueOf(value);
-	}
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
 }
