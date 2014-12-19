@@ -1,0 +1,3376 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+
+<coverage line-rate="0.2556291390728477" branch-rate="0.15436241610738255" lines-covered="193" lines-valid="755" branches-covered="46" branches-valid="298" complexity="2.2857142857142856" version="2.0.3" timestamp="1419018912291">
+	<sources>
+		<source>/home/shevek/java/lzo-java/lzo-hadoop/src/main/java</source>
+	</sources>
+	<packages>
+		<package name="com.hadoop.compression.lzo" line-rate="0.0" branch-rate="0.0" complexity="3.347826086956522">
+			<classes>
+				<class name="com.hadoop.compression.lzo.DistributedLzoIndexer" filename="com/hadoop/compression/lzo/DistributedLzoIndexer.java" line-rate="0.0" branch-rate="0.0" complexity="4.2">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
+								<line number="29" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="main" signature="([Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="114" hits="0" branch="false"/>
+								<line number="115" hits="0" branch="false"/>
+								<line number="116" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="printUsage" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="119" hits="0" branch="false"/>
+								<line number="120" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="run" signature="([Ljava/lang/String;)I" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="71" hits="0" branch="true" condition-coverage="0% (0/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+										<condition number="2" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="72" hits="0" branch="false"/>
+								<line number="73" hits="0" branch="false"/>
+								<line number="74" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="79" hits="0" branch="false"/>
+								<line number="82" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="83" hits="0" branch="false"/>
+								<line number="85" hits="0" branch="false"/>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+								<line number="90" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="93" hits="0" branch="false"/>
+								<line number="97" hits="0" branch="false"/>
+								<line number="100" hits="0" branch="false"/>
+								<line number="101" hits="0" branch="false"/>
+								<line number="102" hits="0" branch="false"/>
+								<line number="103" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="106" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="107" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="110" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="walkPath" signature="(Lorg/apache/hadoop/fs/Path;Lorg/apache/hadoop/fs/PathFilter;Ljava/util/List;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="38" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="42" hits="0" branch="false"/>
+								<line number="43" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="44" hits="0" branch="false"/>
+								<line number="46" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="51" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="52" hits="0" branch="false"/>
+								<line number="53" hits="0" branch="false"/>
+								<line number="55" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+								<line number="64" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+								<line number="67" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="24" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="29" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="42" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="44" hits="0" branch="false"/>
+						<line number="46" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="51" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="52" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="true" condition-coverage="0% (0/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+								<condition number="2" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="72" hits="0" branch="false"/>
+						<line number="73" hits="0" branch="false"/>
+						<line number="74" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="79" hits="0" branch="false"/>
+						<line number="82" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="83" hits="0" branch="false"/>
+						<line number="85" hits="0" branch="false"/>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="90" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="97" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="false"/>
+						<line number="101" hits="0" branch="false"/>
+						<line number="102" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="106" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="107" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="114" hits="0" branch="false"/>
+						<line number="115" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="false"/>
+						<line number="120" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.compression.lzo.DistributedLzoIndexer$1" filename="com/hadoop/compression/lzo/DistributedLzoIndexer.java" line-rate="0.0" branch-rate="0.0" complexity="4.2">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/hadoop/compression/lzo/DistributedLzoIndexer;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="accept" signature="(Lorg/apache/hadoop/fs/Path;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="29" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+					</lines>
+				</class>
+				<class name="com.hadoop.compression.lzo.LzoCodec" filename="com/hadoop/compression/lzo/LzoCodec.java" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="26" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.compression.lzo.LzoIndex" filename="com/hadoop/compression/lzo/LzoIndex.java" line-rate="0.0" branch-rate="0.0" complexity="3.4545454545454546">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(I)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="54" hits="0" branch="false"/>
+								<line number="55" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="alignSliceEndToIndex" signature="(JJ)J" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="147" hits="0" branch="false"/>
+								<line number="148" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="149" hits="0" branch="false"/>
+								<line number="153" hits="0" branch="false"/>
+								<line number="155" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="alignSliceStartToIndex" signature="(JJ)J" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="126" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="129" hits="0" branch="false"/>
+								<line number="130" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="131" hits="0" branch="false"/>
+								<line number="133" hits="0" branch="false"/>
+								<line number="135" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createIndex" signature="(Lorg/apache/hadoop/fs/FileSystem;Lorg/apache/hadoop/fs/Path;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="202" hits="0" branch="false"/>
+								<line number="203" hits="0" branch="false"/>
+								<line number="204" hits="0" branch="false"/>
+								<line number="205" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="206" hits="0" branch="false"/>
+								<line number="210" hits="0" branch="false"/>
+								<line number="212" hits="0" branch="false"/>
+								<line number="213" hits="0" branch="false"/>
+								<line number="214" hits="0" branch="false"/>
+								<line number="215" hits="0" branch="false"/>
+								<line number="219" hits="0" branch="false"/>
+								<line number="221" hits="0" branch="false"/>
+								<line number="222" hits="0" branch="false"/>
+								<line number="224" hits="0" branch="false"/>
+								<line number="225" hits="0" branch="false"/>
+								<line number="226" hits="0" branch="false"/>
+								<line number="230" hits="0" branch="false"/>
+								<line number="231" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="232" hits="0" branch="false"/>
+								<line number="233" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="234" hits="0" branch="false"/>
+								<line number="237" hits="0" branch="false"/>
+								<line number="238" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="239" hits="0" branch="false"/>
+								<line number="243" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="244" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="246" hits="0" branch="false"/>
+								<line number="248" hits="0" branch="false"/>
+								<line number="250" hits="0" branch="false"/>
+								<line number="251" hits="0" branch="false"/>
+								<line number="253" hits="0" branch="false"/>
+								<line number="256" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="257" hits="0" branch="false"/>
+								<line number="260" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="261" hits="0" branch="false"/>
+								<line number="264" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="266" hits="0" branch="false"/>
+								<line number="269" hits="0" branch="false"/>
+								<line number="271" hits="0" branch="false"/>
+								<line number="272" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="findNextPosition" signature="(J)J" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="93" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="97" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="false"/>
+								<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="101" hits="0" branch="false"/>
+								<line number="103" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getNumberOfBlocks" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="72" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPosition" signature="(I)J" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="83" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isEmpty" signature="()Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="readIndex" signature="(Lorg/apache/hadoop/fs/FileSystem;Lorg/apache/hadoop/fs/Path;)Lcom/hadoop/compression/lzo/LzoIndex;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="167" hits="0" branch="false"/>
+								<line number="169" hits="0" branch="false"/>
+								<line number="170" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="172" hits="0" branch="false"/>
+								<line number="175" hits="0" branch="false"/>
+								<line number="176" hits="0" branch="false"/>
+								<line number="177" hits="0" branch="false"/>
+								<line number="178" hits="0" branch="false"/>
+								<line number="179" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="180" hits="0" branch="false"/>
+								<line number="182" hits="0" branch="false"/>
+								<line number="184" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="185" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="set" signature="(IJ)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="72" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="97" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="101" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="126" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="129" hits="0" branch="false"/>
+						<line number="130" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="131" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+						<line number="135" hits="0" branch="false"/>
+						<line number="147" hits="0" branch="false"/>
+						<line number="148" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="149" hits="0" branch="false"/>
+						<line number="153" hits="0" branch="false"/>
+						<line number="155" hits="0" branch="false"/>
+						<line number="167" hits="0" branch="false"/>
+						<line number="169" hits="0" branch="false"/>
+						<line number="170" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="172" hits="0" branch="false"/>
+						<line number="175" hits="0" branch="false"/>
+						<line number="176" hits="0" branch="false"/>
+						<line number="177" hits="0" branch="false"/>
+						<line number="178" hits="0" branch="false"/>
+						<line number="179" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="180" hits="0" branch="false"/>
+						<line number="182" hits="0" branch="false"/>
+						<line number="184" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="185" hits="0" branch="false"/>
+						<line number="202" hits="0" branch="false"/>
+						<line number="203" hits="0" branch="false"/>
+						<line number="204" hits="0" branch="false"/>
+						<line number="205" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="206" hits="0" branch="false"/>
+						<line number="210" hits="0" branch="false"/>
+						<line number="212" hits="0" branch="false"/>
+						<line number="213" hits="0" branch="false"/>
+						<line number="214" hits="0" branch="false"/>
+						<line number="215" hits="0" branch="false"/>
+						<line number="219" hits="0" branch="false"/>
+						<line number="221" hits="0" branch="false"/>
+						<line number="222" hits="0" branch="false"/>
+						<line number="224" hits="0" branch="false"/>
+						<line number="225" hits="0" branch="false"/>
+						<line number="226" hits="0" branch="false"/>
+						<line number="230" hits="0" branch="false"/>
+						<line number="231" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="232" hits="0" branch="false"/>
+						<line number="233" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="234" hits="0" branch="false"/>
+						<line number="237" hits="0" branch="false"/>
+						<line number="238" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="239" hits="0" branch="false"/>
+						<line number="243" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="244" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="246" hits="0" branch="false"/>
+						<line number="248" hits="0" branch="false"/>
+						<line number="250" hits="0" branch="false"/>
+						<line number="251" hits="0" branch="false"/>
+						<line number="253" hits="0" branch="false"/>
+						<line number="256" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="257" hits="0" branch="false"/>
+						<line number="260" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="261" hits="0" branch="false"/>
+						<line number="264" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="266" hits="0" branch="false"/>
+						<line number="269" hits="0" branch="false"/>
+						<line number="271" hits="0" branch="false"/>
+						<line number="272" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.compression.lzo.LzoIndexer" filename="com/hadoop/compression/lzo/LzoIndexer.java" line-rate="0.0" branch-rate="0.0" complexity="2.5714285714285716">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="32" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lorg/apache/hadoop/conf/Configuration;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="35" hits="0" branch="false"/>
+								<line number="36" hits="0" branch="false"/>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="false"/>
+								<line number="42" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getNesting" signature="(I)Ljava/lang/String;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="61" hits="0" branch="false"/>
+								<line number="62" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="63" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="index" signature="(Lorg/apache/hadoop/fs/Path;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="51" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="indexInternal" signature="(Lorg/apache/hadoop/fs/Path;I)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="77" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+								<line number="81" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="82" hits="0" branch="false"/>
+								<line number="83" hits="0" branch="false"/>
+								<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="85" hits="0" branch="false"/>
+								<line number="87" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="90" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="93" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="false"/>
+								<line number="97" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="98" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="false"/>
+								<line number="100" hits="0" branch="false"/>
+								<line number="106" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="indexSingleFile" signature="(Lorg/apache/hadoop/fs/FileSystem;Lorg/apache/hadoop/fs/Path;)Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="116" hits="0" branch="false"/>
+								<line number="117" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+								<line number="119" hits="0" branch="false"/>
+								<line number="120" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="main" signature="([Ljava/lang/String;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="128" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="129" hits="0" branch="false"/>
+								<line number="130" hits="0" branch="false"/>
+								<line number="133" hits="0" branch="false"/>
+								<line number="134" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="136" hits="0" branch="false"/>
+								<line number="137" hits="0" branch="false"/>
+								<line number="138" hits="0" branch="false"/>
+								<line number="139" hits="0" branch="false"/>
+								<line number="141" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="printUsage" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="144" hits="0" branch="false"/>
+								<line number="145" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="32" hits="0" branch="false"/>
+						<line number="35" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="51" hits="0" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="63" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="81" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="82" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="false"/>
+						<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="85" hits="0" branch="false"/>
+						<line number="87" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="90" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+						<line number="97" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="98" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="false"/>
+						<line number="106" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="false"/>
+						<line number="117" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="119" hits="0" branch="false"/>
+						<line number="120" hits="0" branch="false"/>
+						<line number="128" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="129" hits="0" branch="false"/>
+						<line number="130" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+						<line number="134" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="136" hits="0" branch="false"/>
+						<line number="137" hits="0" branch="false"/>
+						<line number="138" hits="0" branch="false"/>
+						<line number="139" hits="0" branch="false"/>
+						<line number="141" hits="0" branch="false"/>
+						<line number="144" hits="0" branch="false"/>
+						<line number="145" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.compression.lzo.LzopCodec" filename="com/hadoop/compression/lzo/LzopCodec.java" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="27" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="27" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.hadoop.mapred" line-rate="0.0" branch-rate="0.0" complexity="2.6363636363636362">
+			<classes>
+				<class name="com.hadoop.mapred.DeprecatedLzoLineRecordReader" filename="com/hadoop/mapred/DeprecatedLzoLineRecordReader.java" line-rate="0.0" branch-rate="0.0" complexity="2.4285714285714284">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lorg/apache/hadoop/conf/Configuration;Lorg/apache/hadoop/mapred/FileSplit;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="36" hits="0" branch="false"/>
+								<line number="43" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="false"/>
+								<line number="45" hits="0" branch="false"/>
+								<line number="46" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+								<line number="50" hits="0" branch="false"/>
+								<line number="51" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="52" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+								<line number="59" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="60" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+								<line number="64" hits="0" branch="false"/>
+								<line number="67" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="close" signature="()V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="107" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="108" hits="0" branch="false"/>
+								<line number="110" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createKey" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="createKey" signature="()Lorg/apache/hadoop/io/LongWritable;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="71" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createValue" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="createValue" signature="()Lorg/apache/hadoop/io/Text;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="75" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPos" signature="()J" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="103" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getProgress" signature="()F" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="96" hits="0" branch="false"/>
+								<line number="98" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="next" signature="(Ljava/lang/Object;Ljava/lang/Object;)Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="33" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="next" signature="(Lorg/apache/hadoop/io/LongWritable;Lorg/apache/hadoop/io/Text;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="81" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="82" hits="0" branch="false"/>
+								<line number="84" hits="0" branch="false"/>
+								<line number="85" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="86" hits="0" branch="false"/>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+								<line number="91" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="33" hits="0" branch="false"/>
+						<line number="36" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="false"/>
+						<line number="45" hits="0" branch="false"/>
+						<line number="46" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+						<line number="51" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="52" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="60" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="false"/>
+						<line number="75" hits="0" branch="false"/>
+						<line number="81" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="82" hits="0" branch="false"/>
+						<line number="84" hits="0" branch="false"/>
+						<line number="85" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="86" hits="0" branch="false"/>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="96" hits="0" branch="false"/>
+						<line number="98" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="false"/>
+						<line number="107" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="108" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapred.DeprecatedLzoTextInputFormat" filename="com/hadoop/mapred/DeprecatedLzoTextInputFormat.java" line-rate="0.0" branch-rate="0.0" complexity="3.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="52" hits="0" branch="false"/>
+								<line number="55" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getRecordReader" signature="(Lorg/apache/hadoop/mapred/InputSplit;Lorg/apache/hadoop/mapred/JobConf;Lorg/apache/hadoop/mapred/Reporter;)Lorg/apache/hadoop/mapred/RecordReader;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="124" hits="0" branch="false"/>
+								<line number="125" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getSplits" signature="(Lorg/apache/hadoop/mapred/JobConf;I)[Lorg/apache/hadoop/mapred/InputSplit;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="89" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="95" hits="0" branch="false"/>
+								<line number="96" hits="0" branch="false"/>
+								<line number="97" hits="0" branch="false"/>
+								<line number="98" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="99" hits="0" branch="false"/>
+								<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="103" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="107" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="110" hits="0" branch="false"/>
+								<line number="111" hits="0" branch="false"/>
+								<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="114" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isSplitable" signature="(Lorg/apache/hadoop/fs/FileSystem;Lorg/apache/hadoop/fs/Path;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="83" hits="0" branch="false"/>
+								<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="listStatus" signature="(Lorg/apache/hadoop/mapred/JobConf;)[Lorg/apache/hadoop/fs/FileStatus;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="59" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+								<line number="64" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="65" hits="0" branch="false"/>
+								<line number="66" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="0" branch="false"/>
+								<line number="72" hits="0" branch="false"/>
+								<line number="73" hits="0" branch="false"/>
+								<line number="74" hits="0" branch="false"/>
+								<line number="76" hits="0" branch="false"/>
+								<line number="78" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="52" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="64" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="65" hits="0" branch="false"/>
+						<line number="66" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="0" branch="false"/>
+						<line number="72" hits="0" branch="false"/>
+						<line number="73" hits="0" branch="false"/>
+						<line number="74" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="false"/>
+						<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="89" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="95" hits="0" branch="false"/>
+						<line number="96" hits="0" branch="false"/>
+						<line number="97" hits="0" branch="false"/>
+						<line number="98" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="99" hits="0" branch="false"/>
+						<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="103" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="107" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="false"/>
+						<line number="111" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="114" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="124" hits="0" branch="false"/>
+						<line number="125" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="com.hadoop.mapreduce" line-rate="0.0" branch-rate="0.0" complexity="1.9375">
+			<classes>
+				<class name="com.hadoop.mapreduce.LzoIndexOutputFormat" filename="com/hadoop/mapreduce/LzoIndexOutputFormat.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="13" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="checkOutputSpecs" signature="(Lorg/apache/hadoop/mapreduce/JobContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getOutputCommitter" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)Lorg/apache/hadoop/mapreduce/OutputCommitter;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getRecordWriter" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)Lorg/apache/hadoop/mapreduce/RecordWriter;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="18" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="13" hits="0" branch="false"/>
+						<line number="18" hits="0" branch="false"/>
+						<line number="23" hits="0" branch="false"/>
+						<line number="30" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoIndexOutputFormat$1" filename="com/hadoop/mapreduce/LzoIndexOutputFormat.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Lcom/hadoop/mapreduce/LzoIndexOutputFormat;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="30" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="abortTask" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="49" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="cleanupJob" signature="(Lorg/apache/hadoop/mapreduce/JobContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="commitTask" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="45" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="needsTaskCommit" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setupJob" signature="(Lorg/apache/hadoop/mapreduce/JobContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="33" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setupTask" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="41" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="30" hits="0" branch="false"/>
+						<line number="33" hits="0" branch="false"/>
+						<line number="37" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="45" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoIndexRecordWriter" filename="com/hadoop/mapreduce/LzoIndexRecordWriter.java" line-rate="0.0" branch-rate="0.0" complexity="1.5">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="16" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="26" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
+								<line number="28" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="close" signature="(Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="42" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="44" hits="0" branch="false"/>
+								<line number="46" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+								<line number="50" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setupOutputFile" signature="(Lorg/apache/hadoop/fs/Path;)Lorg/apache/hadoop/fs/FSDataOutputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="0" branch="false"/>
+								<line number="54" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+								<line number="59" hits="0" branch="false"/>
+								<line number="62" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+								<line number="65" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="write" signature="(Ljava/lang/Object;Ljava/lang/Object;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="14" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="write" signature="(Lorg/apache/hadoop/fs/Path;Lorg/apache/hadoop/io/LongWritable;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="34" hits="0" branch="false"/>
+								<line number="35" hits="0" branch="false"/>
+								<line number="37" hits="0" branch="false"/>
+								<line number="38" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="14" hits="0" branch="false"/>
+						<line number="16" hits="0" branch="false"/>
+						<line number="26" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="28" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="34" hits="0" branch="false"/>
+						<line number="35" hits="0" branch="false"/>
+						<line number="37" hits="0" branch="false"/>
+						<line number="38" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="44" hits="0" branch="false"/>
+						<line number="46" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="54" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="59" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="65" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoLineRecordReader" filename="com/hadoop/mapreduce/LzoLineRecordReader.java" line-rate="0.0" branch-rate="0.0" complexity="2.4285714285714284">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="close" signature="()V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="69" hits="0" branch="false"/>
+								<line number="71" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentKey" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="39" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentKey" signature="()Lorg/apache/hadoop/io/LongWritable;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="75" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentValue" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="getCurrentValue" signature="()Lorg/apache/hadoop/io/Text;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="80" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getPos" signature="()J" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="63" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getProgress" signature="()F" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="55" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="56" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="initialize" signature="(Lorg/apache/hadoop/mapreduce/InputSplit;Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="85" hits="0" branch="false"/>
+								<line number="86" hits="0" branch="false"/>
+								<line number="87" hits="0" branch="false"/>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+								<line number="91" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="93" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="95" hits="0" branch="false"/>
+								<line number="99" hits="0" branch="false"/>
+								<line number="102" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="105" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="109" hits="0" branch="false"/>
+								<line number="112" hits="0" branch="false"/>
+								<line number="113" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="nextKeyValue" signature="()Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="121" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="122" hits="0" branch="false"/>
+								<line number="124" hits="0" branch="false"/>
+								<line number="125" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="126" hits="0" branch="false"/>
+								<line number="128" hits="0" branch="false"/>
+								<line number="130" hits="0" branch="false"/>
+								<line number="133" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="39" hits="0" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="56" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="69" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="false"/>
+						<line number="75" hits="0" branch="false"/>
+						<line number="80" hits="0" branch="false"/>
+						<line number="85" hits="0" branch="false"/>
+						<line number="86" hits="0" branch="false"/>
+						<line number="87" hits="0" branch="false"/>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="95" hits="0" branch="false"/>
+						<line number="99" hits="0" branch="false"/>
+						<line number="102" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="105" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="109" hits="0" branch="false"/>
+						<line number="112" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="false"/>
+						<line number="121" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="122" hits="0" branch="false"/>
+						<line number="124" hits="0" branch="false"/>
+						<line number="125" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="126" hits="0" branch="false"/>
+						<line number="128" hits="0" branch="false"/>
+						<line number="130" hits="0" branch="false"/>
+						<line number="133" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoSplitInputFormat" filename="com/hadoop/mapreduce/LzoSplitInputFormat.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="12" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createRecordReader" signature="(Lorg/apache/hadoop/mapreduce/InputSplit;Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)Lorg/apache/hadoop/mapreduce/RecordReader;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="17" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isSplitable" signature="(Lorg/apache/hadoop/mapreduce/JobContext;Lorg/apache/hadoop/fs/Path;)Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="24" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="12" hits="0" branch="false"/>
+						<line number="17" hits="0" branch="false"/>
+						<line number="24" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoSplitRecordReader" filename="com/hadoop/mapreduce/LzoSplitRecordReader.java" line-rate="0.0" branch-rate="0.0" complexity="2.6666666666666665">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="25" hits="0" branch="false"/>
+								<line number="27" hits="0" branch="false"/>
+								<line number="31" hits="0" branch="false"/>
+								<line number="32" hits="0" branch="false"/>
+								<line number="33" hits="0" branch="false"/>
+								<line number="34" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="close" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="124" hits="0" branch="false"/>
+								<line number="125" hits="0" branch="false"/>
+								<line number="126" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentKey" signature="()Ljava/lang/Object;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="21" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentKey" signature="()Lorg/apache/hadoop/fs/Path;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="105" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCurrentValue" signature="()Ljava/lang/Object;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="getCurrentValue" signature="()Lorg/apache/hadoop/io/LongWritable;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="110" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getProgress" signature="()F" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="115" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="116" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="initialize" signature="(Lorg/apache/hadoop/mapreduce/InputSplit;Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="39" hits="0" branch="false"/>
+								<line number="40" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="false"/>
+								<line number="43" hits="0" branch="false"/>
+								<line number="46" hits="0" branch="false"/>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+								<line number="51" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+								<line number="62" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="nextKeyValue" signature="()Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="67" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="0" branch="false"/>
+								<line number="71" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="72" hits="0" branch="false"/>
+								<line number="76" hits="0" branch="false"/>
+								<line number="77" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="78" hits="0" branch="false"/>
+								<line number="83" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+								<line number="91" hits="0" branch="false"/>
+								<line number="92" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="96" hits="0" branch="false"/>
+								<line number="100" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="21" hits="0" branch="false"/>
+						<line number="23" hits="0" branch="false"/>
+						<line number="25" hits="0" branch="false"/>
+						<line number="27" hits="0" branch="false"/>
+						<line number="31" hits="0" branch="false"/>
+						<line number="32" hits="0" branch="false"/>
+						<line number="33" hits="0" branch="false"/>
+						<line number="34" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="40" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="43" hits="0" branch="false"/>
+						<line number="46" hits="0" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="51" hits="0" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="72" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="false"/>
+						<line number="77" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="78" hits="0" branch="false"/>
+						<line number="83" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="84" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="false"/>
+						<line number="92" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="96" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="false"/>
+						<line number="105" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="false"/>
+						<line number="115" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="116" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="124" hits="0" branch="false"/>
+						<line number="125" hits="0" branch="false"/>
+						<line number="126" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="com.hadoop.mapreduce.LzoTextInputFormat" filename="com/hadoop/mapreduce/LzoTextInputFormat.java" line-rate="0.0" branch-rate="0.0" complexity="3.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="47" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createRecordReader" signature="(Lorg/apache/hadoop/mapreduce/InputSplit;Lorg/apache/hadoop/mapreduce/TaskAttemptContext;)Lorg/apache/hadoop/mapreduce/RecordReader;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="125" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getSplits" signature="(Lorg/apache/hadoop/mapreduce/JobContext;)Ljava/util/List;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="84" hits="0" branch="false"/>
+								<line number="85" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+								<line number="91" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="93" hits="0" branch="false"/>
+								<line number="94" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="false"/>
+								<line number="96" hits="0" branch="false"/>
+								<line number="97" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="98" hits="0" branch="false"/>
+								<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="103" hits="0" branch="false"/>
+								<line number="104" hits="0" branch="false"/>
+								<line number="107" hits="0" branch="false"/>
+								<line number="108" hits="0" branch="false"/>
+								<line number="110" hits="0" branch="false"/>
+								<line number="111" hits="0" branch="false"/>
+								<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="114" hits="0" branch="false"/>
+								<line number="116" hits="0" branch="false"/>
+								<line number="118" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="isSplitable" signature="(Lorg/apache/hadoop/mapreduce/JobContext;Lorg/apache/hadoop/fs/Path;)Z" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="78" hits="0" branch="false"/>
+								<line number="79" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="listStatus" signature="(Lorg/apache/hadoop/mapreduce/JobContext;)Ljava/util/List;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="53" hits="0" branch="false"/>
+								<line number="55" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="59" hits="0" branch="false"/>
+								<line number="60" hits="0" branch="false"/>
+								<line number="61" hits="0" branch="false"/>
+								<line number="63" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="65" hits="0" branch="false"/>
+								<line number="68" hits="0" branch="false"/>
+								<line number="69" hits="0" branch="false"/>
+								<line number="71" hits="0" branch="false"/>
+								<line number="73" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="47" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="false"/>
+						<line number="55" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="59" hits="0" branch="false"/>
+						<line number="60" hits="0" branch="false"/>
+						<line number="61" hits="0" branch="false"/>
+						<line number="63" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="65" hits="0" branch="false"/>
+						<line number="68" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="false"/>
+						<line number="71" hits="0" branch="false"/>
+						<line number="73" hits="0" branch="false"/>
+						<line number="78" hits="0" branch="false"/>
+						<line number="79" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="84" hits="0" branch="false"/>
+						<line number="85" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="91" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="93" hits="0" branch="false"/>
+						<line number="94" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+						<line number="96" hits="0" branch="false"/>
+						<line number="97" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="98" hits="0" branch="false"/>
+						<line number="101" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="103" hits="0" branch="false"/>
+						<line number="104" hits="0" branch="false"/>
+						<line number="107" hits="0" branch="false"/>
+						<line number="108" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="false"/>
+						<line number="111" hits="0" branch="false"/>
+						<line number="113" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="114" hits="0" branch="false"/>
+						<line number="116" hits="0" branch="false"/>
+						<line number="118" hits="0" branch="false"/>
+						<line number="125" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="org.anarres.lzo.hadoop.codec" line-rate="0.5993788819875776" branch-rate="0.32857142857142857" complexity="2.0303030303030303">
+			<classes>
+				<class name="org.anarres.lzo.hadoop.codec.LzoCodec" filename="org/anarres/lzo/hadoop/codec/LzoCodec.java" line-rate="0.0" branch-rate="0.0" complexity="1.0588235294117647">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="50" hits="0" branch="false"/>
+								<line number="52" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="createCompressor" signature="()Lorg/apache/hadoop/io/compress/Compressor;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="154" hits="0" branch="false"/>
+								<line number="155" hits="0" branch="false"/>
+								<line number="156" hits="0" branch="false"/>
+								<line number="157" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createDecompressor" signature="()Lorg/apache/hadoop/io/compress/Decompressor;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="181" hits="0" branch="false"/>
+								<line number="182" hits="0" branch="false"/>
+								<line number="183" hits="0" branch="false"/>
+								<line number="184" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createInputStream" signature="(Ljava/io/InputStream;)Lorg/apache/hadoop/io/compress/CompressionInputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="163" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createInputStream" signature="(Ljava/io/InputStream;Lorg/apache/hadoop/io/compress/Decompressor;)Lorg/apache/hadoop/io/compress/CompressionInputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="170" hits="0" branch="false"/>
+								<line number="171" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createOutputStream" signature="(Ljava/io/OutputStream;)Lorg/apache/hadoop/io/compress/CompressionOutputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="110" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createOutputStream" signature="(Ljava/io/OutputStream;Lorg/apache/hadoop/io/compress/Compressor;)Lorg/apache/hadoop/io/compress/CompressionOutputStream;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="136" hits="0" branch="false"/>
+								<line number="137" hits="0" branch="false"/>
+								<line number="138" hits="0" branch="false"/>
+								<line number="139" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="143" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getBufferSize" signature="(Lorg/apache/hadoop/conf/Configuration;)I" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="81" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="82" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCompressionLevel" signature="(Lorg/apache/hadoop/conf/Configuration;)I" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="76" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="77" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCompressionStrategy" signature="(Lorg/apache/hadoop/conf/Configuration;)Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="62" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="63" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getCompressorType" signature="()Ljava/lang/Class;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="149" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getDecompressionStrategy" signature="(Lorg/apache/hadoop/conf/Configuration;)Lorg/anarres/lzo/hadoop/codec/LzoDecompressor$CompressionStrategy;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="69" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="70" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getDecompressorType" signature="()Ljava/lang/Class;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="176" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getDefaultExtension" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="193" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setBufferSize" signature="(Lorg/apache/hadoop/conf/Configuration;I)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="103" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="104" hits="0" branch="false"/>
+								<line number="105" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCompressionLevel" signature="(Lorg/apache/hadoop/conf/Configuration;I)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="98" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="99" hits="0" branch="false"/>
+								<line number="100" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setCompressionStrategy" signature="(Lorg/apache/hadoop/conf/Configuration;Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="87" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="88" hits="0" branch="false"/>
+								<line number="89" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setDecompressionStrategy" signature="(Lorg/apache/hadoop/conf/Configuration;Lorg/anarres/lzo/hadoop/codec/LzoDecompressor$CompressionStrategy;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="93" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="94" hits="0" branch="false"/>
+								<line number="95" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="50" hits="0" branch="false"/>
+						<line number="52" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="63" hits="0" branch="false"/>
+						<line number="69" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="70" hits="0" branch="false"/>
+						<line number="76" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="77" hits="0" branch="false"/>
+						<line number="81" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="82" hits="0" branch="false"/>
+						<line number="87" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="88" hits="0" branch="false"/>
+						<line number="89" hits="0" branch="false"/>
+						<line number="93" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="94" hits="0" branch="false"/>
+						<line number="95" hits="0" branch="false"/>
+						<line number="98" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="99" hits="0" branch="false"/>
+						<line number="100" hits="0" branch="false"/>
+						<line number="103" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="104" hits="0" branch="false"/>
+						<line number="105" hits="0" branch="false"/>
+						<line number="110" hits="0" branch="false"/>
+						<line number="136" hits="0" branch="false"/>
+						<line number="137" hits="0" branch="false"/>
+						<line number="138" hits="0" branch="false"/>
+						<line number="139" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="143" hits="0" branch="false"/>
+						<line number="149" hits="0" branch="false"/>
+						<line number="154" hits="0" branch="false"/>
+						<line number="155" hits="0" branch="false"/>
+						<line number="156" hits="0" branch="false"/>
+						<line number="157" hits="0" branch="false"/>
+						<line number="163" hits="0" branch="false"/>
+						<line number="170" hits="0" branch="false"/>
+						<line number="171" hits="0" branch="false"/>
+						<line number="176" hits="0" branch="false"/>
+						<line number="181" hits="0" branch="false"/>
+						<line number="182" hits="0" branch="false"/>
+						<line number="183" hits="0" branch="false"/>
+						<line number="184" hits="0" branch="false"/>
+						<line number="193" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzoCompressor" filename="org/anarres/lzo/hadoop/codec/LzoCompressor.java" line-rate="0.6260162601626016" branch-rate="0.4230769230769231" complexity="3.3">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="46" hits="1" branch="false"/>
+								<line number="48" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="171" hits="1" branch="false"/>
+								<line number="172" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;I)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="149" hits="1" branch="false"/>
+								<line number="160" hits="1" branch="false"/>
+								<line number="161" hits="1" branch="false"/>
+								<line number="162" hits="1" branch="false"/>
+								<line number="163" hits="1" branch="false"/>
+								<line number="164" hits="1" branch="false"/>
+								<line number="165" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="_reset" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="349" hits="9" branch="false"/>
+								<line number="350" hits="9" branch="false"/>
+								<line number="351" hits="9" branch="false"/>
+								<line number="352" hits="9" branch="false"/>
+								<line number="353" hits="9" branch="false"/>
+								<line number="354" hits="9" branch="false"/>
+								<line number="355" hits="9" branch="false"/>
+								<line number="356" hits="9" branch="false"/>
+								<line number="357" hits="9" branch="false"/>
+								<line number="358" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="compact" signature="()V" line-rate="0.7058823529411765" branch-rate="0.5">
+							<lines>
+								<line number="260" hits="265" branch="true" condition-coverage="100% (2/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+									</conditions>
+								</line>
+								<line number="261" hits="137" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="262" hits="137" branch="false"/>
+								<line number="265" hits="128" branch="false"/>
+								<line number="266" hits="128" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="268" hits="128" branch="false"/>
+								<line number="269" hits="128" branch="false"/>
+								<line number="270" hits="128" branch="false"/>
+								<line number="271" hits="128" branch="false"/>
+								<line number="272" hits="128" branch="false"/>
+								<line number="273" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="277" hits="0" branch="false"/>
+								<line number="278" hits="0" branch="false"/>
+								<line number="279" hits="0" branch="false"/>
+								<line number="280" hits="0" branch="false"/>
+								<line number="282" hits="128" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="283" hits="128" branch="false"/>
+							</lines>
+						</method>
+						<method name="compress" signature="([BII)I" line-rate="0.5714285714285714" branch-rate="0.35">
+							<lines>
+								<line number="288" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="289" hits="0" branch="false"/>
+								<line number="290" hits="9" branch="true" condition-coverage="50% (3/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+										<condition number="2" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="291" hits="0" branch="false"/>
+								<line number="293" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="299" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="300" hits="9" branch="false"/>
+								<line number="301" hits="9" branch="false"/>
+								<line number="302" hits="9" branch="false"/>
+								<line number="303" hits="9" branch="false"/>
+								<line number="304" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="305" hits="0" branch="false"/>
+								<line number="306" hits="0" branch="false"/>
+								<line number="308" hits="0" branch="false"/>
+								<line number="309" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="310" hits="0" branch="false"/>
+								<line number="311" hits="0" branch="false"/>
+								<line number="313" hits="0" branch="false"/>
+								<line number="315" hits="9" branch="false"/>
+								<line number="319" hits="9" branch="false"/>
+								<line number="320" hits="9" branch="false"/>
+								<line number="322" hits="9" branch="false"/>
+								<line number="323" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="324" hits="0" branch="false"/>
+								<line number="326" hits="0" branch="false"/>
+								<line number="328" hits="0" branch="false"/>
+								<line number="329" hits="0" branch="false"/>
+								<line number="331" hits="0" branch="false"/>
+								<line number="332" hits="9" branch="false"/>
+								<line number="336" hits="9" branch="false"/>
+								<line number="337" hits="9" branch="false"/>
+								<line number="338" hits="9" branch="false"/>
+								<line number="339" hits="9" branch="false"/>
+								<line number="341" hits="9" branch="false"/>
+								<line number="344" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="end" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="392" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="finish" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="250" hits="9" branch="false"/>
+								<line number="251" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="finished" signature="()Z" line-rate="1.0" branch-rate="0.6666666666666666">
+							<lines>
+								<line number="255" hits="155" branch="true" condition-coverage="50% (2/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="256" hits="155" branch="true" condition-coverage="75% (6/8)">
+									<conditions>
+										<condition number="0" type="jump" coverage="100%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+										<condition number="2" type="jump" coverage="100%"/>
+										<condition number="3" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="getBytesRead" signature="()J" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="375" hits="137" branch="false"/>
+							</lines>
+						</method>
+						<method name="getBytesWritten" signature="()J" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="383" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="logState" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="175" hits="0" branch="false"/>
+								<line number="176" hits="0" branch="false"/>
+								<line number="177" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="178" hits="0" branch="false"/>
+								<line number="180" hits="0" branch="false"/>
+								<line number="182" hits="0" branch="false"/>
+								<line number="184" hits="0" branch="false"/>
+								<line number="185" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="needsInput" signature="()Z" line-rate="0.75" branch-rate="0.5">
+							<lines>
+								<line number="242" hits="128" branch="false"/>
+								<line number="243" hits="128" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="244" hits="0" branch="false"/>
+								<line number="245" hits="128" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="reinit" signature="(Lorg/apache/hadoop/conf/Configuration;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="367" hits="0" branch="false"/>
+								<line number="368" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="reset" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="362" hits="9" branch="false"/>
+								<line number="363" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="setDictionary" signature="([BII)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="237" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setInput" signature="([BII)V" line-rate="0.75" branch-rate="0.5">
+							<lines>
+								<line number="217" hits="128" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="218" hits="0" branch="false"/>
+								<line number="219" hits="128" branch="true" condition-coverage="50% (3/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+										<condition number="2" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="220" hits="0" branch="false"/>
+								<line number="221" hits="128" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="222" hits="0" branch="false"/>
+								<line number="224" hits="128" branch="false"/>
+								<line number="225" hits="128" branch="false"/>
+								<line number="226" hits="128" branch="false"/>
+								<line number="227" hits="128" branch="false"/>
+								<line number="229" hits="128" branch="false"/>
+								<line number="232" hits="128" branch="false"/>
+							</lines>
+						</method>
+						<method name="testInvariants" signature="()Z" line-rate="0.35714285714285715" branch-rate="0.25">
+							<lines>
+								<line number="188" hits="420" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="189" hits="0" branch="true" condition-coverage="0% (0/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="190" hits="0" branch="false"/>
+								<line number="191" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="192" hits="0" branch="false"/>
+								<line number="193" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="194" hits="0" branch="false"/>
+								<line number="196" hits="420" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="197" hits="0" branch="false"/>
+								<line number="198" hits="420" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="199" hits="0" branch="false"/>
+								<line number="202" hits="420" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="203" hits="0" branch="false"/>
+								<line number="205" hits="420" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="46" hits="1" branch="false"/>
+						<line number="48" hits="1" branch="false"/>
+						<line number="149" hits="1" branch="false"/>
+						<line number="160" hits="1" branch="false"/>
+						<line number="161" hits="1" branch="false"/>
+						<line number="162" hits="1" branch="false"/>
+						<line number="163" hits="1" branch="false"/>
+						<line number="164" hits="1" branch="false"/>
+						<line number="165" hits="1" branch="false"/>
+						<line number="171" hits="1" branch="false"/>
+						<line number="172" hits="1" branch="false"/>
+						<line number="175" hits="0" branch="false"/>
+						<line number="176" hits="0" branch="false"/>
+						<line number="177" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="178" hits="0" branch="false"/>
+						<line number="180" hits="0" branch="false"/>
+						<line number="182" hits="0" branch="false"/>
+						<line number="184" hits="0" branch="false"/>
+						<line number="185" hits="0" branch="false"/>
+						<line number="188" hits="420" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="189" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="190" hits="0" branch="false"/>
+						<line number="191" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="192" hits="0" branch="false"/>
+						<line number="193" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="194" hits="0" branch="false"/>
+						<line number="196" hits="420" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="197" hits="0" branch="false"/>
+						<line number="198" hits="420" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="199" hits="0" branch="false"/>
+						<line number="202" hits="420" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="203" hits="0" branch="false"/>
+						<line number="205" hits="420" branch="false"/>
+						<line number="217" hits="128" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="218" hits="0" branch="false"/>
+						<line number="219" hits="128" branch="true" condition-coverage="50% (3/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+								<condition number="2" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="220" hits="0" branch="false"/>
+						<line number="221" hits="128" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="222" hits="0" branch="false"/>
+						<line number="224" hits="128" branch="false"/>
+						<line number="225" hits="128" branch="false"/>
+						<line number="226" hits="128" branch="false"/>
+						<line number="227" hits="128" branch="false"/>
+						<line number="229" hits="128" branch="false"/>
+						<line number="232" hits="128" branch="false"/>
+						<line number="237" hits="0" branch="false"/>
+						<line number="242" hits="128" branch="false"/>
+						<line number="243" hits="128" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="244" hits="0" branch="false"/>
+						<line number="245" hits="128" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="250" hits="9" branch="false"/>
+						<line number="251" hits="9" branch="false"/>
+						<line number="255" hits="155" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="256" hits="155" branch="true" condition-coverage="75% (6/8)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+								<condition number="2" type="jump" coverage="100%"/>
+								<condition number="3" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="260" hits="265" branch="true" condition-coverage="100% (2/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="100%"/>
+							</conditions>
+						</line>
+						<line number="261" hits="137" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="262" hits="137" branch="false"/>
+						<line number="265" hits="128" branch="false"/>
+						<line number="266" hits="128" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="268" hits="128" branch="false"/>
+						<line number="269" hits="128" branch="false"/>
+						<line number="270" hits="128" branch="false"/>
+						<line number="271" hits="128" branch="false"/>
+						<line number="272" hits="128" branch="false"/>
+						<line number="273" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="277" hits="0" branch="false"/>
+						<line number="278" hits="0" branch="false"/>
+						<line number="279" hits="0" branch="false"/>
+						<line number="280" hits="0" branch="false"/>
+						<line number="282" hits="128" branch="true" condition-coverage="50% (2/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="283" hits="128" branch="false"/>
+						<line number="288" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="289" hits="0" branch="false"/>
+						<line number="290" hits="9" branch="true" condition-coverage="50% (3/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+								<condition number="2" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="291" hits="0" branch="false"/>
+						<line number="293" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="299" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="300" hits="9" branch="false"/>
+						<line number="301" hits="9" branch="false"/>
+						<line number="302" hits="9" branch="false"/>
+						<line number="303" hits="9" branch="false"/>
+						<line number="304" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="305" hits="0" branch="false"/>
+						<line number="306" hits="0" branch="false"/>
+						<line number="308" hits="0" branch="false"/>
+						<line number="309" hits="0" branch="true" condition-coverage="0% (0/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="310" hits="0" branch="false"/>
+						<line number="311" hits="0" branch="false"/>
+						<line number="313" hits="0" branch="false"/>
+						<line number="315" hits="9" branch="false"/>
+						<line number="319" hits="9" branch="false"/>
+						<line number="320" hits="9" branch="false"/>
+						<line number="322" hits="9" branch="false"/>
+						<line number="323" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="324" hits="0" branch="false"/>
+						<line number="326" hits="0" branch="false"/>
+						<line number="328" hits="0" branch="false"/>
+						<line number="329" hits="0" branch="false"/>
+						<line number="331" hits="0" branch="false"/>
+						<line number="332" hits="9" branch="false"/>
+						<line number="336" hits="9" branch="false"/>
+						<line number="337" hits="9" branch="false"/>
+						<line number="338" hits="9" branch="false"/>
+						<line number="339" hits="9" branch="false"/>
+						<line number="341" hits="9" branch="false"/>
+						<line number="344" hits="9" branch="false"/>
+						<line number="349" hits="9" branch="false"/>
+						<line number="350" hits="9" branch="false"/>
+						<line number="351" hits="9" branch="false"/>
+						<line number="352" hits="9" branch="false"/>
+						<line number="353" hits="9" branch="false"/>
+						<line number="354" hits="9" branch="false"/>
+						<line number="355" hits="9" branch="false"/>
+						<line number="356" hits="9" branch="false"/>
+						<line number="357" hits="9" branch="false"/>
+						<line number="358" hits="9" branch="false"/>
+						<line number="362" hits="9" branch="false"/>
+						<line number="363" hits="9" branch="false"/>
+						<line number="367" hits="0" branch="false"/>
+						<line number="368" hits="0" branch="false"/>
+						<line number="375" hits="137" branch="false"/>
+						<line number="383" hits="0" branch="false"/>
+						<line number="392" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzoCompressor$CompressionStrategy" filename="org/anarres/lzo/hadoop/codec/LzoCompressor.java" line-rate="1.0" branch-rate="1.0" complexity="3.3">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="53" hits="1" branch="false"/>
+								<line number="58" hits="1" branch="false"/>
+								<line number="59" hits="1" branch="false"/>
+								<line number="63" hits="1" branch="false"/>
+								<line number="64" hits="1" branch="false"/>
+								<line number="68" hits="1" branch="false"/>
+								<line number="69" hits="1" branch="false"/>
+								<line number="70" hits="1" branch="false"/>
+								<line number="71" hits="1" branch="false"/>
+								<line number="72" hits="1" branch="false"/>
+								<line number="73" hits="1" branch="false"/>
+								<line number="74" hits="1" branch="false"/>
+								<line number="75" hits="1" branch="false"/>
+								<line number="76" hits="1" branch="false"/>
+								<line number="77" hits="1" branch="false"/>
+								<line number="78" hits="1" branch="false"/>
+								<line number="79" hits="1" branch="false"/>
+								<line number="80" hits="1" branch="false"/>
+								<line number="81" hits="1" branch="false"/>
+								<line number="85" hits="1" branch="false"/>
+								<line number="86" hits="1" branch="false"/>
+								<line number="87" hits="1" branch="false"/>
+								<line number="88" hits="1" branch="false"/>
+								<line number="89" hits="1" branch="false"/>
+								<line number="90" hits="1" branch="false"/>
+								<line number="91" hits="1" branch="false"/>
+								<line number="92" hits="1" branch="false"/>
+								<line number="93" hits="1" branch="false"/>
+								<line number="94" hits="1" branch="false"/>
+								<line number="95" hits="1" branch="false"/>
+								<line number="96" hits="1" branch="false"/>
+								<line number="97" hits="1" branch="false"/>
+								<line number="98" hits="1" branch="false"/>
+								<line number="102" hits="1" branch="false"/>
+								<line number="103" hits="1" branch="false"/>
+								<line number="107" hits="1" branch="false"/>
+								<line number="108" hits="1" branch="false"/>
+								<line number="109" hits="1" branch="false"/>
+								<line number="110" hits="1" branch="false"/>
+								<line number="111" hits="1" branch="false"/>
+								<line number="115" hits="1" branch="false"/>
+								<line number="116" hits="1" branch="false"/>
+								<line number="120" hits="1" branch="false"/>
+								<line number="124" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;ILorg/anarres/lzo/LzoAlgorithm;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="134" hits="27" branch="false"/>
+								<line number="135" hits="27" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;ILorg/anarres/lzo/LzoAlgorithm;Lorg/anarres/lzo/LzoConstraint;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="128" hits="43" branch="false"/>
+								<line number="129" hits="43" branch="false"/>
+								<line number="130" hits="43" branch="false"/>
+								<line number="131" hits="43" branch="false"/>
+							</lines>
+						</method>
+						<method name="newCompressor" signature="()Lorg/anarres/lzo/LzoCompressor;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="138" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="valueOf" signature="(Ljava/lang/String;)Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="values" signature="()[Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="53" hits="1" branch="false"/>
+						<line number="58" hits="1" branch="false"/>
+						<line number="59" hits="1" branch="false"/>
+						<line number="63" hits="1" branch="false"/>
+						<line number="64" hits="1" branch="false"/>
+						<line number="68" hits="1" branch="false"/>
+						<line number="69" hits="1" branch="false"/>
+						<line number="70" hits="1" branch="false"/>
+						<line number="71" hits="1" branch="false"/>
+						<line number="72" hits="1" branch="false"/>
+						<line number="73" hits="1" branch="false"/>
+						<line number="74" hits="1" branch="false"/>
+						<line number="75" hits="1" branch="false"/>
+						<line number="76" hits="1" branch="false"/>
+						<line number="77" hits="1" branch="false"/>
+						<line number="78" hits="1" branch="false"/>
+						<line number="79" hits="1" branch="false"/>
+						<line number="80" hits="1" branch="false"/>
+						<line number="81" hits="1" branch="false"/>
+						<line number="85" hits="1" branch="false"/>
+						<line number="86" hits="1" branch="false"/>
+						<line number="87" hits="1" branch="false"/>
+						<line number="88" hits="1" branch="false"/>
+						<line number="89" hits="1" branch="false"/>
+						<line number="90" hits="1" branch="false"/>
+						<line number="91" hits="1" branch="false"/>
+						<line number="92" hits="1" branch="false"/>
+						<line number="93" hits="1" branch="false"/>
+						<line number="94" hits="1" branch="false"/>
+						<line number="95" hits="1" branch="false"/>
+						<line number="96" hits="1" branch="false"/>
+						<line number="97" hits="1" branch="false"/>
+						<line number="98" hits="1" branch="false"/>
+						<line number="102" hits="1" branch="false"/>
+						<line number="103" hits="1" branch="false"/>
+						<line number="107" hits="1" branch="false"/>
+						<line number="108" hits="1" branch="false"/>
+						<line number="109" hits="1" branch="false"/>
+						<line number="110" hits="1" branch="false"/>
+						<line number="111" hits="1" branch="false"/>
+						<line number="115" hits="1" branch="false"/>
+						<line number="116" hits="1" branch="false"/>
+						<line number="120" hits="1" branch="false"/>
+						<line number="124" hits="1" branch="false"/>
+						<line number="128" hits="43" branch="false"/>
+						<line number="129" hits="43" branch="false"/>
+						<line number="130" hits="43" branch="false"/>
+						<line number="131" hits="43" branch="false"/>
+						<line number="134" hits="27" branch="false"/>
+						<line number="135" hits="27" branch="false"/>
+						<line number="138" hits="1" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzoDecompressor" filename="org/anarres/lzo/hadoop/codec/LzoDecompressor.java" line-rate="0.5918367346938775" branch-rate="0.4642857142857143" complexity="2.25">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="46" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="147" hits="1" branch="false"/>
+								<line number="148" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Lorg/anarres/lzo/hadoop/codec/LzoDecompressor$CompressionStrategy;I)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="124" hits="1" branch="false"/>
+								<line number="133" hits="1" branch="false"/>
+								<line number="134" hits="1" branch="false"/>
+								<line number="135" hits="1" branch="false"/>
+								<line number="136" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="decompress" signature="([BII)I" line-rate="0.7777777777777778" branch-rate="0.5">
+							<lines>
+								<line number="217" hits="137" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="218" hits="0" branch="false"/>
+								<line number="219" hits="137" branch="true" condition-coverage="50% (3/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+										<condition number="2" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="220" hits="0" branch="false"/>
+								<line number="223" hits="137" branch="false"/>
+								<line number="224" hits="137" branch="false"/>
+								<line number="225" hits="137" branch="false"/>
+								<line number="226" hits="137" branch="false"/>
+								<line number="228" hits="137" branch="false"/>
+							</lines>
+						</method>
+						<method name="end" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="244" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="finished" signature="()Z" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="210" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="getRemaining" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="233" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="logState" signature="(Ljava/lang/String;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="151" hits="0" branch="false"/>
+								<line number="152" hits="0" branch="false"/>
+								<line number="154" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="needsDictionary" signature="()Z" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="201" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="needsInput" signature="()Z" line-rate="1.0" branch-rate="0.5">
+							<lines>
+								<line number="196" hits="18" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+							</lines>
+						</method>
+						<method name="reset" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="238" hits="0" branch="false"/>
+								<line number="239" hits="0" branch="false"/>
+								<line number="240" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setDictionary" signature="([BII)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="191" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="setInput" signature="([BII)V" line-rate="0.5294117647058824" branch-rate="0.5">
+							<lines>
+								<line number="158" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="159" hits="0" branch="false"/>
+								<line number="160" hits="9" branch="true" condition-coverage="50% (3/6)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="50%"/>
+										<condition number="2" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="161" hits="0" branch="false"/>
+								<line number="162" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="163" hits="0" branch="false"/>
+								<line number="166" hits="9" branch="false"/>
+								<line number="169" hits="9" branch="false"/>
+								<line number="170" hits="9" branch="false"/>
+								<line number="171" hits="9" branch="true" condition-coverage="50% (1/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+									</conditions>
+								</line>
+								<line number="172" hits="0" branch="false"/>
+								<line number="174" hits="0" branch="false"/>
+								<line number="176" hits="0" branch="false"/>
+								<line number="177" hits="0" branch="false"/>
+								<line number="179" hits="0" branch="false"/>
+								<line number="180" hits="9" branch="false"/>
+								<line number="186" hits="9" branch="false"/>
+							</lines>
+						</method>
+						<method name="setOutputBufferSize" signature="(I)V" line-rate="1.0" branch-rate="0.25">
+							<lines>
+								<line number="139" hits="1" branch="true" condition-coverage="25% (1/4)">
+									<conditions>
+										<condition number="0" type="jump" coverage="50%"/>
+										<condition number="1" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="140" hits="1" branch="false"/>
+								<line number="141" hits="1" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="46" hits="1" branch="false"/>
+						<line number="124" hits="1" branch="false"/>
+						<line number="133" hits="1" branch="false"/>
+						<line number="134" hits="1" branch="false"/>
+						<line number="135" hits="1" branch="false"/>
+						<line number="136" hits="1" branch="false"/>
+						<line number="139" hits="1" branch="true" condition-coverage="25% (1/4)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="140" hits="1" branch="false"/>
+						<line number="141" hits="1" branch="false"/>
+						<line number="147" hits="1" branch="false"/>
+						<line number="148" hits="1" branch="false"/>
+						<line number="151" hits="0" branch="false"/>
+						<line number="152" hits="0" branch="false"/>
+						<line number="154" hits="0" branch="false"/>
+						<line number="158" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="159" hits="0" branch="false"/>
+						<line number="160" hits="9" branch="true" condition-coverage="50% (3/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+								<condition number="2" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="161" hits="0" branch="false"/>
+						<line number="162" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="163" hits="0" branch="false"/>
+						<line number="166" hits="9" branch="false"/>
+						<line number="169" hits="9" branch="false"/>
+						<line number="170" hits="9" branch="false"/>
+						<line number="171" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="172" hits="0" branch="false"/>
+						<line number="174" hits="0" branch="false"/>
+						<line number="176" hits="0" branch="false"/>
+						<line number="177" hits="0" branch="false"/>
+						<line number="179" hits="0" branch="false"/>
+						<line number="180" hits="9" branch="false"/>
+						<line number="186" hits="9" branch="false"/>
+						<line number="191" hits="0" branch="false"/>
+						<line number="196" hits="18" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="201" hits="0" branch="false"/>
+						<line number="210" hits="9" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="217" hits="137" branch="true" condition-coverage="50% (1/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="218" hits="0" branch="false"/>
+						<line number="219" hits="137" branch="true" condition-coverage="50% (3/6)">
+							<conditions>
+								<condition number="0" type="jump" coverage="50%"/>
+								<condition number="1" type="jump" coverage="50%"/>
+								<condition number="2" type="jump" coverage="50%"/>
+							</conditions>
+						</line>
+						<line number="220" hits="0" branch="false"/>
+						<line number="223" hits="137" branch="false"/>
+						<line number="224" hits="137" branch="false"/>
+						<line number="225" hits="137" branch="false"/>
+						<line number="226" hits="137" branch="false"/>
+						<line number="228" hits="137" branch="false"/>
+						<line number="233" hits="0" branch="false"/>
+						<line number="238" hits="0" branch="false"/>
+						<line number="239" hits="0" branch="false"/>
+						<line number="240" hits="0" branch="false"/>
+						<line number="244" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzoDecompressor$CompressionStrategy" filename="org/anarres/lzo/hadoop/codec/LzoDecompressor.java" line-rate="1.0" branch-rate="1.0" complexity="2.25">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="48" hits="1" branch="false"/>
+								<line number="53" hits="1" branch="false"/>
+								<line number="57" hits="1" branch="false"/>
+								<line number="61" hits="1" branch="false"/>
+								<line number="62" hits="1" branch="false"/>
+								<line number="66" hits="1" branch="false"/>
+								<line number="67" hits="1" branch="false"/>
+								<line number="68" hits="1" branch="false"/>
+								<line number="69" hits="1" branch="false"/>
+								<line number="73" hits="1" branch="false"/>
+								<line number="74" hits="1" branch="false"/>
+								<line number="75" hits="1" branch="false"/>
+								<line number="76" hits="1" branch="false"/>
+								<line number="80" hits="1" branch="false"/>
+								<line number="81" hits="1" branch="false"/>
+								<line number="82" hits="1" branch="false"/>
+								<line number="83" hits="1" branch="false"/>
+								<line number="84" hits="1" branch="false"/>
+								<line number="85" hits="1" branch="false"/>
+								<line number="89" hits="1" branch="false"/>
+								<line number="90" hits="1" branch="false"/>
+								<line number="91" hits="1" branch="false"/>
+								<line number="92" hits="1" branch="false"/>
+								<line number="93" hits="1" branch="false"/>
+								<line number="94" hits="1" branch="false"/>
+								<line number="98" hits="1" branch="false"/>
+								<line number="99" hits="1" branch="false"/>
+								<line number="103" hits="1" branch="false"/>
+								<line number="104" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;ILorg/anarres/lzo/LzoAlgorithm;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="114" hits="13" branch="false"/>
+								<line number="115" hits="13" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="(Ljava/lang/String;ILorg/anarres/lzo/LzoAlgorithm;Lorg/anarres/lzo/LzoConstraint;)V" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="108" hits="28" branch="false"/>
+								<line number="109" hits="28" branch="false"/>
+								<line number="110" hits="28" branch="false"/>
+								<line number="111" hits="28" branch="false"/>
+							</lines>
+						</method>
+						<method name="newDecompressor" signature="()Lorg/anarres/lzo/LzoDecompressor;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+								<line number="118" hits="1" branch="false"/>
+							</lines>
+						</method>
+						<method name="valueOf" signature="(Ljava/lang/String;)Lorg/anarres/lzo/hadoop/codec/LzoDecompressor$CompressionStrategy;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+						<method name="values" signature="()[Lorg/anarres/lzo/hadoop/codec/LzoDecompressor$CompressionStrategy;" line-rate="1.0" branch-rate="1.0">
+							<lines>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="48" hits="1" branch="false"/>
+						<line number="53" hits="1" branch="false"/>
+						<line number="57" hits="1" branch="false"/>
+						<line number="61" hits="1" branch="false"/>
+						<line number="62" hits="1" branch="false"/>
+						<line number="66" hits="1" branch="false"/>
+						<line number="67" hits="1" branch="false"/>
+						<line number="68" hits="1" branch="false"/>
+						<line number="69" hits="1" branch="false"/>
+						<line number="73" hits="1" branch="false"/>
+						<line number="74" hits="1" branch="false"/>
+						<line number="75" hits="1" branch="false"/>
+						<line number="76" hits="1" branch="false"/>
+						<line number="80" hits="1" branch="false"/>
+						<line number="81" hits="1" branch="false"/>
+						<line number="82" hits="1" branch="false"/>
+						<line number="83" hits="1" branch="false"/>
+						<line number="84" hits="1" branch="false"/>
+						<line number="85" hits="1" branch="false"/>
+						<line number="89" hits="1" branch="false"/>
+						<line number="90" hits="1" branch="false"/>
+						<line number="91" hits="1" branch="false"/>
+						<line number="92" hits="1" branch="false"/>
+						<line number="93" hits="1" branch="false"/>
+						<line number="94" hits="1" branch="false"/>
+						<line number="98" hits="1" branch="false"/>
+						<line number="99" hits="1" branch="false"/>
+						<line number="103" hits="1" branch="false"/>
+						<line number="104" hits="1" branch="false"/>
+						<line number="108" hits="28" branch="false"/>
+						<line number="109" hits="28" branch="false"/>
+						<line number="110" hits="28" branch="false"/>
+						<line number="111" hits="28" branch="false"/>
+						<line number="114" hits="13" branch="false"/>
+						<line number="115" hits="13" branch="false"/>
+						<line number="118" hits="1" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzopCodec" filename="org/anarres/lzo/hadoop/codec/LzopCodec.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="44" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createDecompressor" signature="()Lorg/apache/hadoop/io/compress/Decompressor;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="62" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createInputStream" signature="(Ljava/io/InputStream;Lorg/apache/hadoop/io/compress/Decompressor;)Lorg/apache/hadoop/io/compress/CompressionInputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="57" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createOutputStream" signature="(Ljava/io/OutputStream;Lorg/apache/hadoop/io/compress/Compressor;)Lorg/apache/hadoop/io/compress/CompressionOutputStream;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="48" hits="0" branch="false"/>
+								<line number="49" hits="0" branch="false"/>
+								<line number="50" hits="0" branch="false"/>
+								<line number="51" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="getDefaultExtension" signature="()Ljava/lang/String;" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="67" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="44" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="49" hits="0" branch="false"/>
+						<line number="50" hits="0" branch="false"/>
+						<line number="51" hits="0" branch="false"/>
+						<line number="57" hits="0" branch="false"/>
+						<line number="62" hits="0" branch="false"/>
+						<line number="67" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzopInputStream" filename="org/anarres/lzo/hadoop/codec/LzopInputStream.java" line-rate="0.0" branch-rate="1.0" complexity="1.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="18" hits="0" branch="false"/>
+								<line number="19" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="read" signature="()I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="28" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="read" signature="([BII)I" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="23" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="resetState" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="33" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="18" hits="0" branch="false"/>
+						<line number="19" hits="0" branch="false"/>
+						<line number="23" hits="0" branch="false"/>
+						<line number="28" hits="0" branch="false"/>
+						<line number="33" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.anarres.lzo.hadoop.codec.LzopOutputStream" filename="org/anarres/lzo/hadoop/codec/LzopOutputStream.java" line-rate="0.0" branch-rate="1.0" complexity="1.2">
+					<methods>
+						<method name="&lt;init&gt;" signature="(Ljava/io/OutputStream;Lorg/anarres/lzo/hadoop/codec/LzoCompressor$CompressionStrategy;I)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="10" hits="0" branch="false"/>
+								<line number="11" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="finish" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="25" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="resetState" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="29" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="write" signature="(I)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="20" hits="0" branch="false"/>
+								<line number="21" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="write" signature="([BII)V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="15" hits="0" branch="false"/>
+								<line number="16" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="10" hits="0" branch="false"/>
+						<line number="11" hits="0" branch="false"/>
+						<line number="15" hits="0" branch="false"/>
+						<line number="16" hits="0" branch="false"/>
+						<line number="20" hits="0" branch="false"/>
+						<line number="21" hits="0" branch="false"/>
+						<line number="25" hits="0" branch="false"/>
+						<line number="29" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+		<package name="org.apache.hadoop.io.compress" line-rate="0.0" branch-rate="0.0" complexity="2.0">
+			<classes>
+				<class name="org.apache.hadoop.io.compress.LzoCodec" filename="org/apache/hadoop/io/compress/LzoCodec.java" line-rate="0.0" branch-rate="0.0" complexity="2.0">
+					<methods>
+						<method name="&lt;clinit&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="39" hits="0" branch="false"/>
+								<line number="41" hits="0" branch="false"/>
+								<line number="42" hits="0" branch="false"/>
+								<line number="44" hits="0" branch="false"/>
+								<line number="47" hits="0" branch="false"/>
+								<line number="48" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="37" hits="0" branch="false"/>
+							</lines>
+						</method>
+						<method name="createOutputStream" signature="(Ljava/io/OutputStream;Lorg/apache/hadoop/io/compress/Compressor;)Lorg/apache/hadoop/io/compress/CompressionOutputStream;" line-rate="0.0" branch-rate="0.0">
+							<lines>
+								<line number="53" hits="0" branch="true" condition-coverage="0% (0/2)">
+									<conditions>
+										<condition number="0" type="jump" coverage="0%"/>
+									</conditions>
+								</line>
+								<line number="54" hits="0" branch="false"/>
+								<line number="56" hits="0" branch="false"/>
+								<line number="58" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="37" hits="0" branch="false"/>
+						<line number="39" hits="0" branch="false"/>
+						<line number="41" hits="0" branch="false"/>
+						<line number="42" hits="0" branch="false"/>
+						<line number="44" hits="0" branch="false"/>
+						<line number="47" hits="0" branch="false"/>
+						<line number="48" hits="0" branch="false"/>
+						<line number="53" hits="0" branch="true" condition-coverage="0% (0/2)">
+							<conditions>
+								<condition number="0" type="jump" coverage="0%"/>
+							</conditions>
+						</line>
+						<line number="54" hits="0" branch="false"/>
+						<line number="56" hits="0" branch="false"/>
+						<line number="58" hits="0" branch="false"/>
+					</lines>
+				</class>
+				<class name="org.apache.hadoop.io.compress.LzopCodec" filename="org/apache/hadoop/io/compress/LzopCodec.java" line-rate="0.0" branch-rate="1.0" complexity="0.0">
+					<methods>
+						<method name="&lt;init&gt;" signature="()V" line-rate="0.0" branch-rate="1.0">
+							<lines>
+								<line number="11" hits="0" branch="false"/>
+							</lines>
+						</method>
+					</methods>
+					<lines>
+						<line number="11" hits="0" branch="false"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>
