@@ -43,6 +43,7 @@ package org.anarres.lzo;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Arrays;
 import javax.annotation.CheckForSigned;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -173,7 +174,7 @@ public class LzoOutputStream extends OutputStream {
         if (inputHoldoverBuffer != null)
             throw new IllegalStateException("Cannot accept input while holdover is present.");
 
-        inputHoldoverBuffer = b;
+        inputHoldoverBuffer = Arrays.copyOfRange(b, off, off + len);
         inputHoldoverBufferPos = off;
         inputHoldoverBufferLen = len;
         compact();
