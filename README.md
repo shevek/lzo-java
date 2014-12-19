@@ -1,3 +1,6 @@
+Introduction
+============
+
 There is no version of LZO in pure Java. The obvious solution is to
 take the C source code, and feed it to the Java compiler, modifying
 the Java compiler as necessary to make it compile.
@@ -10,6 +13,37 @@ It turns out, however, that the compression performance on a single
 at 815Mb/sec, which seems to be more than adequate. Run
 PerformanceTest on an appropriate file to reproduce these figures.
 
+Example
+=======
+
+Compression:
+
+```
+	OutputStream out = ...;
+	LzoAlgorithm algorithm = LzoAlgorithm.LZO1X;
+	LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
+	LzoOutputStream stream = new LzoOutputStream(out, compressor, 256);
+	stream.write(...);
+```
+
+Decompression:
+
+```
+	InputStream in = ...;
+	LzoAlgorithm algorithm = LzoAlgorithm.LZO1X;
+	LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(algorithm, null);
+	LzoInputStream stream = new LzoInputStream(in, decompressor);
+	stream.read(...);
+```
+
+Documentation
+=============
+
+The [JavaDoc API](http://shevek.github.io/lzo-java/docs/javadoc/)
+is available.
+
+Hadoop Notes
+============
 
 Notes on BlockCompressionStream, as of Hadoop 0.21.x:
 
@@ -51,9 +85,4 @@ decompressor's output buffer, and so the error occurs. One cannot,
 as a rule, know the size of output buffer required to decompress a
 given file, so Hadoop must be configured by trial and error. This
 is badly designed, and harder to use.
-
-The [JavaDoc API](http://shevek.github.io/lzo-java/docs/javadoc/)
-is available.
-
-Shevek <shevek@anarres.org>
 
