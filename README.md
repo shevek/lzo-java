@@ -52,6 +52,8 @@ as a rule, know the size of output buffer required to decompress a
 given file, so Hadoop must be configured by trial and error. This
 is badly designed, and harder to use.
 
+The [JavaDoc API](http://shevek.github.io/lzo-java/docs/javadoc/)
+is available.
 
 Shevek <shevek@anarres.org>
 
