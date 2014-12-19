@@ -1,5 +1,8 @@
-Introduction
+LZO for Java
 ============
+
+Introduction
+------------
 
 There is no version of LZO in pure Java. The obvious solution is to
 take the C source code, and feed it to the Java compiler, modifying
@@ -14,7 +17,7 @@ at 815Mb/sec, which seems to be more than adequate. Run
 PerformanceTest on an appropriate file to reproduce these figures.
 
 Example
-=======
+-------
 
 Compression:
 
@@ -37,13 +40,13 @@ Decompression:
 ```
 
 Documentation
-=============
+-------------
 
 The [JavaDoc API](http://shevek.github.io/lzo-java/docs/javadoc/)
 is available.
 
 Hadoop Notes
-============
+------------
 
 Notes on BlockCompressionStream, as of Hadoop 0.21.x:
 
