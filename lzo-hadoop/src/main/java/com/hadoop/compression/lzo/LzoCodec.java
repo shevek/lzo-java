@@ -17,9 +17,6 @@
  */
 package com.hadoop.compression.lzo;
 
-
-import org.apache.hadoop.io.compress.CompressionCodec;
-
 /**
  * A {@link org.apache.hadoop.io.compress.CompressionCodec} for a streaming
  * <b>lzo</b> compression/decompression pair.

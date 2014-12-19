@@ -84,7 +84,7 @@ public class LzoLibrary {
      * The only constraint which makes sense is {@link LzoConstraint#SAFETY}.
      */
     @Nonnull
-    public LzoDecompressor newDecompressor(@CheckForNull LzoAlgorithm algorithm, @CheckForNull LzoConstraint constraint) {
+    public LzoDecompressor newDecompressor(@Nonnull LzoAlgorithm algorithm, @CheckForNull LzoConstraint constraint) {
         if (algorithm == null)
             throw new NullPointerException("No algorithm specified.");
         switch (algorithm) {

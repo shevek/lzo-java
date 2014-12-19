@@ -63,14 +63,14 @@ public class LzoCodec extends Configured implements CompressionCodec {
         assert conf != null : "Configuration cannot be null!";
         return LzoCompressor.CompressionStrategy.valueOf(
                 conf.get(LZO_COMPRESSOR_KEY,
-                LzoCompressor.CompressionStrategy.LZO1X_1.name()));
+                        LzoCompressor.CompressionStrategy.LZO1X_1.name()));
     }
 
     static LzoDecompressor.CompressionStrategy getDecompressionStrategy(Configuration conf) {
         assert conf != null : "Configuration cannot be null!";
         return LzoDecompressor.CompressionStrategy.valueOf(
                 conf.get(LZO_DECOMPRESSOR_KEY,
-                LzoDecompressor.CompressionStrategy.LZO1X.name()));
+                        LzoDecompressor.CompressionStrategy.LZO1X.name()));
     }
 
     static int getCompressionLevel(Configuration conf) {

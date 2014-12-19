@@ -32,6 +32,7 @@ import org.anarres.lzo.LzoConstraint;
 import org.anarres.lzo.LzoLibrary;
 import org.anarres.lzo.LzoTransformer;
 import org.anarres.lzo.lzo_uintp;
+import org.anarres.lzo.SuppressWarnings;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -205,7 +206,13 @@ public class LzoCompressor implements Compressor {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * WARNING: This method retains a pointer to the user's buffer.
+     */
     @Override
+    @SuppressWarnings("EI_EXPOSE_REP2")
     public void setInput(byte[] b, int off, int len) {
         // logState("Before setInput");
         if (b == null)

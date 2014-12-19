@@ -50,6 +50,7 @@ public class AbstractLzoTransformer implements LzoTransformer {
     private final LzoAlgorithm algorithm;
     private final LzoConstraint[] constraints;
 
+    @SuppressWarnings("EI_EXPOSE_REP2")
     public AbstractLzoTransformer(LzoAlgorithm algorithm, LzoConstraint... constraints) {
         this.algorithm = algorithm;
         this.constraints = constraints;
@@ -61,6 +62,7 @@ public class AbstractLzoTransformer implements LzoTransformer {
     }
 
     @Override
+    @SuppressWarnings("EI_EXPOSE_REP")
     public LzoConstraint[] getConstraints() {
         return constraints;
     }

@@ -48,7 +48,7 @@ package org.anarres.lzo;
 public class LzopConstants {
 
     /** 9 bytes at the top of every lzo file */
-    public static final byte[] LZOP_MAGIC = new byte[]{
+    /* pp */ static final byte[] LZOP_MAGIC = new byte[]{
         -119, 'L', 'Z', 'O', 0, '\r', '\n', '\032', '\n'};
     /** Version of lzop this emulates */
     public static final int LZOP_VERSION = 0x1010;

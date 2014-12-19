@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License along with
  * Hadoop-Gpl-Compression. If not, see <http://www.gnu.org/licenses/>.
  */
- 
 package org.apache.hadoop.io.compress;
 
 import java.io.IOException;
@@ -37,25 +36,26 @@ import org.apache.commons.logging.LogFactory;
  */
 @Deprecated
 public class LzoCodec extends com.hadoop.compression.lzo.LzoCodec {
-  private static final Log LOG = LogFactory.getLog(LzoCodec.class);
 
-  static final String oahLzoCodec = LzoCodec.class.getName();
-  static final String chclLzoCodec =
-    com.hadoop.compression.lzo.LzoCodec.class.getName();
-  static boolean warned = false;
+    private static final Log LOG = LogFactory.getLog(LzoCodec.class);
 
-  static {
-    LOG.info("Bridging " + oahLzoCodec + " to " + chclLzoCodec + ".");
-  }
+    static final String oahLzoCodec = LzoCodec.class.getName();
+    static final String chclLzoCodec
+            = com.hadoop.compression.lzo.LzoCodec.class.getName();
+    private static boolean warned = false;
 
-  @Override
-  public CompressionOutputStream createOutputStream(OutputStream out,
-      Compressor compressor) throws IOException {
-    if (!warned) {
-      LOG.warn(oahLzoCodec + " is deprecated. You should use " + chclLzoCodec
-          + " instead to generate LZO compressed data.");
-      warned = true;
+    static {
+        LOG.info("Bridging " + oahLzoCodec + " to " + chclLzoCodec + ".");
     }
-    return super.createOutputStream(out, compressor);
-  }
+
+    @Override
+    public CompressionOutputStream createOutputStream(OutputStream out,
+            Compressor compressor) throws IOException {
+        if (!warned) {
+            LOG.warn(oahLzoCodec + " is deprecated. You should use " + chclLzoCodec
+                    + " instead to generate LZO compressed data.");
+            warned = true;
+        }
+        return super.createOutputStream(out, compressor);
+    }
 }
