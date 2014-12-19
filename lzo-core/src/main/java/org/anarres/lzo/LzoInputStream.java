@@ -185,4 +185,10 @@ public class LzoInputStream extends InputStream {
             length -= count;
         }
     }
+
+    @Override
+    public void close() throws IOException {
+        in.close();
+    }
+
 }

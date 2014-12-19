@@ -193,7 +193,7 @@ public class LzoOutputStream extends OutputStream {
     @Override
     public void close() throws IOException {
         flush();
-        super.close();
+        out.close();
     }
 
     private void compact() {
