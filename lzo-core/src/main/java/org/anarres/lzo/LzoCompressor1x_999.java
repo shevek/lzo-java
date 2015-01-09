@@ -47,7 +47,7 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
     private int compression_level;
 
     public LzoCompressor1x_999(int level) {
-        super(LzoAlgorithm.LZO1X_999);
+        super(LzoAlgorithm.LZO1X, LzoConstraint.COMPRESSION);
         if (level > 0 && level < 10)
             compression_level = level - 1;
         else
@@ -580,7 +580,7 @@ public class LzoCompressor1x_999 extends AbstractLzo1Compressor {
 
     @Override 
     public String toString() {
-        return "LZO1X999" + getCompressionLevel();
+        return "LZO1X999-" + getCompressionLevel();
     }
 
     public int compress(byte[] in, int in_base, int in_len,

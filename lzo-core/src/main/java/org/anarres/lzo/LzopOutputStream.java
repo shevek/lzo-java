@@ -52,11 +52,11 @@ import javax.annotation.CheckForNull;
 import javax.annotation.CheckForSigned;
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
- *
  * @author shevek
  */
 public class LzopOutputStream extends LzoOutputStream {
@@ -71,7 +71,7 @@ public class LzopOutputStream extends LzoOutputStream {
 
     /**
      * Constructs a new LzopOutputStream.
-     *
+     * <p/>
      * I recommend limiting flags to the following unless you REALLY know what
      * you are doing:
      * <ul>
@@ -111,9 +111,17 @@ public class LzopOutputStream extends LzoOutputStream {
             dob.writeShort(LzopConstants.LZOP_COMPAT_VERSION);
             switch (getAlgorithm()) {
                 case LZO1X:
-                    // case LZO1X_1:
-                    dob.writeByte(LzopConstants.M_LZO1X_1);
-                    dob.writeByte(5);
+                    LzoConstraint[] constraints = getConstraints();
+
+                    if (constraints.length == 0) {
+                        dob.writeByte(LzopConstants.M_LZO1X_1);
+                        dob.writeByte(5);
+                    } else if (constraints.length == 1 && constraints[0] == LzoConstraint.COMPRESSION) {
+                        dob.writeByte(LzopConstants.M_LZO1X_999);
+                        dob.writeByte(getCompressor().getCompressionLevel());
+                    } else
+                        throw new IOException("Unsupported constraint combination for LZO1X: " + Arrays.toString(constraints));
+
                     break;
                 /*
                  case LZO1X_15:
@@ -121,10 +129,6 @@ public class LzopOutputStream extends LzoOutputStream {
                  dob.writeByte(1);
                  break;
                  */
-                case LZO1X_999:
-                    dob.writeByte(LzopConstants.M_LZO1X_999);
-                    dob.writeByte(getCompressor().getCompressionLevel());
-                    break;
                 default:
                     throw new IOException("Incompatible lzop algorithm " + getAlgorithm());
             }

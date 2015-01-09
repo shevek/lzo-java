@@ -61,21 +61,34 @@ public class LzoLibrary {
     }
 
     /**
-     * Returns a new compressor for the given algorithm. Default compression level for LZO1X999 is 7.
+     * Returns a new compressor for the given algorithm. 
+     *
+     * Currently the only available constraint is {@link LzoConstraint#COMPRESSION}. 
+     * Applied to {@link LzoAlgorithm#LZO1X} algorithm, it yields an LZO1X999 compressor with a compression level of 7.
      */
     @Nonnull
     public LzoCompressor newCompressor(@CheckForNull LzoAlgorithm algorithm, @CheckForNull LzoConstraint constraint) {
         if (algorithm == null)
             return new LzoCompressor1x_1();
         switch (algorithm) {
+
             case LZO1X:
-                return new LzoCompressor1x_1();
-            case LZO1X_999:
-                return new LzoCompressor1x_999(7);
+                if (constraint == null)
+                   return new LzoCompressor1x_1();                
+                else if (constraint == LzoConstraint.COMPRESSION)
+                   return new LzoCompressor1x_999(7);
+                else 
+                   throw new UnsupportedOperationException("Unsupported combination " + algorithm + "/" + constraint);
+
             case LZO1Y:
-                return new LzoCompressor1y_1();
+                if (constraint == null)
+                   return new LzoCompressor1y_1();
+                else 
+                   throw new UnsupportedOperationException("Unsupported combination " + algorithm + "/" + constraint);
+
             default:
                 throw new UnsupportedOperationException("Unsupported algorithm " + algorithm);
+
         }
     }
 
@@ -90,7 +103,6 @@ public class LzoLibrary {
         switch (algorithm) {
 
             case LZO1X:
-            case LZO1X_999:
                 if (constraint == LzoConstraint.SAFETY)
                     return new LzoDecompressor1x_safe();
                 else

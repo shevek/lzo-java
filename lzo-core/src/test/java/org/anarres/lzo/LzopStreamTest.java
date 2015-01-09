@@ -50,42 +50,42 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Formatter;
 import java.util.Random;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
- *
  * @author shevek
  */
 public class LzopStreamTest {
 
     private static final Log LOG = LogFactory.getLog(LzopStreamTest.class);
     private static final long[] FLAGS = new long[]{
-        0L,
-        // Adler32
-        LzopConstants.F_ADLER32_C,
-        LzopConstants.F_ADLER32_D,
-        LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D,
-        // CRC32
-        LzopConstants.F_CRC32_C,
-        LzopConstants.F_CRC32_D,
-        LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D,
-        // Both
-        LzopConstants.F_ADLER32_C | LzopConstants.F_CRC32_C,
-        LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
-        LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
+            0L,
+            // Adler32
+            LzopConstants.F_ADLER32_C,
+            LzopConstants.F_ADLER32_D,
+            LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D,
+            // CRC32
+            LzopConstants.F_CRC32_C,
+            LzopConstants.F_CRC32_D,
+            LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D,
+            // Both
+            LzopConstants.F_ADLER32_C | LzopConstants.F_CRC32_C,
+            LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_D,
+            LzopConstants.F_ADLER32_C | LzopConstants.F_ADLER32_D | LzopConstants.F_CRC32_C | LzopConstants.F_CRC32_D
     };
-    private static final LzoAlgorithm[] lzopAlgorithms = {LzoAlgorithm.LZO1X, LzoAlgorithm.LZO1X_999};
 
-    public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig) throws IOException {
+    public void testAlgorithm(LzoAlgorithm algorithm, LzoConstraint constraint, byte[] orig) throws IOException {
         for (long flags : FLAGS) {
             try {
-                LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
-                LOG.info("Compressing " + orig.length + " bytes using " + algorithm);
+                LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, constraint);
+                LOG.info("Compressing " + orig.length + " bytes using " + algorithm + "/" + constraint);
 
                 // LOG.info("Original:   " + Arrays.toString(orig));
                 ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -114,14 +114,16 @@ public class LzopStreamTest {
         }
     }
 
+    LzoConstraint[] supportedConstraints = { null, LzoConstraint.COMPRESSION };     
+
     // Totally RLE.
     @Test
     public void testBlank() throws Exception {
         byte[] orig = new byte[512 * 1024];
         Arrays.fill(orig, (byte) 0);
-        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+        for (LzoConstraint constraint : supportedConstraints) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(LzoAlgorithm.LZO1X, constraint, orig);
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
@@ -134,9 +136,9 @@ public class LzopStreamTest {
         byte[] orig = new byte[512 * 1024];
         for (int i = 0; i < orig.length; i++)
             orig[i] = (byte) (i & 0xf);
-        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+        for (LzoConstraint constraint : supportedConstraints) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(LzoAlgorithm.LZO1X, constraint, orig);
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
@@ -150,9 +152,9 @@ public class LzopStreamTest {
         for (int i = 0; i < 10; i++) {
             byte[] orig = new byte[256 * 1024];
             r.nextBytes(orig);
-            for (LzoAlgorithm algorithm : lzopAlgorithms) {
+            for (LzoConstraint constraint : supportedConstraints) {
                 try {
-                    testAlgorithm(algorithm, orig);
+                    testAlgorithm(LzoAlgorithm.LZO1X, constraint, orig);
                 } catch (UnsupportedOperationException e) {
                     // LOG.info("Unsupported algorithm " + algorithm);
                 }
@@ -166,9 +168,9 @@ public class LzopStreamTest {
         LOG.info("Class is " + name);
         InputStream in = getClass().getClassLoader().getResourceAsStream(name);
         byte[] orig = IOUtils.toByteArray(in);
-        for (LzoAlgorithm algorithm : lzopAlgorithms) {
+        for (LzoConstraint constraint : supportedConstraints) {
             try {
-                testAlgorithm(algorithm, orig);
+                testAlgorithm(LzoAlgorithm.LZO1X, constraint, orig);
             } catch (UnsupportedOperationException e) {
                 // LOG.info("Unsupported algorithm " + algorithm);
             }
