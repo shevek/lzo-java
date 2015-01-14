@@ -89,7 +89,7 @@ public class LzoInputStream extends InputStream {
     public int read() throws IOException {
         if (!fill())
             return -1;
-        return outputBuffer[outputBufferPos++];
+        return outputBuffer[outputBufferPos++] & 0xFF;
     }
 
     @Override
