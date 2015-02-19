@@ -53,7 +53,6 @@ public enum LzoAlgorithm {
     LZO1C,
     LZO1F,
     LZO1X,
-    LZO1X_999,
     LZO1Y,
     LZO1Z,
     LZO2A;

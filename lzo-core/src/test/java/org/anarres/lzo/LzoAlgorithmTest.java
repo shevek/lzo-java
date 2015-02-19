@@ -8,23 +8,24 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Formatter;
 import java.util.Random;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /**
- *
  * @author shevek
  */
 public class LzoAlgorithmTest {
 
     private static final Log LOG = LogFactory.getLog(LzoAlgorithmTest.class);
 
-    public void testAlgorithm(LzoAlgorithm algorithm, byte[] orig, String desc) {
-        LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, null);
-        LOG.info("\nCompressing " + orig.length + " " + desc + " bytes using " + algorithm);
+    public void testAlgorithm(LzoAlgorithm algorithm, LzoConstraint constraint, byte[] orig, String desc) {
+        LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(algorithm, constraint);
+        LOG.info("\nCompressing " + orig.length + " " + desc + " bytes using " + algorithm + "/" + constraint);
 
         // LOG.info("Original:   " + Arrays.toString(orig));
         byte[] compressed = new byte[orig.length * 2];
@@ -47,16 +48,20 @@ public class LzoAlgorithmTest {
         assertArrayEquals(orig, uncompressed);
     }
 
+    LzoConstraint[] supportedConstraints = { null, LzoConstraint.COMPRESSION };     
+
     // Totally RLE.
     @Test
     public void testBlank() throws Exception {
         byte[] orig = new byte[512 * 1024];
         Arrays.fill(orig, (byte) 0);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
-            try {
-                testAlgorithm(algorithm, orig, "blank");
-            } catch (UnsupportedOperationException e) {
-                // LOG.info("Unsupported algorithm " + algorithm);
+            for (LzoConstraint constraint : supportedConstraints) {
+                try {
+                    testAlgorithm(algorithm, constraint, orig, "blank");
+                } catch (UnsupportedOperationException e) {
+                    // LOG.info("Unsupported algorithm " + algorithm);
+                }
             }
         }
     }
@@ -68,10 +73,12 @@ public class LzoAlgorithmTest {
         for (int i = 0; i < orig.length; i++)
             orig[i] = (byte) (i & 0xf);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
-            try {
-                testAlgorithm(algorithm, orig, "sequential");
-            } catch (UnsupportedOperationException e) {
-                // LOG.info("Unsupported algorithm " + algorithm);
+            for (LzoConstraint constraint : supportedConstraints) {
+                try {
+                    testAlgorithm(algorithm, constraint, orig, "sequential");
+                } catch (UnsupportedOperationException e) {
+                    // LOG.info("Unsupported algorithm " + algorithm);
+                }
             }
         }
     }
@@ -84,10 +91,12 @@ public class LzoAlgorithmTest {
             byte[] orig = new byte[256 * 1024];
             r.nextBytes(orig);
             for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
-                try {
-                    testAlgorithm(algorithm, orig, "random");
-                } catch (UnsupportedOperationException e) {
-                    // LOG.info("Unsupported algorithm " + algorithm);
+                for (LzoConstraint constraint : supportedConstraints) {
+                    try {
+                        testAlgorithm(algorithm, constraint, orig, "random");
+                    } catch (UnsupportedOperationException e) {
+                        // LOG.info("Unsupported algorithm " + algorithm);
+                    }
                 }
             }
         }
@@ -100,10 +109,12 @@ public class LzoAlgorithmTest {
         InputStream in = getClass().getClassLoader().getResourceAsStream(name);
         byte[] orig = IOUtils.toByteArray(in);
         for (LzoAlgorithm algorithm : LzoAlgorithm.values()) {
-            try {
-                testAlgorithm(algorithm, orig, "class-file");
-            } catch (UnsupportedOperationException e) {
-                // LOG.info("Unsupported algorithm " + algorithm);
+            for (LzoConstraint constraint : supportedConstraints) {
+                try {
+                    testAlgorithm(algorithm, constraint, orig, "class-file");
+                } catch (UnsupportedOperationException e) {
+                    // LOG.info("Unsupported algorithm " + algorithm);
+                }
             }
         }
     }
