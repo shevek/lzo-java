@@ -172,7 +172,7 @@
   <td class="src"><pre class="src">&nbsp;<span class="comment">// or, if it is, hotspot will deal with it.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> UA_GET32(<span class="keyword">byte</span>[] in, <span class="keyword">int</span> in_ptr) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;18928972</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> (((in[in_ptr]) &amp; 0xff) &lt;&lt; 24) | (((in[in_ptr + 1]) &amp; 0xff) &lt;&lt; 16) | (((in[in_ptr + 2]) &amp; 0xff) &lt;&lt; 8) | ((in[in_ptr + 3]) &amp; 0xff);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;18935036</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> (((in[in_ptr]) &amp; 0xff) &lt;&lt; 24) | (((in[in_ptr + 1]) &amp; 0xff) &lt;&lt; 16) | (((in[in_ptr + 2]) &amp; 0xff) &lt;&lt; 8) | ((in[in_ptr + 3]) &amp; 0xff);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
@@ -16189,16 +16189,16 @@
   <td class="src"><pre class="src">&nbsp;        ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8089</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//java register const lzo_bytep ip;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8090</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_ptr = in_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8090</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_ptr = in_base;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8091</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java lzo_bytep op;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8092</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> out_ptr = out_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8092</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> out_ptr = out_base;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8093</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java const lzo_bytep const in_end = in + in_len;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8094</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_end = in_base + in_len;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8094</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_end = in_base + in_len;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8095</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java const lzo_bytep const ip_end = in + in_len - 20;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8096</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> ip_end = in_base + in_len - 20;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8096</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> ip_end = in_base + in_len - 20;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8097</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java const lzo_bytep ii;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8098</td>  <td class="nbHits">&nbsp;</td>
@@ -16213,10 +16213,10 @@
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java ip = in;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8103</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java ii = ip - ti;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8104</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    ii = in_ptr - ti;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8104</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    ii = in_ptr - ti;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8105</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8106</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">int</span> state = init;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8106</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;<span class="keyword">int</span> state = init;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8107</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8108</td>  <td class="nbHits">&nbsp;</td>
@@ -16225,14 +16225,14 @@
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java ip += ti &lt; 4 ? 4 - ti : 0;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8110</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java-note Make sure we have at least 4 bytes after ii.</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8111</td>  <td class="nbHitsCovered"><a title="Line 8111: Conditional coverage 100% (2/2).">&nbsp;158914</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8111: Conditional coverage 100% (2/2).">    in_ptr += ti &lt; 4 ? 4 - ti : 0;</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8112</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_pos = Integer.MIN_VALUE;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8113</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_len = Integer.MIN_VALUE;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8111</td>  <td class="nbHitsCovered"><a title="Line 8111: Conditional coverage 100% (2/2).">&nbsp;158916</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8111: Conditional coverage 100% (2/2).">    in_ptr += ti &lt; 4 ? 4 - ti : 0;</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8112</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_pos = Integer.MIN_VALUE;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8113</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_len = Integer.MIN_VALUE;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8114</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8115</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8116</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_off = Integer.MIN_VALUE;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8116</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> m_off = Integer.MIN_VALUE;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8117</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8118</td>  <td class="nbHits">&nbsp;</td>
@@ -16241,7 +16241,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">for</span> (;;)</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8120</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8121</td>  <td class="nbHitsUncovered"><a title="Line 8121: Conditional coverage 75% (3/4).">&nbsp;9668855</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8121: Conditional coverage 75% (3/4)."><span class="keyword">switch</span> (state) { <span class="keyword">case</span> init: <span class="comment">// Java-GOTO</span></a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8121</td>  <td class="nbHitsUncovered"><a title="Line 8121: Conditional coverage 75% (3/4).">&nbsp;9671916</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8121: Conditional coverage 75% (3/4)."><span class="keyword">switch</span> (state) { <span class="keyword">case</span> init: <span class="comment">// Java-GOTO</span></a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8122</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java const lzo_bytep m_pos;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8123</td>  <td class="nbHits">&nbsp;</td>
@@ -16350,35 +16350,35 @@
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8175</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java ip += 1 + ((ip - ii) &gt;&gt; 5);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8176</td>  <td class="nbHitsCovered">&nbsp;9566275</td>  <td class="src"><pre class="src">&nbsp;                in_ptr += 1 + ((in_ptr - ii) &gt;&gt; 5);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8176</td>  <td class="nbHitsCovered">&nbsp;9569223</td>  <td class="src"><pre class="src">&nbsp;                in_ptr += 1 + ((in_ptr - ii) &gt;&gt; 5);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8177</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">case</span> next:</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8178</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8179</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java if __lzo_unlikely(ip &gt;= ip_end)</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8180</td>  <td class="nbHitsCovered"><a title="Line 8180: Conditional coverage 100% (2/2).">&nbsp;9623400</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8180: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (in_ptr &gt;= ip_end)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8181</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">break</span> GOTO_LOOP;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8180</td>  <td class="nbHitsCovered"><a title="Line 8180: Conditional coverage 100% (2/2).">&nbsp;9626434</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8180: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (in_ptr &gt;= ip_end)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8181</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">break</span> GOTO_LOOP;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8182</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java dv = UA_GET32(ip);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8183</td>  <td class="nbHitsCovered">&nbsp;9464486</td>  <td class="src"><pre class="src">&nbsp;        dv = UA_GET32(in, in_ptr);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8183</td>  <td class="nbHitsCovered">&nbsp;9467518</td>  <td class="src"><pre class="src">&nbsp;        dv = UA_GET32(in, in_ptr);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8184</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8185</td>  <td class="nbHitsCovered">&nbsp;9464486</td>  <td class="src"><pre class="src">&nbsp;        dindex = ((<span class="keyword">int</span>) (((((((<span class="keyword">long</span>)((0x1824429d) *(dv)))) &gt;&gt;(32-14))) &amp; (((1 &lt;&lt; (14)) - 1) &gt;&gt; (0))) &lt;&lt; (0)));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8185</td>  <td class="nbHitsCovered">&nbsp;9467518</td>  <td class="src"><pre class="src">&nbsp;        dindex = ((<span class="keyword">int</span>) (((((((<span class="keyword">long</span>)((0x1824429d) *(dv)))) &gt;&gt;(32-14))) &amp; (((1 &lt;&lt; (14)) - 1) &gt;&gt; (0))) &lt;&lt; (0)));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8186</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8187</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java GINDEX(m_off,m_pos,in+dict,dindex,in);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8188</td>  <td class="nbHitsCovered">&nbsp;9464486</td>  <td class="src"><pre class="src">&nbsp;        m_pos = in_base+dict[dindex];</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8188</td>  <td class="nbHitsCovered">&nbsp;9467518</td>  <td class="src"><pre class="src">&nbsp;        m_pos = in_base+dict[dindex];</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8189</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java UPDATE_I(dict,0,dindex,ip,in);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8190</td>  <td class="nbHitsCovered">&nbsp;9464486</td>  <td class="src"><pre class="src">&nbsp;        dict[dindex] = ((<span class="keyword">int</span>) ((in_ptr) - (in_base)));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8190</td>  <td class="nbHitsCovered">&nbsp;9467518</td>  <td class="src"><pre class="src">&nbsp;        dict[dindex] = ((<span class="keyword">int</span>) ((in_ptr) - (in_base)));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8191</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java if __lzo_unlikely(dv != UA_GET32(m_pos))</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8192</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8193</td>  <td class="nbHitsCovered"><a title="Line 8193: Conditional coverage 100% (2/2).">&nbsp;9464486</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8193: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (dv != UA_GET32(in, m_pos))</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8194</td>  <td class="nbHitsCovered">&nbsp;9407361</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">do</span> { state = literal; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8193</td>  <td class="nbHitsCovered"><a title="Line 8193: Conditional coverage 100% (2/2).">&nbsp;9467518</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8193: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (dv != UA_GET32(in, m_pos))</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8194</td>  <td class="nbHitsCovered">&nbsp;9410307</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">do</span> { state = literal; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8195</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java }</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8196</td>  <td class="nbHits">&nbsp;</td>
@@ -16393,18 +16393,18 @@
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8201</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java register lzo_uint t = pd(ip,ii);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8202</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;         <span class="keyword">int</span> t = ((in_ptr) - (ii));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8202</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;         <span class="keyword">int</span> t = ((in_ptr) - (ii));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8203</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8204</td>  <td class="nbHitsCovered"><a title="Line 8204: Conditional coverage 100% (2/2).">&nbsp;57125</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8204: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (t != 0)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8204</td>  <td class="nbHitsCovered"><a title="Line 8204: Conditional coverage 100% (2/2).">&nbsp;57211</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8204: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (t != 0)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8205</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8206</td>  <td class="nbHitsCovered"><a title="Line 8206: Conditional coverage 100% (2/2).">&nbsp;55586</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8206: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (t &lt;= 3)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8206</td>  <td class="nbHitsCovered"><a title="Line 8206: Conditional coverage 100% (2/2).">&nbsp;55669</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8206: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (t &lt;= 3)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8207</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8208</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java op[-2] |= LZO_BYTE(t);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8209</td>  <td class="nbHitsCovered">&nbsp;4298</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr -2] |= (( <span class="keyword">byte</span>) (t));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8209</td>  <td class="nbHitsCovered">&nbsp;4311</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr -2] |= (( <span class="keyword">byte</span>) (t));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8210</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8211</td>  <td class="nbHits">&nbsp;</td>
@@ -16415,7 +16415,7 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8214</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java { do *op++ = *ii++; while (--t &gt; 0); }</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8215</td>  <td class="nbHitsCovered"><a title="Line 8215: Conditional coverage 100% (2/2).">&nbsp;5915</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8215: Conditional coverage 100% (2/2).">                { <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0); }</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8215</td>  <td class="nbHitsCovered"><a title="Line 8215: Conditional coverage 100% (2/2).">&nbsp;5933</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8215: Conditional coverage 100% (2/2).">                { <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0); }</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8216</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8217</td>  <td class="nbHits">&nbsp;</td>
@@ -16458,19 +16458,19 @@
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">else</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8236</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8237</td>  <td class="nbHitsCovered"><a title="Line 8237: Conditional coverage 100% (2/2).">&nbsp;51288</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8237: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (t &lt;= 18)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8237</td>  <td class="nbHitsCovered"><a title="Line 8237: Conditional coverage 100% (2/2).">&nbsp;51358</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8237: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (t &lt;= 18)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8238</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="comment">//Java *op++ = LZO_BYTE(t - 3);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8239</td>  <td class="nbHitsCovered">&nbsp;48869</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = (( <span class="keyword">byte</span>) (t - 3));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8239</td>  <td class="nbHitsCovered">&nbsp;48879</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = (( <span class="keyword">byte</span>) (t - 3));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8240</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8241</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8242</td>  <td class="nbHitsCovered">&nbsp;2419</td>  <td class="src"><pre class="src">&nbsp;                     <span class="keyword">int</span> tt = t - 18;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8242</td>  <td class="nbHitsCovered">&nbsp;2479</td>  <td class="src"><pre class="src">&nbsp;                     <span class="keyword">int</span> tt = t - 18;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8243</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="comment">//Java *op++ = 0;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8244</td>  <td class="nbHitsCovered">&nbsp;2419</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = 0;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8245</td>  <td class="nbHitsUncovered"><a title="Line 8245: Conditional coverage 50% (1/2).">&nbsp;2419</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8245: Conditional coverage 50% (1/2).">                    <span class="keyword">while</span> (tt &gt; 255)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8244</td>  <td class="nbHitsCovered">&nbsp;2479</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8245</td>  <td class="nbHitsUncovered"><a title="Line 8245: Conditional coverage 50% (1/2).">&nbsp;2479</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8245: Conditional coverage 50% (1/2).">                    <span class="keyword">while</span> (tt &gt; 255)</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8246</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8247</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        tt -= 255;</span></pre></td></tr>
@@ -16487,10 +16487,10 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8254</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8255</td>  <td class="nbHitsUncovered"><a title="Line 8255: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2419</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8255: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">                    <span class="keyword">assert</span>(tt &gt; 0):<span class="string">"Assertion failed: "</span> + <span class="string">"tt &gt; 0"</span>;</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8255</td>  <td class="nbHitsUncovered"><a title="Line 8255: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2479</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8255: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">                    <span class="keyword">assert</span>(tt &gt; 0):<span class="string">"Assertion failed: "</span> + <span class="string">"tt &gt; 0"</span>;</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8256</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    <span class="comment">//Java *op++ = LZO_BYTE(tt);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8257</td>  <td class="nbHitsCovered">&nbsp;2419</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = (( <span class="keyword">byte</span>) (tt));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8257</td>  <td class="nbHitsCovered">&nbsp;2479</td>  <td class="src"><pre class="src">&nbsp;                    out[out_ptr++] = (( <span class="keyword">byte</span>) (tt));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8258</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8259</td>  <td class="nbHits">&nbsp;</td>
@@ -16523,14 +16523,14 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8273</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java { do *op++ = *ii++; while (--t &gt; 0); }</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8274</td>  <td class="nbHitsCovered"><a title="Line 8274: Conditional coverage 100% (2/2).">&nbsp;621671</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8274: Conditional coverage 100% (2/2).">                { <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0); }</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8274</td>  <td class="nbHitsCovered"><a title="Line 8274: Conditional coverage 100% (2/2).">&nbsp;626179</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8274: Conditional coverage 100% (2/2).">                { <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0); }</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8275</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8276</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8277</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8278</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;        m_len = 4;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8278</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;        m_len = 4;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8279</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8280</td>  <td class="nbHits">&nbsp;</td>
@@ -16639,21 +16639,21 @@
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java if __lzo_unlikely(ip[m_len] == m_pos[m_len]) {</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8332</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8333</td>  <td class="nbHitsCovered"><a title="Line 8333: Conditional coverage 100% (2/2).">&nbsp;57125</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8333: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (in[in_ptr + m_len] == in[m_pos + m_len]) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8333</td>  <td class="nbHitsCovered"><a title="Line 8333: Conditional coverage 100% (2/2).">&nbsp;57211</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8333: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (in[in_ptr + m_len] == in[m_pos + m_len]) {</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8334</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">do</span> {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8335</td>  <td class="nbHitsCovered">&nbsp;11069907</td>  <td class="src"><pre class="src">&nbsp;                m_len += 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8335</td>  <td class="nbHitsCovered">&nbsp;11069821</td>  <td class="src"><pre class="src">&nbsp;                m_len += 1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8336</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java if __lzo_unlikely(ip + m_len &gt;= ip_end)</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8337</td>  <td class="nbHitsCovered"><a title="Line 8337: Conditional coverage 100% (2/2).">&nbsp;11069907</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8337: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (in_ptr + m_len &gt;= ip_end) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8337</td>  <td class="nbHitsCovered"><a title="Line 8337: Conditional coverage 100% (2/2).">&nbsp;11069821</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8337: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (in_ptr + m_len &gt;= ip_end) {</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8338</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                                        ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8339</td>  <td class="nbHitsCovered">&nbsp;45455</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">do</span> { state = m_len_done; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8339</td>  <td class="nbHitsCovered">&nbsp;45482</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">do</span> { state = m_len_done; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8340</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8341</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java } while (ip[m_len] == m_pos[m_len]);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8342</td>  <td class="nbHitsCovered"><a title="Line 8342: Conditional coverage 100% (2/2).">&nbsp;11024452</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8342: Conditional coverage 100% (2/2).">            } <span class="keyword">while</span> (in[in_ptr + m_len] == in[m_pos + m_len]);</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8342</td>  <td class="nbHitsCovered"><a title="Line 8342: Conditional coverage 100% (2/2).">&nbsp;11024339</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8342: Conditional coverage 100% (2/2).">            } <span class="keyword">while</span> (in[in_ptr + m_len] == in[m_pos + m_len]);</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8343</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8344</td>  <td class="nbHits">&nbsp;</td>
@@ -16666,29 +16666,29 @@
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8348</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java m_off = pd(ip,m_pos);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8349</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;        m_off = ((in_ptr) - (m_pos));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8349</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;        m_off = ((in_ptr) - (m_pos));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8350</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8351</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java ip += m_len;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8352</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;                in_ptr += m_len;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8352</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;                in_ptr += m_len;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8353</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java ii = ip;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8354</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;                ii = in_ptr;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8355</td>  <td class="nbHitsCovered"><a title="Line 8355: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;57125</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8355: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (m_len &lt;= 8 &amp;&amp; m_off &lt;= 0x0800)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8354</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;                ii = in_ptr;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8355</td>  <td class="nbHitsCovered"><a title="Line 8355: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;57211</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8355: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (m_len &lt;= 8 &amp;&amp; m_off &lt;= 0x0800)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8356</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8357</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8358</td>  <td class="nbHitsCovered">&nbsp;9147</td>  <td class="src"><pre class="src">&nbsp;            m_off -= 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8358</td>  <td class="nbHitsCovered">&nbsp;9208</td>  <td class="src"><pre class="src">&nbsp;            m_off -= 1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8359</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8360</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(((m_len - 1) &lt;&lt; 5) | ((m_off &amp; 7) &lt;&lt; 2));</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8361</td>  <td class="nbHitsCovered">&nbsp;9147</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (((m_len - 1) &lt;&lt; 5) |((m_off &amp; 7) &lt;&lt; 2)));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8361</td>  <td class="nbHitsCovered">&nbsp;9208</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (((m_len - 1) &lt;&lt; 5) |((m_off &amp; 7) &lt;&lt; 2)));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8362</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(m_off &gt;&gt; 3);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8363</td>  <td class="nbHitsCovered">&nbsp;9147</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &gt;&gt; 3));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8363</td>  <td class="nbHitsCovered">&nbsp;9208</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &gt;&gt; 3));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8364</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8365</td>  <td class="nbHits">&nbsp;</td>
@@ -16703,25 +16703,25 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8370</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8371</td>  <td class="nbHitsUncovered"><a title="Line 8371: Conditional coverage 50% (1/2).">&nbsp;47978</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8371: Conditional coverage 50% (1/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (m_off &lt;= 0x4000)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8371</td>  <td class="nbHitsUncovered"><a title="Line 8371: Conditional coverage 50% (1/2).">&nbsp;48003</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8371: Conditional coverage 50% (1/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (m_off &lt;= 0x4000)</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8372</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8373</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        ;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8374</td>  <td class="nbHitsCovered">&nbsp;47978</td>  <td class="src"><pre class="src">&nbsp;            m_off -= 1;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8375</td>  <td class="nbHitsCovered"><a title="Line 8375: Conditional coverage 100% (2/2).">&nbsp;47978</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8375: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (m_len &lt;= 33)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8374</td>  <td class="nbHitsCovered">&nbsp;48003</td>  <td class="src"><pre class="src">&nbsp;            m_off -= 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8375</td>  <td class="nbHitsCovered"><a title="Line 8375: Conditional coverage 100% (2/2).">&nbsp;48003</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8375: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (m_len &lt;= 33)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8376</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java *op++ = LZO_BYTE(M3_MARKER | (m_len - 2));</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8377</td>  <td class="nbHitsCovered">&nbsp;2826</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = (( <span class="keyword">byte</span>) (32 |(m_len - 2)));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8377</td>  <td class="nbHitsCovered">&nbsp;2850</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = (( <span class="keyword">byte</span>) (32 |(m_len - 2)));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8378</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">else</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8379</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8380</td>  <td class="nbHitsCovered">&nbsp;45152</td>  <td class="src"><pre class="src">&nbsp;                m_len -= 33;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8380</td>  <td class="nbHitsCovered">&nbsp;45153</td>  <td class="src"><pre class="src">&nbsp;                m_len -= 33;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8381</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java *op++ = M3_MARKER | 0;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8382</td>  <td class="nbHitsCovered">&nbsp;45152</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = 32 | 0;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8383</td>  <td class="nbHitsCovered"><a title="Line 8383: Conditional coverage 100% (2/2).">&nbsp;49248</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8383: Conditional coverage 100% (2/2).">                <span class="keyword">while</span> (m_len &gt; 255)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8382</td>  <td class="nbHitsCovered">&nbsp;45153</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = 32 | 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8383</td>  <td class="nbHitsCovered"><a title="Line 8383: Conditional coverage 100% (2/2).">&nbsp;49249</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8383: Conditional coverage 100% (2/2).">                <span class="keyword">while</span> (m_len &gt; 255)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8384</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8385</td>  <td class="nbHitsCovered">&nbsp;4096</td>  <td class="src"><pre class="src">&nbsp;                    m_len -= 255;</pre></td></tr>
@@ -16740,15 +16740,15 @@
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8393</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//Java *op++ = LZO_BYTE(m_len);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8394</td>  <td class="nbHitsCovered">&nbsp;45152</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = (( <span class="keyword">byte</span>) (m_len));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8394</td>  <td class="nbHitsCovered">&nbsp;45153</td>  <td class="src"><pre class="src">&nbsp;                out[out_ptr++] = (( <span class="keyword">byte</span>) (m_len));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8395</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8396</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(m_off &lt;&lt; 2);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8397</td>  <td class="nbHitsCovered">&nbsp;47978</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &lt;&lt; 2));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8397</td>  <td class="nbHitsCovered">&nbsp;48003</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &lt;&lt; 2));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8398</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(m_off &gt;&gt; 6);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8399</td>  <td class="nbHitsCovered">&nbsp;47978</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &gt;&gt; 6));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8399</td>  <td class="nbHitsCovered">&nbsp;48003</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &gt;&gt; 6));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8400</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8401</td>  <td class="nbHits">&nbsp;</td>
@@ -16800,7 +16800,7 @@
 <tr>  <td class="numLineCover">&nbsp;8429</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (m_off &gt;&gt; 6));</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8430</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8431</td>  <td class="nbHitsCovered">&nbsp;57125</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">do</span> { state = next; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8431</td>  <td class="nbHitsCovered">&nbsp;57211</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">do</span> { state = next; <span class="keyword">continue</span> GOTO_LOOP; } <span class="keyword">while</span>(<span class="keyword">false</span>);</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8432</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<span class="keyword">default</span>: <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Unknown state "</span> + state);</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8433</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}   <span class="comment">// JAVA_GOTO</span></pre></td></tr>
@@ -16810,8 +16810,8 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8436</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java *out_len = pd(op, out);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8437</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    out_len.value = out_ptr - out_base;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8438</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">return</span> ((in_end) - (ii));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8437</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    out_len.value = out_ptr - out_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8438</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">return</span> ((in_end) - (ii));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8439</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8440</td>  <td class="nbHits">&nbsp;</td>
@@ -16838,89 +16838,89 @@
   <td class="src"><pre class="src">&nbsp;{</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8451</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java const lzo_bytep ip = in;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8452</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_ptr = in_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8452</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> in_ptr = in_base;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8453</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">// lzo_bytep op = out;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8454</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> out_ptr = out_base;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8455</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> l = in_len;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8456</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> t = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8454</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> out_ptr = out_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8455</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> l = in_len;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8456</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">int</span> t = 0;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8457</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8458</td>  <td class="nbHitsCovered"><a title="Line 8458: Conditional coverage 100% (2/2).">&nbsp;317769</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8458: Conditional coverage 100% (2/2).">    <span class="keyword">while</span> (l &gt; 20)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8458</td>  <td class="nbHitsCovered"><a title="Line 8458: Conditional coverage 100% (2/2).">&nbsp;317783</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8458: Conditional coverage 100% (2/2).">    <span class="keyword">while</span> (l &gt; 20)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8459</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8460</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> ll = l;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8460</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> ll = l;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8461</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> ll_end;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8462</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8463</td>  <td class="nbHitsCovered"><a title="Line 8463: Conditional coverage 100% (2/2).">&nbsp;158914</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8463: Conditional coverage 100% (2/2).">        ll = ((ll) &lt;= (49152) ? (ll) : (49152));</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8463</td>  <td class="nbHitsCovered"><a title="Line 8463: Conditional coverage 100% (2/2).">&nbsp;158916</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8463: Conditional coverage 100% (2/2).">        ll = ((ll) &lt;= (49152) ? (ll) : (49152));</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8464</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8465</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java ll_end = (lzo_uintptr_t)ip + ll;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8466</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        ll_end = (<span class="keyword">int</span>)in_ptr + ll;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8466</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        ll_end = (<span class="keyword">int</span>)in_ptr + ll;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8467</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java if ((ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ll_end || (const lzo_bytep)(ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ip + ll)</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8468</td>  <td class="nbHitsUncovered"><a title="Line 8468: Conditional coverage 50% (1/2).">&nbsp;158914</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8468: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> ((ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ll_end <span class="comment">/*|| (const lzo_bytep)(ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ip + ll*/</span>)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8468</td>  <td class="nbHitsUncovered"><a title="Line 8468: Conditional coverage 50% (1/2).">&nbsp;158916</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8468: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> ((ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ll_end <span class="comment">/*|| (const lzo_bytep)(ll_end + ((t + ll) &gt;&gt; 5)) &lt;= ip + ll*/</span>)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8469</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">break</span>;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8470</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span>[]  dict = (<span class="keyword">int</span>[]) wrkmem;    <span class="comment">//Java only</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8470</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span>[]  dict = (<span class="keyword">int</span>[]) wrkmem;    <span class="comment">//Java only</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8471</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8472</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java lzo_memset(wrkmem, 0, ((lzo_uint)1 &lt;&lt; D_BITS) * sizeof(lzo_dict_t));</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8473</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        Arrays.fill(dict, 0);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8473</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        Arrays.fill(dict, 0);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8474</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8475</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java t = do_compress(ip,ll,op,out_len,t,wrkmem);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8476</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        t = compress_core(in,in_ptr,ll,out,out_ptr,out_len,t,dict);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8476</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        t = compress_core(in,in_ptr,ll,out,out_ptr,out_len,t,dict);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8477</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java ip += ll;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8478</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        in_ptr += ll;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8478</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        in_ptr += ll;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8479</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java op += *out_len;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8480</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        out_ptr += out_len.value;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8481</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;        l  -= ll;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8482</td>  <td class="nbHitsCovered">&nbsp;158914</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8483</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    t += l;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8480</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        out_ptr += out_len.value;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8481</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;        l  -= ll;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8482</td>  <td class="nbHitsCovered">&nbsp;158916</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8483</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    t += l;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8484</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    ;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8485</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8486</td>  <td class="nbHitsUncovered"><a title="Line 8486: Conditional coverage 50% (1/2).">&nbsp;158855</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8486: Conditional coverage 50% (1/2).">    <span class="keyword">if</span> (t &gt; 0)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8486</td>  <td class="nbHitsUncovered"><a title="Line 8486: Conditional coverage 50% (1/2).">&nbsp;158867</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8486: Conditional coverage 50% (1/2).">    <span class="keyword">if</span> (t &gt; 0)</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8487</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8488</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java const lzo_bytep ii = in + in_len - t;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8489</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> ii = in_base + in_len - t;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8489</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> ii = in_base + in_len - t;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8490</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8491</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java if (op == out &amp;&amp; t &lt;= 238)</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8492</td>  <td class="nbHitsCovered"><a title="Line 8492: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;158855</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8492: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (out_ptr == out_base &amp;&amp; t &lt;= 238)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8492</td>  <td class="nbHitsCovered"><a title="Line 8492: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;158867</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8492: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (out_ptr == out_base &amp;&amp; t &lt;= 238)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8493</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(17 + t);</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8494</td>  <td class="nbHitsCovered">&nbsp;21</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (17 + t));</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8495</td>  <td class="nbHitsUncovered"><a title="Line 8495: Conditional coverage 50% (1/2).">&nbsp;158834</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8495: Conditional coverage 50% (1/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt;= 3)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8495</td>  <td class="nbHitsUncovered"><a title="Line 8495: Conditional coverage 50% (1/2).">&nbsp;158846</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8495: Conditional coverage 50% (1/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt;= 3)</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8496</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java op[-2] |= LZO_BYTE(t);</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8497</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            out[out_ptr -2] |= (( <span class="keyword">byte</span>) (t));</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8498</td>  <td class="nbHitsCovered"><a title="Line 8498: Conditional coverage 100% (2/2).">&nbsp;158834</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8498: Conditional coverage 100% (2/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt;= 18)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8498</td>  <td class="nbHitsCovered"><a title="Line 8498: Conditional coverage 100% (2/2).">&nbsp;158846</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8498: Conditional coverage 100% (2/2).">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt;= 18)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8499</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(t - 3);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8500</td>  <td class="nbHitsCovered">&nbsp;180</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (t - 3));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8500</td>  <td class="nbHitsCovered">&nbsp;209</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (t - 3));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8501</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8502</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8503</td>  <td class="nbHitsCovered">&nbsp;158654</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> tt = t - 18;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8503</td>  <td class="nbHitsCovered">&nbsp;158637</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> tt = t - 18;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8504</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8505</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = 0;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8506</td>  <td class="nbHitsCovered">&nbsp;158654</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = 0;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8507</td>  <td class="nbHitsCovered"><a title="Line 8507: Conditional coverage 100% (2/2).">&nbsp;168924</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8507: Conditional coverage 100% (2/2).">            <span class="keyword">while</span> (tt &gt; 255)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8506</td>  <td class="nbHitsCovered">&nbsp;158637</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8507</td>  <td class="nbHitsCovered"><a title="Line 8507: Conditional coverage 100% (2/2).">&nbsp;168907</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8507: Conditional coverage 100% (2/2).">            <span class="keyword">while</span> (tt &gt; 255)</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8508</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;8509</td>  <td class="nbHitsCovered">&nbsp;10270</td>  <td class="src"><pre class="src">&nbsp;                tt -= 255;</pre></td></tr>
@@ -16941,34 +16941,34 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8518</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8519</td>  <td class="nbHitsUncovered"><a title="Line 8519: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;158654</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8519: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            <span class="keyword">assert</span>(tt &gt; 0):<span class="string">"Assertion failed: "</span> + <span class="string">"tt &gt; 0"</span>;</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8519</td>  <td class="nbHitsUncovered"><a title="Line 8519: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;158637</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 8519: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            <span class="keyword">assert</span>(tt &gt; 0):<span class="string">"Assertion failed: "</span> + <span class="string">"tt &gt; 0"</span>;</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8520</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">//Java *op++ = LZO_BYTE(tt);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8521</td>  <td class="nbHitsCovered">&nbsp;158654</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (tt));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8521</td>  <td class="nbHitsCovered">&nbsp;158637</td>  <td class="src"><pre class="src">&nbsp;            out[out_ptr++] = (( <span class="keyword">byte</span>) (tt));</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8522</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8523</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">//Java do *op++ = *ii++; while (--t &gt; 0);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8524</td>  <td class="nbHitsCovered"><a title="Line 8524: Conditional coverage 100% (2/2).">&nbsp;32425992</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8524: Conditional coverage 100% (2/2).">        <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0);</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8524</td>  <td class="nbHitsCovered"><a title="Line 8524: Conditional coverage 100% (2/2).">&nbsp;32424065</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 8524: Conditional coverage 100% (2/2).">        <span class="keyword">do</span> out[out_ptr++] = in[ii++]; <span class="keyword">while</span> (--t &gt; 0);</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8525</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8526</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8527</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java *op++ = M4_MARKER | 1;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8528</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 16 | 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8528</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 16 | 1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8529</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java *op++ = 0;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8530</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8530</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 0;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8531</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java *op++ = 0;</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8532</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 0;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8532</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    out[out_ptr++] = 0;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8533</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8534</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="comment">//Java *out_len = pd(op, out);</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8535</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    out_len.value = out_ptr - out_base;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8536</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">return</span> LZO_E_OK;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8535</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    out_len.value = out_ptr - out_base;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8536</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">return</span> LZO_E_OK;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8537</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8538</td>  <td class="nbHits">&nbsp;</td>
@@ -16990,7 +16990,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">int</span> compress(<span class="keyword">byte</span>[] in, <span class="keyword">int</span> in_base, <span class="keyword">int</span> in_len,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8547</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                            <span class="keyword">byte</span>[] out, <span class="keyword">int</span> out_base, lzo_uintp out_len) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;8548</td>  <td class="nbHitsCovered">&nbsp;158855</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> compress(in, in_base, in_len,</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;8548</td>  <td class="nbHitsCovered">&nbsp;158867</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> compress(in, in_base, in_len,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8549</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                                                out, out_base, out_len,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8550</td>  <td class="nbHits">&nbsp;</td>
@@ -17001,6 +17001,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 12/19/14 11:54 AM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 2/19/15 1:08 PM.</div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
 
-<coverage line-rate="0.2556291390728477" branch-rate="0.15436241610738255" lines-covered="193" lines-valid="755" branches-covered="46" branches-valid="298" complexity="2.2857142857142856" version="2.0.3" timestamp="1419018912291">
+<coverage line-rate="0.2556291390728477" branch-rate="0.15436241610738255" lines-covered="193" lines-valid="755" branches-covered="46" branches-valid="298" complexity="2.2857142857142856" version="2.0.3" timestamp="1424380165935">
 	<sources>
 		<source>/home/shevek/java/lzo-java/lzo-hadoop/src/main/java</source>
 	</sources>
