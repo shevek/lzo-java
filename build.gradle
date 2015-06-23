@@ -1,5 +1,4 @@
 // Establish version and status
-ext.githubProjectName = 'lzo-java'
 
 buildscript {
     apply from: file('gradle/buildscript.gradle'), to: buildscript 
@@ -9,19 +8,32 @@ buildscript {
 	}
 }
 
-apply from: file('gradle/convention.gradle')
-apply from: file('gradle/github.gradle')
-// apply from: file('gradle/maven.gradle')
-apply from: file('gradle/nexus.gradle')
-apply from: file('gradle/check.gradle')
-apply from: file('gradle/license.gradle')
+ext.githubProjectName = 'lzo-java'
+
+apply plugin: 'org.anarres.stdproject'
+stdproject {
+}
 
 subprojects {
 	group = "org.anarres.lzo"
 
+	apply plugin: 'org.anarres.stdmodule'
+	stdmodule {
+		description "The LZO compression codec in pure Java."
+		author id: 'shevek', name: 'Shevek', email: 'github@anarres.org'
+		license 'Apache-2.0'
+	}
+
 	dependencies {
+		compile 'com.google.code.findbugs:annotations:2.0.3'
+
 		testCompile 'org.slf4j:slf4j-api:1.7.7'
 		testCompile 'commons-io:commons-io:2.4'
+	}
+
+	sourceCompatibility = 1.5
+	animalsniffer {
+		signature = "org.codehaus.mojo.signature:java16:+@signature"
 	}
 }
 
