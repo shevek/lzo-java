@@ -1,0 +1,465 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>/*<a name="line.1"></a>
+<span class="sourceLineNo">002</span> * This file is part of lzo-java, an implementation of LZO in Java.<a name="line.2"></a>
+<span class="sourceLineNo">003</span> * https://github.com/shevek/lzo-java<a name="line.3"></a>
+<span class="sourceLineNo">004</span> *<a name="line.4"></a>
+<span class="sourceLineNo">005</span> * The Java portion of this library is:<a name="line.5"></a>
+<span class="sourceLineNo">006</span> * Copyright (C) 2011 Shevek &lt;shevek@anarres.org&gt;<a name="line.6"></a>
+<span class="sourceLineNo">007</span> * All Rights Reserved.<a name="line.7"></a>
+<span class="sourceLineNo">008</span> *<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * This file is based on a file from hadoop-gpl-compression.<a name="line.9"></a>
+<span class="sourceLineNo">010</span> *<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * This library is free software; you can redistribute it and/or<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * modify it under the terms of the GNU General Public License <a name="line.12"></a>
+<span class="sourceLineNo">013</span> * as published by the Free Software Foundation; either version <a name="line.13"></a>
+<span class="sourceLineNo">014</span> * 2 of the License, or (at your option) any later version.<a name="line.14"></a>
+<span class="sourceLineNo">015</span> *<a name="line.15"></a>
+<span class="sourceLineNo">016</span> * This library is distributed in the hope that it will be useful, <a name="line.16"></a>
+<span class="sourceLineNo">017</span> * but WITHOUT ANY WARRANTY; without even the implied warranty<a name="line.17"></a>
+<span class="sourceLineNo">018</span> * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.<a name="line.18"></a>
+<span class="sourceLineNo">019</span> * See the GNU General Public License for more details.<a name="line.19"></a>
+<span class="sourceLineNo">020</span> *<a name="line.20"></a>
+<span class="sourceLineNo">021</span> * You should have received a copy of the GNU General Public<a name="line.21"></a>
+<span class="sourceLineNo">022</span> * License along with the LZO library; see the file COPYING.<a name="line.22"></a>
+<span class="sourceLineNo">023</span> * If not, see &lt;http://www.gnu.org/licenses/&gt; or write to the<a name="line.23"></a>
+<span class="sourceLineNo">024</span> * Free Software Foundation, Inc., 51 Franklin Street, Fifth<a name="line.24"></a>
+<span class="sourceLineNo">025</span> * Floor, Boston, MA 02110-1301, USA.<a name="line.25"></a>
+<span class="sourceLineNo">026</span> */<a name="line.26"></a>
+<span class="sourceLineNo">027</span>package org.anarres.lzo.hadoop.codec;<a name="line.27"></a>
+<span class="sourceLineNo">028</span><a name="line.28"></a>
+<span class="sourceLineNo">029</span>import java.io.IOException;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>import org.anarres.lzo.LzoAlgorithm;<a name="line.30"></a>
+<span class="sourceLineNo">031</span>import org.anarres.lzo.LzoConstraint;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>import org.anarres.lzo.LzoLibrary;<a name="line.32"></a>
+<span class="sourceLineNo">033</span>import org.anarres.lzo.LzoTransformer;<a name="line.33"></a>
+<span class="sourceLineNo">034</span>import org.anarres.lzo.SuppressWarnings;<a name="line.34"></a>
+<span class="sourceLineNo">035</span>import org.anarres.lzo.lzo_uintp;<a name="line.35"></a>
+<span class="sourceLineNo">036</span>import org.apache.commons.logging.Log;<a name="line.36"></a>
+<span class="sourceLineNo">037</span>import org.apache.commons.logging.LogFactory;<a name="line.37"></a>
+<span class="sourceLineNo">038</span>import org.apache.hadoop.conf.Configuration;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>import org.apache.hadoop.io.compress.Compressor;<a name="line.39"></a>
+<span class="sourceLineNo">040</span><a name="line.40"></a>
+<span class="sourceLineNo">041</span>/**<a name="line.41"></a>
+<span class="sourceLineNo">042</span> * A {@link Compressor} based on the lzo algorithm.<a name="line.42"></a>
+<span class="sourceLineNo">043</span> * http://www.oberhumer.com/opensource/lzo/<a name="line.43"></a>
+<span class="sourceLineNo">044</span> *<a name="line.44"></a>
+<span class="sourceLineNo">045</span> */<a name="line.45"></a>
+<span class="sourceLineNo">046</span>public class LzoCompressor implements Compressor {<a name="line.46"></a>
+<span class="sourceLineNo">047</span><a name="line.47"></a>
+<span class="sourceLineNo">048</span>    private static final Log LOG = LogFactory.getLog(LzoCompressor.class);<a name="line.48"></a>
+<span class="sourceLineNo">049</span><a name="line.49"></a>
+<span class="sourceLineNo">050</span>    /**<a name="line.50"></a>
+<span class="sourceLineNo">051</span>     * The compression algorithm for lzo library.<a name="line.51"></a>
+<span class="sourceLineNo">052</span>     */<a name="line.52"></a>
+<span class="sourceLineNo">053</span>    public static enum CompressionStrategy {<a name="line.53"></a>
+<span class="sourceLineNo">054</span><a name="line.54"></a>
+<span class="sourceLineNo">055</span>        /**<a name="line.55"></a>
+<span class="sourceLineNo">056</span>         * lzo1 algorithms.<a name="line.56"></a>
+<span class="sourceLineNo">057</span>         */<a name="line.57"></a>
+<span class="sourceLineNo">058</span>        LZO1(LzoAlgorithm.LZO1),<a name="line.58"></a>
+<span class="sourceLineNo">059</span>        LZO1_99(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),<a name="line.59"></a>
+<span class="sourceLineNo">060</span>        /**<a name="line.60"></a>
+<span class="sourceLineNo">061</span>         * lzo1a algorithms.<a name="line.61"></a>
+<span class="sourceLineNo">062</span>         */<a name="line.62"></a>
+<span class="sourceLineNo">063</span>        LZO1A(LzoAlgorithm.LZO1),<a name="line.63"></a>
+<span class="sourceLineNo">064</span>        LZO1A_99(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),<a name="line.64"></a>
+<span class="sourceLineNo">065</span>        /**<a name="line.65"></a>
+<span class="sourceLineNo">066</span>         * lzo1b algorithms.<a name="line.66"></a>
+<span class="sourceLineNo">067</span>         */<a name="line.67"></a>
+<span class="sourceLineNo">068</span>        LZO1B(LzoAlgorithm.LZO1),<a name="line.68"></a>
+<span class="sourceLineNo">069</span>        LZO1B_BEST_COMPRESSION(LzoAlgorithm.LZO1, LzoConstraint.COMPRESSION),<a name="line.69"></a>
+<span class="sourceLineNo">070</span>        LZO1B_BEST_SPEED(LzoAlgorithm.LZO1, LzoConstraint.SPEED),<a name="line.70"></a>
+<span class="sourceLineNo">071</span>        LZO1B_1(LzoAlgorithm.LZO1B),<a name="line.71"></a>
+<span class="sourceLineNo">072</span>        LZO1B_2(LzoAlgorithm.LZO1B),<a name="line.72"></a>
+<span class="sourceLineNo">073</span>        LZO1B_3(LzoAlgorithm.LZO1B),<a name="line.73"></a>
+<span class="sourceLineNo">074</span>        LZO1B_4(LzoAlgorithm.LZO1B),<a name="line.74"></a>
+<span class="sourceLineNo">075</span>        LZO1B_5(LzoAlgorithm.LZO1B),<a name="line.75"></a>
+<span class="sourceLineNo">076</span>        LZO1B_6(LzoAlgorithm.LZO1B),<a name="line.76"></a>
+<span class="sourceLineNo">077</span>        LZO1B_7(LzoAlgorithm.LZO1B),<a name="line.77"></a>
+<span class="sourceLineNo">078</span>        LZO1B_8(LzoAlgorithm.LZO1B),<a name="line.78"></a>
+<span class="sourceLineNo">079</span>        LZO1B_9(LzoAlgorithm.LZO1B),<a name="line.79"></a>
+<span class="sourceLineNo">080</span>        LZO1B_99(LzoAlgorithm.LZO1B, LzoConstraint.COMPRESSION),<a name="line.80"></a>
+<span class="sourceLineNo">081</span>        LZO1B_999(LzoAlgorithm.LZO1B, LzoConstraint.COMPRESSION),<a name="line.81"></a>
+<span class="sourceLineNo">082</span>        /**<a name="line.82"></a>
+<span class="sourceLineNo">083</span>         * lzo1c algorithms.<a name="line.83"></a>
+<span class="sourceLineNo">084</span>         */<a name="line.84"></a>
+<span class="sourceLineNo">085</span>        LZO1C(LzoAlgorithm.LZO1C),<a name="line.85"></a>
+<span class="sourceLineNo">086</span>        LZO1C_BEST_COMPRESSION(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),<a name="line.86"></a>
+<span class="sourceLineNo">087</span>        LZO1C_BEST_SPEED(LzoAlgorithm.LZO1C, LzoConstraint.SPEED),<a name="line.87"></a>
+<span class="sourceLineNo">088</span>        LZO1C_1(LzoAlgorithm.LZO1C),<a name="line.88"></a>
+<span class="sourceLineNo">089</span>        LZO1C_2(LzoAlgorithm.LZO1C),<a name="line.89"></a>
+<span class="sourceLineNo">090</span>        LZO1C_3(LzoAlgorithm.LZO1C),<a name="line.90"></a>
+<span class="sourceLineNo">091</span>        LZO1C_4(LzoAlgorithm.LZO1C),<a name="line.91"></a>
+<span class="sourceLineNo">092</span>        LZO1C_5(LzoAlgorithm.LZO1C),<a name="line.92"></a>
+<span class="sourceLineNo">093</span>        LZO1C_6(LzoAlgorithm.LZO1C),<a name="line.93"></a>
+<span class="sourceLineNo">094</span>        LZO1C_7(LzoAlgorithm.LZO1C),<a name="line.94"></a>
+<span class="sourceLineNo">095</span>        LZO1C_8(LzoAlgorithm.LZO1C),<a name="line.95"></a>
+<span class="sourceLineNo">096</span>        LZO1C_9(LzoAlgorithm.LZO1C),<a name="line.96"></a>
+<span class="sourceLineNo">097</span>        LZO1C_99(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),<a name="line.97"></a>
+<span class="sourceLineNo">098</span>        LZO1C_999(LzoAlgorithm.LZO1C, LzoConstraint.COMPRESSION),<a name="line.98"></a>
+<span class="sourceLineNo">099</span>        /**<a name="line.99"></a>
+<span class="sourceLineNo">100</span>         * lzo1f algorithms.<a name="line.100"></a>
+<span class="sourceLineNo">101</span>         */<a name="line.101"></a>
+<span class="sourceLineNo">102</span>        LZO1F_1(LzoAlgorithm.LZO1F),<a name="line.102"></a>
+<span class="sourceLineNo">103</span>        LZO1F_999(LzoAlgorithm.LZO1F, LzoConstraint.COMPRESSION),<a name="line.103"></a>
+<span class="sourceLineNo">104</span>        /**<a name="line.104"></a>
+<span class="sourceLineNo">105</span>         * lzo1x algorithms.<a name="line.105"></a>
+<span class="sourceLineNo">106</span>         */<a name="line.106"></a>
+<span class="sourceLineNo">107</span>        LZO1X_1(LzoAlgorithm.LZO1X),<a name="line.107"></a>
+<span class="sourceLineNo">108</span>        LZO1X_11(LzoAlgorithm.LZO1X, LzoConstraint.MEMORY),<a name="line.108"></a>
+<span class="sourceLineNo">109</span>        LZO1X_12(LzoAlgorithm.LZO1X),<a name="line.109"></a>
+<span class="sourceLineNo">110</span>        LZO1X_15(LzoAlgorithm.LZO1X),<a name="line.110"></a>
+<span class="sourceLineNo">111</span>        LZO1X_999(LzoAlgorithm.LZO1X, LzoConstraint.COMPRESSION),<a name="line.111"></a>
+<span class="sourceLineNo">112</span>        /**<a name="line.112"></a>
+<span class="sourceLineNo">113</span>         * lzo1y algorithms.<a name="line.113"></a>
+<span class="sourceLineNo">114</span>         */<a name="line.114"></a>
+<span class="sourceLineNo">115</span>        LZO1Y_1(LzoAlgorithm.LZO1Y),<a name="line.115"></a>
+<span class="sourceLineNo">116</span>        LZO1Y_999(LzoAlgorithm.LZO1Y, LzoConstraint.COMPRESSION),<a name="line.116"></a>
+<span class="sourceLineNo">117</span>        /**<a name="line.117"></a>
+<span class="sourceLineNo">118</span>         * lzo1z algorithms.<a name="line.118"></a>
+<span class="sourceLineNo">119</span>         */<a name="line.119"></a>
+<span class="sourceLineNo">120</span>        LZO1Z_999(LzoAlgorithm.LZO1Z, LzoConstraint.COMPRESSION),<a name="line.120"></a>
+<span class="sourceLineNo">121</span>        /**<a name="line.121"></a>
+<span class="sourceLineNo">122</span>         * lzo2a algorithms.<a name="line.122"></a>
+<span class="sourceLineNo">123</span>         */<a name="line.123"></a>
+<span class="sourceLineNo">124</span>        LZO2A_999(LzoAlgorithm.LZO2A, LzoConstraint.COMPRESSION);<a name="line.124"></a>
+<span class="sourceLineNo">125</span>        private final LzoAlgorithm algorithm;<a name="line.125"></a>
+<span class="sourceLineNo">126</span>        private final LzoConstraint constraint;<a name="line.126"></a>
+<span class="sourceLineNo">127</span><a name="line.127"></a>
+<span class="sourceLineNo">128</span>        private CompressionStrategy(LzoAlgorithm algorithm, LzoConstraint constraint) {<a name="line.128"></a>
+<span class="sourceLineNo">129</span>            this.algorithm = algorithm;<a name="line.129"></a>
+<span class="sourceLineNo">130</span>            this.constraint = constraint;<a name="line.130"></a>
+<span class="sourceLineNo">131</span>        }<a name="line.131"></a>
+<span class="sourceLineNo">132</span><a name="line.132"></a>
+<span class="sourceLineNo">133</span>        private CompressionStrategy(LzoAlgorithm algorithm) {<a name="line.133"></a>
+<span class="sourceLineNo">134</span>            this(algorithm, null);<a name="line.134"></a>
+<span class="sourceLineNo">135</span>        }<a name="line.135"></a>
+<span class="sourceLineNo">136</span><a name="line.136"></a>
+<span class="sourceLineNo">137</span>        public org.anarres.lzo.LzoCompressor newCompressor() {<a name="line.137"></a>
+<span class="sourceLineNo">138</span>            return LzoLibrary.getInstance().newCompressor(algorithm, constraint);<a name="line.138"></a>
+<span class="sourceLineNo">139</span>        }<a name="line.139"></a>
+<span class="sourceLineNo">140</span>    }; // CompressionStrategy<a name="line.140"></a>
+<span class="sourceLineNo">141</span>    private final org.anarres.lzo.LzoCompressor compressor; // The lzo compression algorithm.<a name="line.141"></a>
+<span class="sourceLineNo">142</span>    private final byte[] inputBuffer;<a name="line.142"></a>
+<span class="sourceLineNo">143</span>    private int inputBufferLen;<a name="line.143"></a>
+<span class="sourceLineNo">144</span>    private byte[] inputHoldoverBuffer;<a name="line.144"></a>
+<span class="sourceLineNo">145</span>    private int inputHoldoverBufferPos;<a name="line.145"></a>
+<span class="sourceLineNo">146</span>    private int inputHoldoverBufferLen;<a name="line.146"></a>
+<span class="sourceLineNo">147</span>    private final byte[] outputBuffer;<a name="line.147"></a>
+<span class="sourceLineNo">148</span>    private int outputBufferPos;<a name="line.148"></a>
+<span class="sourceLineNo">149</span>    private final lzo_uintp outputBufferLen = new lzo_uintp();  // Also, end, since we base outputBuffer at 0.<a name="line.149"></a>
+<span class="sourceLineNo">150</span>    private int inputByteCount;<a name="line.150"></a>
+<span class="sourceLineNo">151</span>    private int outputByteCount;<a name="line.151"></a>
+<span class="sourceLineNo">152</span>    private boolean finished;   // Interaction with a brain-damaged contract from BlockCompressorStream.<a name="line.152"></a>
+<span class="sourceLineNo">153</span><a name="line.153"></a>
+<span class="sourceLineNo">154</span>    /**<a name="line.154"></a>
+<span class="sourceLineNo">155</span>     * Creates a new compressor using the specified {@link CompressionStrategy}.<a name="line.155"></a>
+<span class="sourceLineNo">156</span>     *<a name="line.156"></a>
+<span class="sourceLineNo">157</span>     * @param strategy lzo compression algorithm to use<a name="line.157"></a>
+<span class="sourceLineNo">158</span>     * @param outputBufferSize size of the output buffer to be used.<a name="line.158"></a>
+<span class="sourceLineNo">159</span>     */<a name="line.159"></a>
+<span class="sourceLineNo">160</span>    public LzoCompressor(CompressionStrategy strategy, int outputBufferSize) {<a name="line.160"></a>
+<span class="sourceLineNo">161</span>        this.compressor = strategy.newCompressor();<a name="line.161"></a>
+<span class="sourceLineNo">162</span>        this.inputBuffer = new byte[outputBufferSize];<a name="line.162"></a>
+<span class="sourceLineNo">163</span>        this.outputBuffer = new byte[outputBufferSize + (outputBufferSize &gt;&gt; 3) + 256];<a name="line.163"></a>
+<span class="sourceLineNo">164</span>        reset();<a name="line.164"></a>
+<span class="sourceLineNo">165</span>    }<a name="line.165"></a>
+<span class="sourceLineNo">166</span><a name="line.166"></a>
+<span class="sourceLineNo">167</span>    /**<a name="line.167"></a>
+<span class="sourceLineNo">168</span>     * Creates a new compressor with the default lzo1x_1 compression.<a name="line.168"></a>
+<span class="sourceLineNo">169</span>     */<a name="line.169"></a>
+<span class="sourceLineNo">170</span>    public LzoCompressor() {<a name="line.170"></a>
+<span class="sourceLineNo">171</span>        this(CompressionStrategy.LZO1X_1, 64 * 1024);<a name="line.171"></a>
+<span class="sourceLineNo">172</span>    }<a name="line.172"></a>
+<span class="sourceLineNo">173</span><a name="line.173"></a>
+<span class="sourceLineNo">174</span>    private void logState(String when) {<a name="line.174"></a>
+<span class="sourceLineNo">175</span>        LOG.info("\n");<a name="line.175"></a>
+<span class="sourceLineNo">176</span>        LOG.info(when + " Input buffer length=" + inputBufferLen + "/" + inputBuffer.length);<a name="line.176"></a>
+<span class="sourceLineNo">177</span>        if (inputHoldoverBuffer == null) {<a name="line.177"></a>
+<span class="sourceLineNo">178</span>            LOG.info(when + " Input holdover = null");<a name="line.178"></a>
+<span class="sourceLineNo">179</span>        } else {<a name="line.179"></a>
+<span class="sourceLineNo">180</span>            LOG.info(when + " Input holdover pos=" + inputHoldoverBufferPos + "; length=" + inputHoldoverBufferLen);<a name="line.180"></a>
+<span class="sourceLineNo">181</span>        }<a name="line.181"></a>
+<span class="sourceLineNo">182</span>        LOG.info(when + " Output buffer pos=" + outputBufferPos + "; length=" + outputBufferLen + "/" + outputBuffer.length);<a name="line.182"></a>
+<span class="sourceLineNo">183</span>        // LOG.info(when + " Read=" + inputByteCount + "; Written=" + outputByteCount + "; Finished = " + finished);<a name="line.183"></a>
+<span class="sourceLineNo">184</span>        testInvariants();<a name="line.184"></a>
+<span class="sourceLineNo">185</span>    }<a name="line.185"></a>
+<span class="sourceLineNo">186</span><a name="line.186"></a>
+<span class="sourceLineNo">187</span>    private boolean testInvariants() {<a name="line.187"></a>
+<span class="sourceLineNo">188</span>        if (inputHoldoverBuffer != null) {<a name="line.188"></a>
+<span class="sourceLineNo">189</span>            if (inputBufferLen != 0 &amp;&amp; inputBufferLen != inputBuffer.length)<a name="line.189"></a>
+<span class="sourceLineNo">190</span>                throw new IllegalStateException("Funny input buffer length " + inputBufferLen + " with array size " + inputBuffer.length + " and holdover.");<a name="line.190"></a>
+<span class="sourceLineNo">191</span>            if (inputHoldoverBufferPos &lt; 0)<a name="line.191"></a>
+<span class="sourceLineNo">192</span>                throw new IllegalStateException("Using holdover buffer, but invalid holdover position " + inputHoldoverBufferPos);<a name="line.192"></a>
+<span class="sourceLineNo">193</span>            if (inputHoldoverBufferLen &lt; 0)<a name="line.193"></a>
+<span class="sourceLineNo">194</span>                throw new IllegalStateException("Using holdover buffer, but invalid holdover length " + inputHoldoverBufferLen);<a name="line.194"></a>
+<span class="sourceLineNo">195</span>        } else {<a name="line.195"></a>
+<span class="sourceLineNo">196</span>            if (inputHoldoverBufferPos != -1)<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                throw new IllegalStateException("No holdover buffer, but valid holdover position " + inputHoldoverBufferPos);<a name="line.197"></a>
+<span class="sourceLineNo">198</span>            if (inputHoldoverBufferLen != -1)<a name="line.198"></a>
+<span class="sourceLineNo">199</span>                throw new IllegalStateException("No holdover buffer, but valid holdover length " + inputHoldoverBufferLen);<a name="line.199"></a>
+<span class="sourceLineNo">200</span>        }<a name="line.200"></a>
+<span class="sourceLineNo">201</span><a name="line.201"></a>
+<span class="sourceLineNo">202</span>        if (outputBufferLen.value &lt; 0)<a name="line.202"></a>
+<span class="sourceLineNo">203</span>            throw new IllegalStateException("Output buffer overrun pos=" + outputBufferPos + "; len=" + outputBufferLen);<a name="line.203"></a>
+<span class="sourceLineNo">204</span><a name="line.204"></a>
+<span class="sourceLineNo">205</span>        return true;<a name="line.205"></a>
+<span class="sourceLineNo">206</span>    }<a name="line.206"></a>
+<span class="sourceLineNo">207</span><a name="line.207"></a>
+<span class="sourceLineNo">208</span>    /**<a name="line.208"></a>
+<span class="sourceLineNo">209</span>     * {@inheritDoc}<a name="line.209"></a>
+<span class="sourceLineNo">210</span>     *<a name="line.210"></a>
+<span class="sourceLineNo">211</span>     * WARNING: This method retains a pointer to the user's buffer.<a name="line.211"></a>
+<span class="sourceLineNo">212</span>     */<a name="line.212"></a>
+<span class="sourceLineNo">213</span>    @Override<a name="line.213"></a>
+<span class="sourceLineNo">214</span>    @SuppressWarnings("EI_EXPOSE_REP2")<a name="line.214"></a>
+<span class="sourceLineNo">215</span>    public void setInput(byte[] b, int off, int len) {<a name="line.215"></a>
+<span class="sourceLineNo">216</span>        // logState("Before setInput");<a name="line.216"></a>
+<span class="sourceLineNo">217</span>        if (b == null)<a name="line.217"></a>
+<span class="sourceLineNo">218</span>            throw new NullPointerException();<a name="line.218"></a>
+<span class="sourceLineNo">219</span>        if (off &lt; 0 || len &lt; 0 || off &gt; b.length - len)<a name="line.219"></a>
+<span class="sourceLineNo">220</span>            throw new ArrayIndexOutOfBoundsException("Illegal range in buffer: Buffer length=" + b.length + ", offset=" + off + ", length=" + len);<a name="line.220"></a>
+<span class="sourceLineNo">221</span>        if (inputHoldoverBuffer != null)<a name="line.221"></a>
+<span class="sourceLineNo">222</span>            throw new IllegalStateException("Cannot accept input while holdover is present.");<a name="line.222"></a>
+<span class="sourceLineNo">223</span><a name="line.223"></a>
+<span class="sourceLineNo">224</span>        inputHoldoverBuffer = b;<a name="line.224"></a>
+<span class="sourceLineNo">225</span>        inputHoldoverBufferPos = off;<a name="line.225"></a>
+<span class="sourceLineNo">226</span>        inputHoldoverBufferLen = len;<a name="line.226"></a>
+<span class="sourceLineNo">227</span>        compact();<a name="line.227"></a>
+<span class="sourceLineNo">228</span><a name="line.228"></a>
+<span class="sourceLineNo">229</span>        inputByteCount += len;  // Unfortunately, we have to do this here. This is so, so, so wrong.<a name="line.229"></a>
+<span class="sourceLineNo">230</span><a name="line.230"></a>
+<span class="sourceLineNo">231</span>        // logState("After setInput");<a name="line.231"></a>
+<span class="sourceLineNo">232</span>    }<a name="line.232"></a>
+<span class="sourceLineNo">233</span><a name="line.233"></a>
+<span class="sourceLineNo">234</span>    @Override<a name="line.234"></a>
+<span class="sourceLineNo">235</span>    public void setDictionary(byte[] b, int off, int len) {<a name="line.235"></a>
+<span class="sourceLineNo">236</span>        // nop<a name="line.236"></a>
+<span class="sourceLineNo">237</span>    }<a name="line.237"></a>
+<span class="sourceLineNo">238</span><a name="line.238"></a>
+<span class="sourceLineNo">239</span>    /** {@inheritDoc} */<a name="line.239"></a>
+<span class="sourceLineNo">240</span>    @Override<a name="line.240"></a>
+<span class="sourceLineNo">241</span>    public boolean needsInput() {<a name="line.241"></a>
+<span class="sourceLineNo">242</span>        compact();<a name="line.242"></a>
+<span class="sourceLineNo">243</span>        if (inputHoldoverBuffer != null)<a name="line.243"></a>
+<span class="sourceLineNo">244</span>            return false;<a name="line.244"></a>
+<span class="sourceLineNo">245</span>        return inputBufferLen &lt; inputBuffer.length;<a name="line.245"></a>
+<span class="sourceLineNo">246</span>    }<a name="line.246"></a>
+<span class="sourceLineNo">247</span><a name="line.247"></a>
+<span class="sourceLineNo">248</span>    @Override<a name="line.248"></a>
+<span class="sourceLineNo">249</span>    public void finish() {<a name="line.249"></a>
+<span class="sourceLineNo">250</span>        finished = true;<a name="line.250"></a>
+<span class="sourceLineNo">251</span>    }<a name="line.251"></a>
+<span class="sourceLineNo">252</span><a name="line.252"></a>
+<span class="sourceLineNo">253</span>    @Override<a name="line.253"></a>
+<span class="sourceLineNo">254</span>    public boolean finished() {<a name="line.254"></a>
+<span class="sourceLineNo">255</span>        assert testInvariants();<a name="line.255"></a>
+<span class="sourceLineNo">256</span>        return finished &amp;&amp; outputBufferLen.value == 0 &amp;&amp; inputBufferLen == 0 &amp;&amp; inputHoldoverBuffer == null;<a name="line.256"></a>
+<span class="sourceLineNo">257</span>    }<a name="line.257"></a>
+<span class="sourceLineNo">258</span><a name="line.258"></a>
+<span class="sourceLineNo">259</span>    private void compact() {<a name="line.259"></a>
+<span class="sourceLineNo">260</span>        if (inputHoldoverBuffer == null) {<a name="line.260"></a>
+<span class="sourceLineNo">261</span>            assert testInvariants();<a name="line.261"></a>
+<span class="sourceLineNo">262</span>            return;<a name="line.262"></a>
+<span class="sourceLineNo">263</span>        }<a name="line.263"></a>
+<span class="sourceLineNo">264</span><a name="line.264"></a>
+<span class="sourceLineNo">265</span>        int remaining = inputBuffer.length - inputBufferLen;<a name="line.265"></a>
+<span class="sourceLineNo">266</span>        if (inputHoldoverBufferLen &lt;= remaining) {<a name="line.266"></a>
+<span class="sourceLineNo">267</span>            // We can put the entire holdover into the input buffer.<a name="line.267"></a>
+<span class="sourceLineNo">268</span>            System.arraycopy(inputHoldoverBuffer, inputHoldoverBufferPos, inputBuffer, inputBufferLen, inputHoldoverBufferLen);<a name="line.268"></a>
+<span class="sourceLineNo">269</span>            inputBufferLen += inputHoldoverBufferLen;<a name="line.269"></a>
+<span class="sourceLineNo">270</span>            inputHoldoverBuffer = null;<a name="line.270"></a>
+<span class="sourceLineNo">271</span>            inputHoldoverBufferPos = -1;<a name="line.271"></a>
+<span class="sourceLineNo">272</span>            inputHoldoverBufferLen = -1;<a name="line.272"></a>
+<span class="sourceLineNo">273</span>        } else if (inputBufferLen == 0) {<a name="line.273"></a>
+<span class="sourceLineNo">274</span>            // We have no input, and will run zero-copy from the holdover buffer.<a name="line.274"></a>
+<span class="sourceLineNo">275</span>        } else {<a name="line.275"></a>
+<span class="sourceLineNo">276</span>            // We need to complete the input buffer block using holdover.<a name="line.276"></a>
+<span class="sourceLineNo">277</span>            System.arraycopy(inputHoldoverBuffer, inputHoldoverBufferPos, inputBuffer, inputBufferLen, remaining);<a name="line.277"></a>
+<span class="sourceLineNo">278</span>            inputBufferLen += remaining;<a name="line.278"></a>
+<span class="sourceLineNo">279</span>            inputHoldoverBufferPos += remaining;<a name="line.279"></a>
+<span class="sourceLineNo">280</span>            inputHoldoverBufferLen -= remaining;<a name="line.280"></a>
+<span class="sourceLineNo">281</span>        }<a name="line.281"></a>
+<span class="sourceLineNo">282</span>        assert testInvariants();<a name="line.282"></a>
+<span class="sourceLineNo">283</span>    }<a name="line.283"></a>
+<span class="sourceLineNo">284</span><a name="line.284"></a>
+<span class="sourceLineNo">285</span>    @Override<a name="line.285"></a>
+<span class="sourceLineNo">286</span>    public int compress(byte[] b, int off, int len) throws IOException {<a name="line.286"></a>
+<span class="sourceLineNo">287</span>        // logState("Before compress");<a name="line.287"></a>
+<span class="sourceLineNo">288</span>        if (b == null)<a name="line.288"></a>
+<span class="sourceLineNo">289</span>            throw new NullPointerException();<a name="line.289"></a>
+<span class="sourceLineNo">290</span>        if (off &lt; 0 || len &lt; 0 || off &gt; b.length - len)<a name="line.290"></a>
+<span class="sourceLineNo">291</span>            throw new ArrayIndexOutOfBoundsException("Illegal range in buffer: Buffer length=" + b.length + ", offset=" + off + ", length=" + len);<a name="line.291"></a>
+<span class="sourceLineNo">292</span><a name="line.292"></a>
+<span class="sourceLineNo">293</span>        if (outputBufferLen.value == 0) {<a name="line.293"></a>
+<span class="sourceLineNo">294</span>            byte[] compressBuffer;<a name="line.294"></a>
+<span class="sourceLineNo">295</span>            int compressBufferPos;<a name="line.295"></a>
+<span class="sourceLineNo">296</span>            int compressBufferLen;<a name="line.296"></a>
+<span class="sourceLineNo">297</span><a name="line.297"></a>
+<span class="sourceLineNo">298</span>            // Do compression.<a name="line.298"></a>
+<span class="sourceLineNo">299</span>            if (inputBufferLen &gt; 0) {<a name="line.299"></a>
+<span class="sourceLineNo">300</span>                compressBuffer = inputBuffer;<a name="line.300"></a>
+<span class="sourceLineNo">301</span>                compressBufferPos = 0;<a name="line.301"></a>
+<span class="sourceLineNo">302</span>                compressBufferLen = inputBufferLen;<a name="line.302"></a>
+<span class="sourceLineNo">303</span>                inputBufferLen = 0;<a name="line.303"></a>
+<span class="sourceLineNo">304</span>            } else if (inputHoldoverBuffer != null) {<a name="line.304"></a>
+<span class="sourceLineNo">305</span>                compressBuffer = inputHoldoverBuffer;<a name="line.305"></a>
+<span class="sourceLineNo">306</span>                compressBufferPos = inputHoldoverBufferPos;<a name="line.306"></a>
+<span class="sourceLineNo">307</span>                // If this is ever less than inputBuffer.length, then we should have copied it into the input buffer.<a name="line.307"></a>
+<span class="sourceLineNo">308</span>                compressBufferLen = Math.min(inputBuffer.length, inputHoldoverBufferLen);<a name="line.308"></a>
+<span class="sourceLineNo">309</span>                assert compressBufferLen == inputBuffer.length : "Compressing less than one block of holdover.";<a name="line.309"></a>
+<span class="sourceLineNo">310</span>                inputHoldoverBufferPos += compressBufferLen;<a name="line.310"></a>
+<span class="sourceLineNo">311</span>                inputHoldoverBufferLen -= compressBufferLen;<a name="line.311"></a>
+<span class="sourceLineNo">312</span>            } else {<a name="line.312"></a>
+<span class="sourceLineNo">313</span>                throw new IllegalStateException("compress() called with no input.");<a name="line.313"></a>
+<span class="sourceLineNo">314</span>            }<a name="line.314"></a>
+<span class="sourceLineNo">315</span>            compact();<a name="line.315"></a>
+<span class="sourceLineNo">316</span><a name="line.316"></a>
+<span class="sourceLineNo">317</span>            // A sane implementation would do this here, but Hadoop breaks if we do.<a name="line.317"></a>
+<span class="sourceLineNo">318</span>            // inputByteCount += compressBufferLen;<a name="line.318"></a>
+<span class="sourceLineNo">319</span>            outputBufferPos = 0;<a name="line.319"></a>
+<span class="sourceLineNo">320</span>            outputBufferLen.value = outputBuffer.length;<a name="line.320"></a>
+<span class="sourceLineNo">321</span>            try {<a name="line.321"></a>
+<span class="sourceLineNo">322</span>                int code = compressor.compress(compressBuffer, compressBufferPos, compressBufferLen, outputBuffer, outputBufferPos, outputBufferLen);<a name="line.322"></a>
+<span class="sourceLineNo">323</span>                if (code != LzoTransformer.LZO_E_OK) {<a name="line.323"></a>
+<span class="sourceLineNo">324</span>                    logState("LZO error: " + code);<a name="line.324"></a>
+<span class="sourceLineNo">325</span>                    // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));<a name="line.325"></a>
+<span class="sourceLineNo">326</span>                    throw new IllegalArgumentException(compressor.toErrorString(code));<a name="line.326"></a>
+<span class="sourceLineNo">327</span>                }<a name="line.327"></a>
+<span class="sourceLineNo">328</span>            } catch (IndexOutOfBoundsException e) {<a name="line.328"></a>
+<span class="sourceLineNo">329</span>                logState("IndexOutOfBoundsException: " + e);<a name="line.329"></a>
+<span class="sourceLineNo">330</span>                // FileUtils.writeByteArrayToFile(new File("bytes.out"), Arrays.copyOfRange(compressBuffer, compressBufferPos, compressBufferPos + compressBufferLen));<a name="line.330"></a>
+<span class="sourceLineNo">331</span>                throw new IOException(e);<a name="line.331"></a>
+<span class="sourceLineNo">332</span>            }<a name="line.332"></a>
+<span class="sourceLineNo">333</span>            // LOG.info(compressBufferLen + "(" + Integer.toHexString(compressBufferLen) + ") -&gt; " + outputBufferLen + "(" + Integer.toHexString(outputBufferLen.value) + ")");<a name="line.333"></a>
+<span class="sourceLineNo">334</span>        }<a name="line.334"></a>
+<span class="sourceLineNo">335</span><a name="line.335"></a>
+<span class="sourceLineNo">336</span>        len = Math.min(len, outputBufferLen.value);<a name="line.336"></a>
+<span class="sourceLineNo">337</span>        System.arraycopy(outputBuffer, outputBufferPos, b, off, len);<a name="line.337"></a>
+<span class="sourceLineNo">338</span>        outputBufferPos += len;<a name="line.338"></a>
+<span class="sourceLineNo">339</span>        outputBufferLen.value -= len;<a name="line.339"></a>
+<span class="sourceLineNo">340</span><a name="line.340"></a>
+<span class="sourceLineNo">341</span>        outputByteCount += len;<a name="line.341"></a>
+<span class="sourceLineNo">342</span><a name="line.342"></a>
+<span class="sourceLineNo">343</span>        // logState("After compress; len=" + len);<a name="line.343"></a>
+<span class="sourceLineNo">344</span>        return len;<a name="line.344"></a>
+<span class="sourceLineNo">345</span>    }<a name="line.345"></a>
+<span class="sourceLineNo">346</span><a name="line.346"></a>
+<span class="sourceLineNo">347</span>    // This method is called from the constructor, and must not be overridden.<a name="line.347"></a>
+<span class="sourceLineNo">348</span>    private void _reset() {<a name="line.348"></a>
+<span class="sourceLineNo">349</span>        inputByteCount = 0;<a name="line.349"></a>
+<span class="sourceLineNo">350</span>        outputByteCount = 0;<a name="line.350"></a>
+<span class="sourceLineNo">351</span>        inputBufferLen = 0;<a name="line.351"></a>
+<span class="sourceLineNo">352</span>        inputHoldoverBuffer = null;<a name="line.352"></a>
+<span class="sourceLineNo">353</span>        inputHoldoverBufferPos = -1;<a name="line.353"></a>
+<span class="sourceLineNo">354</span>        inputHoldoverBufferLen = -1;<a name="line.354"></a>
+<span class="sourceLineNo">355</span>        outputBufferPos = 0;<a name="line.355"></a>
+<span class="sourceLineNo">356</span>        outputBufferLen.value = 0;<a name="line.356"></a>
+<span class="sourceLineNo">357</span>        finished = false;<a name="line.357"></a>
+<span class="sourceLineNo">358</span>    }<a name="line.358"></a>
+<span class="sourceLineNo">359</span><a name="line.359"></a>
+<span class="sourceLineNo">360</span>    @Override<a name="line.360"></a>
+<span class="sourceLineNo">361</span>    public void reset() {<a name="line.361"></a>
+<span class="sourceLineNo">362</span>        _reset();<a name="line.362"></a>
+<span class="sourceLineNo">363</span>    }<a name="line.363"></a>
+<span class="sourceLineNo">364</span><a name="line.364"></a>
+<span class="sourceLineNo">365</span>    @Override<a name="line.365"></a>
+<span class="sourceLineNo">366</span>    public synchronized void reinit(Configuration conf) {<a name="line.366"></a>
+<span class="sourceLineNo">367</span>        _reset();<a name="line.367"></a>
+<span class="sourceLineNo">368</span>    }<a name="line.368"></a>
+<span class="sourceLineNo">369</span><a name="line.369"></a>
+<span class="sourceLineNo">370</span>    /**<a name="line.370"></a>
+<span class="sourceLineNo">371</span>     * Return number of bytes given to this compressor since last reset.<a name="line.371"></a>
+<span class="sourceLineNo">372</span>     */<a name="line.372"></a>
+<span class="sourceLineNo">373</span>    @Override<a name="line.373"></a>
+<span class="sourceLineNo">374</span>    public synchronized long getBytesRead() {<a name="line.374"></a>
+<span class="sourceLineNo">375</span>        return inputByteCount;<a name="line.375"></a>
+<span class="sourceLineNo">376</span>    }<a name="line.376"></a>
+<span class="sourceLineNo">377</span><a name="line.377"></a>
+<span class="sourceLineNo">378</span>    /**<a name="line.378"></a>
+<span class="sourceLineNo">379</span>     * Return number of bytes consumed by callers of compress since last reset.<a name="line.379"></a>
+<span class="sourceLineNo">380</span>     */<a name="line.380"></a>
+<span class="sourceLineNo">381</span>    @Override<a name="line.381"></a>
+<span class="sourceLineNo">382</span>    public long getBytesWritten() {<a name="line.382"></a>
+<span class="sourceLineNo">383</span>        return outputByteCount;<a name="line.383"></a>
+<span class="sourceLineNo">384</span>    }<a name="line.384"></a>
+<span class="sourceLineNo">385</span><a name="line.385"></a>
+<span class="sourceLineNo">386</span>    /**<a name="line.386"></a>
+<span class="sourceLineNo">387</span>     * Noop.<a name="line.387"></a>
+<span class="sourceLineNo">388</span>     */<a name="line.388"></a>
+<span class="sourceLineNo">389</span>    @Override<a name="line.389"></a>
+<span class="sourceLineNo">390</span>    public void end() {<a name="line.390"></a>
+<span class="sourceLineNo">391</span>        // nop<a name="line.391"></a>
+<span class="sourceLineNo">392</span>    }<a name="line.392"></a>
+<span class="sourceLineNo">393</span>}<a name="line.393"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
