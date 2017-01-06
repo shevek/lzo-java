@@ -53,7 +53,7 @@ project(':lzo-core') {
 project(':lzo-commons') {
 	dependencies {
 		compile project(':lzo-core')
-		compile 'org.apache.commons:commons-compress:1.9'
+		compile 'org.apache.commons:commons-compress:1.13'
 
 		testCompile project(':lzo-core').sourceSets.test.output
 	}
