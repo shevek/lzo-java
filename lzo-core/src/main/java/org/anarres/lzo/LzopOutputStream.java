@@ -72,7 +72,7 @@ public class LzopOutputStream extends LzoOutputStream {
 
     /**
      * Constructs a new LzopOutputStream.
-     * <p/>
+     * <p>
      * I recommend limiting flags to the following unless you REALLY know what
      * you are doing:
      * <ul>
