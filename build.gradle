@@ -21,7 +21,7 @@ subprojects {
 	stdmodule {
 		description "The LZO compression codec in pure Java."
 		author id: 'shevek', name: 'Shevek', email: 'github@anarres.org'
-		license 'Apache-2.0'
+		license 'GPL-3.0'
 	}
 
 	dependencies {
