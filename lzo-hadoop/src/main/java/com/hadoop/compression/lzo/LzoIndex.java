@@ -49,6 +49,7 @@ public class LzoIndex {
 
     /**
      * Create an index specifying the number of LZO blocks in the file.
+     *
      * @param blocks The number of blocks in the LZO file the index is representing.
      */
     public LzoIndex(int blocks) {
@@ -66,7 +67,9 @@ public class LzoIndex {
     }
 
     /**
-     * Get the total number of blocks in the index file.
+     * Returns the total number of blocks in the index file.
+     *
+     * @return the total number of blocks in the index file.
      */
     public int getNumberOfBlocks() {
         return blockPositions_.length;
@@ -74,10 +77,11 @@ public class LzoIndex {
 
     /**
      * Get the block offset for a given block.
+     *
      * @param block
-     * @return the byte offset into the file where this block starts.  It is the developer's
+     * @return the byte offset into the file where this block starts. It is the developer's
      * responsibility to call getNumberOfBlocks() to know appropriate bounds on the parameter.
-     * The argument block should satisfy 0 <= block < getNumberOfBlocks().
+     * The argument block should satisfy 0 &lt;= block &lt; getNumberOfBlocks().
      */
     public long getPosition(int block) {
         return blockPositions_[block];
@@ -120,11 +124,11 @@ public class LzoIndex {
      * @param start The current slice start
      * @param end The current slice end
      * @return The smallest block offset in the index between [start, end), or
-     *         NOT_FOUND if there is none such.
+     * NOT_FOUND if there is none such.
      */
     public long alignSliceStartToIndex(long start, long end) {
         if (start != 0) {
-      // find the next block position from
+            // find the next block position from
             // the start of the split
             long newStart = findNextPosition(start);
             if (newStart == NOT_FOUND || newStart >= end) {
@@ -148,7 +152,7 @@ public class LzoIndex {
         if (newEnd != NOT_FOUND) {
             end = newEnd;
         } else {
-      // didn't find the next position
+            // didn't find the next position
             // we have hit the end of the file
             end = fileSize;
         }
@@ -157,11 +161,12 @@ public class LzoIndex {
 
     /**
      * Read the index of the lzo file.
-
+     *
      * @param fs The index file is on this file system.
-     * @param lzoFile the file whose index we are reading -- NOT the index file itself.  That is,
+     * @param lzoFile the file whose index we are reading -- NOT the index file itself. That is,
      * pass in filename.lzo, not filename.lzo.index, for this parameter.
-     * @throws IOException
+     * @return The LzoIndex read from the given file.
+     * @throws IOException when it all goes wrong.
      */
     public static LzoIndex readIndex(FileSystem fs, Path lzoFile) throws IOException {
         FSDataInputStream indexIn = null;
@@ -192,9 +197,9 @@ public class LzoIndex {
      * jobs.
      *
      * @param fs File system that contains the file.
-     * @param lzoFile the lzo file to index.  For filename.lzo, the created index file will be
+     * @param lzoFile the lzo file to index. For filename.lzo, the created index file will be
      * filename.lzo.index.
-     * @throws IOException
+     * @throws IOException when it all goes wrong.
      */
     public static void createIndex(FileSystem fs, Path lzoFile)
             throws IOException {
@@ -214,7 +219,7 @@ public class LzoIndex {
         Path outputFile = lzoFile.suffix(LZO_INDEX_SUFFIX);
         Path tmpOutputFile = lzoFile.suffix(LZO_TMP_INDEX_SUFFIX);
 
-    // Track whether an exception was thrown or not, so we know to either
+        // Track whether an exception was thrown or not, so we know to either
         // delete the tmp index file on failure, or rename it to the new index file on success.
         boolean indexingSucceeded = false;
         try {

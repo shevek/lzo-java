@@ -43,9 +43,9 @@ public class LzoIndexer {
 
     /**
      * Index the file given by lzoUri in its default filesystem.
-     * 
+     *
      * @param lzoPath The file to index.
-     * @throws IOException
+     * @throws IOException when it all goes wrong.
      */
     public void index(Path lzoPath) throws IOException {
         indexInternal(lzoPath, 0);
@@ -53,7 +53,7 @@ public class LzoIndexer {
 
     /**
      * Return indented space for pretty printing.
-     * 
+     *
      * @param nestingLevel The indentation level.
      * @return Indented space for the given indentation level.
      */
@@ -68,7 +68,7 @@ public class LzoIndexer {
     /**
      * Lzo index a given path, calling recursively to index directories when encountered.
      * Files are only indexed if they end in .lzo and have no existing .lzo.index file.
-     * 
+     *
      * @param lzoPath The base path to index.
      * @param nestingLevel For pretty printing, the nesting level.
      * @throws IOException
@@ -107,6 +107,7 @@ public class LzoIndexer {
 
     /**
      * Create an lzo index for a single file in HDFS.
+     *
      * @param fs The filesystem object.
      * @param lzoPath The path to index (must be a file, not a directory).
      * @return true if indexing succeeded.
@@ -122,7 +123,9 @@ public class LzoIndexer {
     }
 
     /**
-     * Run the LzoIndexer on each argument passed via stdin.  The files should be HDFS locations.
+     * Run the LzoIndexer on each argument passed via stdin. The files should be HDFS locations.
+     *
+     * @param args javadoc made me type this or the build fails
      */
     public static void main(String[] args) {
         if (args.length == 0) {
