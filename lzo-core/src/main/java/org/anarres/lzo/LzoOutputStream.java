@@ -175,7 +175,7 @@ public class LzoOutputStream extends OutputStream {
             throw new IllegalStateException("Cannot accept input while holdover is present.");
 
         inputHoldoverBuffer = Arrays.copyOfRange(b, off, off + len);
-        inputHoldoverBufferPos = off;
+        inputHoldoverBufferPos = 0;
         inputHoldoverBufferLen = len;
         compact();
 
