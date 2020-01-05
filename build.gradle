@@ -2,12 +2,13 @@ buildscript {
 	repositories {
 		// mavenLocal()
 		mavenCentral()
-		jcenter()
+		// jcenter()
 		// maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+		gradlePluginPortal()
 	}
 
 	dependencies {
-		classpath 'org.anarres.gradle:gradle-stdproject-plugin:1.0.8'
+		classpath 'org.anarres.gradle:gradle-stdproject-plugin:1.0.10'
 		classpath 'org.anarres.gradle:gradle-jcpp-plugin:1.0.2'
 	}
 }
@@ -36,9 +37,6 @@ subprojects {
 	}
 
 	sourceCompatibility = 1.5
-	animalsniffer {
-		signature = "org.codehaus.mojo.signature:java16:+@signature"
-	}
 }
 
 project(':lzo-core') {
